@@ -1,0 +1,179 @@
+{
+  "features": [
+    {
+      "geometry": {
+        "coordinates": [
+          -90.83,
+          29.8
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "hail",
+        "label": "Hail 0.75 in",
+        "local_date": "2005-04-11",
+        "magnitude": 0.75,
+        "marker_style": {
+          "category": "hail",
+          "color": "#16a34a",
+          "marker": "^",
+          "shape": "triangle"
+        },
+        "rating_int": null,
+        "report_id": "hail_231ff65fd03bfb09",
+        "source_file": "1950-2024 Severe Weather Climo LIX - LIX_HAIL.csv",
+        "time_local": "2005-04-11 17:24 CDT",
+        "time_utc": "2005-04-11T22:24:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -90.08,
+          31.07
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "wind",
+        "label": "Wind 50 mph",
+        "local_date": "2005-04-11",
+        "magnitude": 50.0,
+        "marker_style": {
+          "category": "wind",
+          "color": "#2563eb",
+          "marker": "o",
+          "shape": "circle"
+        },
+        "rating_int": null,
+        "report_id": "wind_a3df05f909d9fbf3",
+        "source_file": "[Old] 1950-2023 Severe Weather Climo LIX - LIX_WIND.csv",
+        "time_local": "2005-04-11 17:55 CDT",
+        "time_utc": "2005-04-11T22:55:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -90.07,
+          31.12
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "tor",
+        "label": "Tornado EF/F0",
+        "local_date": "2005-04-11",
+        "magnitude": 0.0,
+        "marker_style": {
+          "category": "tornado",
+          "color": "#dc2626",
+          "marker": "v",
+          "shape": "triangle_down"
+        },
+        "rating_int": 0,
+        "report_id": "tor_b2291c496b3c8015",
+        "source_file": "lix_tornadoes_all_1974_2023.csv",
+        "time_local": "2005-04-11 18:55 CDT",
+        "time_utc": "2005-04-11T23:55:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -89.38,
+          30.28
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "wind",
+        "label": "Wind 50 mph",
+        "local_date": "2005-04-11",
+        "magnitude": 50.0,
+        "marker_style": {
+          "category": "wind",
+          "color": "#2563eb",
+          "marker": "o",
+          "shape": "circle"
+        },
+        "rating_int": null,
+        "report_id": "wind_b7e00bb13f586c9c",
+        "source_file": "[Old] 1950-2023 Severe Weather Climo LIX - LIX_WIND.csv",
+        "time_local": "2005-04-11 19:20 CDT",
+        "time_utc": "2005-04-12T00:20:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -90.15,
+          29.98
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "wind",
+        "label": "Wind 50 mph",
+        "local_date": "2005-04-11",
+        "magnitude": 50.0,
+        "marker_style": {
+          "category": "wind",
+          "color": "#2563eb",
+          "marker": "o",
+          "shape": "circle"
+        },
+        "rating_int": null,
+        "report_id": "wind_46aa6702cd076706",
+        "source_file": "[Old] 1950-2023 Severe Weather Climo LIX - LIX_WIND.csv",
+        "time_local": "2005-04-11 22:00 CDT",
+        "time_utc": "2005-04-12T03:00:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -89.13,
+          30.63
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "wind",
+        "label": "Wind 50 mph",
+        "local_date": "2005-04-11",
+        "magnitude": 50.0,
+        "marker_style": {
+          "category": "wind",
+          "color": "#2563eb",
+          "marker": "o",
+          "shape": "circle"
+        },
+        "rating_int": null,
+        "report_id": "wind_3ebcfaf04a5a2ca1",
+        "source_file": "[Old] 1950-2023 Severe Weather Climo LIX - LIX_WIND.csv",
+        "time_local": "2005-04-11 22:00 CDT",
+        "time_utc": "2005-04-12T03:00:00Z"
+      },
+      "type": "Feature"
+    }
+  ],
+  "properties": {
+    "caveat": "This file contains reports on the analog local calendar date, not matched analog-sample reports.",
+    "date": "2005-04-11",
+    "generator": "08_build_analog_report_assets.py",
+    "hazard_counts": {
+      "hail": 1,
+      "tor": 1,
+      "wind": 4
+    },
+    "report_count": 6,
+    "schema_version": 1
+  },
+  "type": "FeatureCollection"
+}

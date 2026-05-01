@@ -1,0 +1,42 @@
+{
+  "features": [
+    {
+      "geometry": {
+        "coordinates": [
+          -88.53,
+          30.37
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "wind",
+        "label": "Wind 0 mph",
+        "local_date": "1974-05-26",
+        "magnitude": 0.0,
+        "marker_style": {
+          "category": "wind",
+          "color": "#2563eb",
+          "marker": "o",
+          "shape": "circle"
+        },
+        "rating_int": null,
+        "report_id": "wind_f0526a41034f3a29",
+        "source_file": "[Old] 1950-2023 Severe Weather Climo LIX - LIX_WIND.csv",
+        "time_local": "1974-05-26 09:15 CDT",
+        "time_utc": "1974-05-26T14:15:00Z"
+      },
+      "type": "Feature"
+    }
+  ],
+  "properties": {
+    "caveat": "This file contains reports on the analog local calendar date, not matched analog-sample reports.",
+    "date": "1974-05-26",
+    "generator": "08_build_analog_report_assets.py",
+    "hazard_counts": {
+      "wind": 1
+    },
+    "report_count": 1,
+    "schema_version": 1
+  },
+  "type": "FeatureCollection"
+}
