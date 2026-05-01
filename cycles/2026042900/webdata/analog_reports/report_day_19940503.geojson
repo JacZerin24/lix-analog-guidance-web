@@ -1,0 +1,98 @@
+{
+  "features": [
+    {
+      "geometry": {
+        "coordinates": [
+          -91.05,
+          30.05
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "wind",
+        "label": "Wind 0 mph",
+        "local_date": "1994-05-03",
+        "magnitude": 0.0,
+        "marker_style": {
+          "category": "wind",
+          "color": "#2563eb",
+          "marker": "o",
+          "shape": "circle"
+        },
+        "rating_int": null,
+        "report_id": "wind_cfe5ef57bf33d40b",
+        "source_file": "[Old] 1950-2023 Severe Weather Climo LIX - LIX_WIND.csv",
+        "time_local": "1994-05-03 06:00 CDT",
+        "time_utc": "1994-05-03T11:00:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -89.4,
+          30.38
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "tor",
+        "label": "Tornado EF/F0",
+        "local_date": "1994-05-03",
+        "magnitude": 0.0,
+        "marker_style": {
+          "category": "tornado",
+          "color": "#dc2626",
+          "marker": "v",
+          "shape": "triangle_down"
+        },
+        "rating_int": 0,
+        "report_id": "tor_3388cab9037b30f4",
+        "source_file": "lix_tornadoes_all_1974_2023.csv",
+        "time_local": "1994-05-03 07:52 CDT",
+        "time_utc": "1994-05-03T12:52:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -88.53,
+          30.37
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "hail",
+        "label": "Hail 0.88 in",
+        "local_date": "1994-05-03",
+        "magnitude": 0.88,
+        "marker_style": {
+          "category": "hail",
+          "color": "#16a34a",
+          "marker": "^",
+          "shape": "triangle"
+        },
+        "rating_int": null,
+        "report_id": "hail_39cf9512fafd5988",
+        "source_file": "1950-2024 Severe Weather Climo LIX - LIX_HAIL.csv",
+        "time_local": "1994-05-03 07:58 CDT",
+        "time_utc": "1994-05-03T12:58:00Z"
+      },
+      "type": "Feature"
+    }
+  ],
+  "properties": {
+    "caveat": "This file contains reports on the analog local calendar date, not matched analog-sample reports.",
+    "date": "1994-05-03",
+    "generator": "08_build_analog_report_assets.py",
+    "hazard_counts": {
+      "hail": 1,
+      "tor": 1,
+      "wind": 1
+    },
+    "report_count": 3,
+    "schema_version": 1
+  },
+  "type": "FeatureCollection"
+}

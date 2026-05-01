@@ -1,0 +1,205 @@
+{
+  "features": [
+    {
+      "geometry": {
+        "coordinates": [
+          -91.51,
+          31.15
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "hail",
+        "label": "Hail 1.00 in",
+        "local_date": "2022-04-17",
+        "magnitude": 1.0,
+        "marker_style": {
+          "category": "hail",
+          "color": "#16a34a",
+          "marker": "^",
+          "shape": "triangle"
+        },
+        "rating_int": null,
+        "report_id": "hail_6134f1ef99931e9e",
+        "source_file": "1950-2024 Severe Weather Climo LIX - LIX_HAIL.csv",
+        "time_local": "2022-04-17 18:41 CDT",
+        "time_utc": "2022-04-17T23:41:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -91.45,
+          31.16
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "hail",
+        "label": "Hail 1.00 in",
+        "local_date": "2022-04-17",
+        "magnitude": 1.0,
+        "marker_style": {
+          "category": "hail",
+          "color": "#16a34a",
+          "marker": "^",
+          "shape": "triangle"
+        },
+        "rating_int": null,
+        "report_id": "hail_eb6098c154b287ed",
+        "source_file": "1950-2024 Severe Weather Climo LIX - LIX_HAIL.csv",
+        "time_local": "2022-04-17 18:49 CDT",
+        "time_utc": "2022-04-17T23:49:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -91.3,
+          31.09
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "wind",
+        "label": "Wind 50 mph",
+        "local_date": "2022-04-17",
+        "magnitude": 50.0,
+        "marker_style": {
+          "category": "wind",
+          "color": "#2563eb",
+          "marker": "o",
+          "shape": "circle"
+        },
+        "rating_int": null,
+        "report_id": "wind_310e16fd49c589c4",
+        "source_file": "[Old] 1950-2023 Severe Weather Climo LIX - LIX_WIND.csv",
+        "time_local": "2022-04-17 19:14 CDT",
+        "time_utc": "2022-04-18T00:14:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -90.91,
+          31.11
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "wind",
+        "label": "Wind 50 mph",
+        "local_date": "2022-04-17",
+        "magnitude": 50.0,
+        "marker_style": {
+          "category": "wind",
+          "color": "#2563eb",
+          "marker": "o",
+          "shape": "circle"
+        },
+        "rating_int": null,
+        "report_id": "wind_f6525a55fcd61e82",
+        "source_file": "[Old] 1950-2023 Severe Weather Climo LIX - LIX_WIND.csv",
+        "time_local": "2022-04-17 20:34 CDT",
+        "time_utc": "2022-04-18T01:34:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -90.8,
+          31.16
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "hail",
+        "label": "Hail 1.00 in",
+        "local_date": "2022-04-17",
+        "magnitude": 1.0,
+        "marker_style": {
+          "category": "hail",
+          "color": "#16a34a",
+          "marker": "^",
+          "shape": "triangle"
+        },
+        "rating_int": null,
+        "report_id": "hail_ce766897fa9d13d6",
+        "source_file": "1950-2024 Severe Weather Climo LIX - LIX_HAIL.csv",
+        "time_local": "2022-04-17 20:35 CDT",
+        "time_utc": "2022-04-18T01:35:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -90.82,
+          31.16
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "hail",
+        "label": "Hail 1.75 in",
+        "local_date": "2022-04-17",
+        "magnitude": 1.75,
+        "marker_style": {
+          "category": "hail",
+          "color": "#16a34a",
+          "marker": "^",
+          "shape": "triangle"
+        },
+        "rating_int": null,
+        "report_id": "hail_fac62b692736fdba",
+        "source_file": "1950-2024 Severe Weather Climo LIX - LIX_HAIL.csv",
+        "time_local": "2022-04-17 20:37 CDT",
+        "time_utc": "2022-04-18T01:37:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -90.71,
+          31.15
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "wind",
+        "label": "Wind 50 mph",
+        "local_date": "2022-04-17",
+        "magnitude": 50.0,
+        "marker_style": {
+          "category": "wind",
+          "color": "#2563eb",
+          "marker": "o",
+          "shape": "circle"
+        },
+        "rating_int": null,
+        "report_id": "wind_8bb7cd39e0230336",
+        "source_file": "[Old] 1950-2023 Severe Weather Climo LIX - LIX_WIND.csv",
+        "time_local": "2022-04-17 20:37 CDT",
+        "time_utc": "2022-04-18T01:37:00Z"
+      },
+      "type": "Feature"
+    }
+  ],
+  "properties": {
+    "caveat": "This file contains reports on the analog local calendar date, not matched analog-sample reports.",
+    "date": "2022-04-17",
+    "generator": "08_build_analog_report_assets.py",
+    "hazard_counts": {
+      "hail": 4,
+      "wind": 3
+    },
+    "report_count": 7,
+    "schema_version": 1
+  },
+  "type": "FeatureCollection"
+}

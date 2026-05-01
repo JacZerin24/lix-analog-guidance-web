@@ -1,0 +1,2545 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WFO LIX Experimental Analog Guidance</title>
+
+  <link rel="preconnect" href="https://unpkg.com" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --panel: #ffffff;
+      --panel-2: #f8fafc;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #dbe3ef;
+      --border-2: #cbd5e1;
+      --blue: #1d4ed8;
+      --blue-soft: #dbeafe;
+      --red: #ff2400;
+      --shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
+      --radius: 18px;
+      --radius-sm: 12px;
+      --sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    }
+
+    * { box-sizing: border-box; }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+    }
+
+    body {
+      overflow: hidden;
+    }
+
+    button,
+    select {
+      font: inherit;
+    }
+
+    .app {
+      height: 100vh;
+      display: grid;
+      grid-template-rows: auto auto minmax(0, 1fr);
+    }
+
+    .header {
+      display: grid;
+      grid-template-columns: minmax(280px, 1fr) auto;
+      gap: 18px;
+      align-items: center;
+      padding: 18px 22px 14px;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 58%, #7f1d1d 130%);
+      color: white;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .title-wrap h1 {
+      margin: 0;
+      font-size: clamp(20px, 2.1vw, 31px);
+      letter-spacing: -0.035em;
+      line-height: 1.05;
+    }
+
+    .subtitle {
+      margin-top: 8px;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .header-meta {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      background: rgba(255, 255, 255, 0.10);
+      color: white;
+      border-radius: 999px;
+      padding: 8px 11px;
+      font-size: 12px;
+      white-space: nowrap;
+      backdrop-filter: blur(10px);
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.18);
+    }
+
+    .caveat {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 22px;
+      background: #fff7ed;
+      color: #7c2d12;
+      border-bottom: 1px solid #fed7aa;
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .caveat strong {
+      color: #9a3412;
+    }
+
+    .main {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 390px;
+      gap: 14px;
+      padding: 14px;
+    }
+
+    .map-card,
+    .side-card {
+      min-height: 0;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .map-card {
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr);
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: minmax(260px, 1fr) auto;
+      gap: 12px;
+      align-items: center;
+      padding: 14px;
+      border-bottom: 1px solid var(--border);
+      background: var(--panel);
+      z-index: 2;
+    }
+
+    .day-tabs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+      scrollbar-width: thin;
+    }
+
+    .tab {
+      border: 1px solid var(--border);
+      background: var(--panel-2);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 9px 13px;
+      cursor: pointer;
+      transition: 140ms ease;
+      white-space: nowrap;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .tab:hover {
+      transform: translateY(-1px);
+      border-color: var(--border-2);
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+    }
+
+    .tab.active {
+      background: #0f172a;
+      color: white;
+      border-color: #0f172a;
+    }
+
+    .select-row {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .select-group {
+      display: grid;
+      gap: 5px;
+    }
+
+    label {
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.075em;
+      font-weight: 800;
+    }
+
+    select {
+      min-width: 160px;
+      border: 1px solid var(--border-2);
+      background: white;
+      color: var(--text);
+      border-radius: 12px;
+      padding: 9px 11px;
+      outline: none;
+    }
+
+    select:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 4px rgba(29, 78, 216, 0.12);
+    }
+
+    .map-wrap {
+      position: relative;
+      min-height: 0;
+    }
+
+    #map {
+      height: 100%;
+      min-height: 500px;
+      background: #eef2f7;
+    }
+
+    .map-loading,
+    .map-error {
+      position: absolute;
+      inset: 14px;
+      z-index: 500;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    .message-box {
+      max-width: 580px;
+      border-radius: 18px;
+      padding: 18px 20px;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      text-align: center;
+      line-height: 1.45;
+    }
+
+    .message-box h3 {
+      margin: 0 0 8px;
+      font-size: 17px;
+    }
+
+    .message-box p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .leaflet-tooltip.lix-tooltip {
+      border: 0;
+      border-radius: 14px;
+      padding: 0;
+      box-shadow: 0 15px 35px rgba(15, 23, 42, 0.22);
+      background: rgba(15, 23, 42, 0.94);
+      color: white;
+    }
+
+    .tooltip-inner {
+      min-width: 255px;
+      max-width: 310px;
+      padding: 11px 12px;
+      line-height: 1.35;
+      font-size: 12px;
+    }
+
+    .tooltip-title {
+      font-weight: 900;
+      font-size: 13px;
+      margin-bottom: 7px;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 4px 12px;
+    }
+
+    .mini-grid span:nth-child(odd) { color: rgba(255, 255, 255, 0.68); }
+    .mini-grid span:nth-child(even) { font-variant-numeric: tabular-nums; font-weight: 800; }
+
+    .hover-card {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      z-index: 450;
+      width: 310px;
+      max-width: calc(100% - 28px);
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(203, 213, 225, 0.85);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      overflow: hidden;
+    }
+
+    .hover-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 11px 13px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(248, 250, 252, 0.82);
+    }
+
+    .hover-title {
+      font-weight: 900;
+      font-size: 13px;
+    }
+
+    .hover-body {
+      padding: 11px 13px;
+      font-size: 12px;
+    }
+
+    .legend {
+      position: absolute;
+      right: 14px;
+      bottom: 26px;
+      z-index: 450;
+      width: 245px;
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(203, 213, 225, 0.85);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      padding: 12px;
+      backdrop-filter: blur(14px);
+    }
+
+    .legend-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: baseline;
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .ramp {
+      height: 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border-2);
+      background: linear-gradient(90deg,
+        rgba(255,255,255,0) 0%,
+        rgba(255,240,232,0.55) 16%,
+        rgba(252,209,191,0.70) 30%,
+        rgba(252,173,150,0.80) 44%,
+        rgba(252,125,99,0.88) 58%,
+        rgba(240,59,46,0.94) 72%,
+        rgba(191,0,0,0.98) 86%,
+        rgba(255,36,0,1) 100%);
+      background-color: #f8fafc;
+    }
+
+    .legend-scale {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 10px;
+      margin-top: 5px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .legend-note {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.35;
+    }
+
+    .side-card {
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr);
+    }
+
+    .side-header {
+      padding: 15px 16px;
+      border-bottom: 1px solid var(--border);
+      background: var(--panel);
+    }
+
+    .side-header h2 {
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+    }
+
+    .side-header p {
+      margin: 7px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .side-scroll {
+      min-height: 0;
+      overflow: auto;
+      padding: 14px 16px 18px;
+    }
+
+    .card-section {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--panel-2);
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+
+    .section-title {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.065em;
+      color: #334155;
+      background: white;
+    }
+
+    .section-body {
+      padding: 11px 12px;
+    }
+
+    .kv {
+      display: grid;
+      grid-template-columns: minmax(120px, 1fr) auto;
+      gap: 6px 12px;
+      font-size: 13px;
+      align-items: baseline;
+    }
+
+    .kv div:nth-child(odd) { color: var(--muted); }
+    .kv div:nth-child(even) { font-weight: 800; text-align: right; font-variant-numeric: tabular-nums; }
+
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .stat {
+      border: 1px solid var(--border);
+      background: white;
+      border-radius: 14px;
+      padding: 10px;
+    }
+
+    .stat .label {
+      color: var(--muted);
+      font-size: 10px;
+      text-transform: uppercase;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+    }
+
+    .stat .value {
+      margin-top: 4px;
+      font-size: 17px;
+      font-weight: 950;
+      letter-spacing: -0.03em;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .link-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .plain-link {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      color: var(--blue);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 800;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: white;
+      padding: 9px 10px;
+    }
+
+    .plain-link:hover {
+      border-color: #93c5fd;
+      background: #eff6ff;
+    }
+
+    .placeholder {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .code-ish {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: 12px;
+      color: #334155;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 2px 6px;
+    }
+
+
+
+    .analog-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .analog-card {
+      border: 1px solid var(--border);
+      background: white;
+      border-radius: 15px;
+      padding: 10px 11px;
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.05);
+    }
+
+    .analog-card-head {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .analog-rank {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 30px;
+      height: 26px;
+      border-radius: 999px;
+      background: #0f172a;
+      color: white;
+      font-size: 12px;
+      font-weight: 950;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .analog-time {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 13px;
+      font-weight: 900;
+      color: var(--text);
+    }
+
+    .analog-distance {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 850;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .analog-meta {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 9px;
+    }
+
+    .analog-labels {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .label-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      border-radius: 999px;
+      padding: 4px 7px;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.015em;
+      border: 1px solid var(--border);
+      background: #f8fafc;
+      color: #64748b;
+      white-space: nowrap;
+    }
+
+    .label-badge.positive {
+      background: #fee2e2;
+      border-color: #fecaca;
+      color: #991b1b;
+    }
+
+    .label-badge.positive::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #dc2626;
+      box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.12);
+    }
+
+    .label-badge.neutral {
+      opacity: 0.72;
+    }
+
+    .analog-note {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+      margin-top: 9px;
+    }
+
+    .loading-inline {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .spinner {
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      border: 2px solid #cbd5e1;
+      border-top-color: #0f172a;
+      animation: spin 900ms linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+
+
+    .action-button {
+      border: 1px solid var(--border-2);
+      background: white;
+      color: var(--text);
+      border-radius: 12px;
+      padding: 9px 11px;
+      cursor: pointer;
+      font-weight: 800;
+      font-size: 12px;
+      transition: 140ms ease;
+    }
+
+    .action-button:hover {
+      border-color: #93c5fd;
+      background: #eff6ff;
+      transform: translateY(-1px);
+    }
+
+    .action-button.danger:hover {
+      border-color: #fecaca;
+      background: #fef2f2;
+      color: #991b1b;
+    }
+
+    .explain-copy {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+      margin-bottom: 10px;
+    }
+
+    .feature-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11px;
+      overflow: hidden;
+      border-radius: 12px;
+      background: white;
+      border: 1px solid var(--border);
+      margin-top: 8px;
+    }
+
+    .feature-table th,
+    .feature-table td {
+      padding: 7px 8px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    .feature-table th {
+      color: #334155;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 10px;
+      background: #f8fafc;
+    }
+
+    .feature-table tr:last-child td { border-bottom: 0; }
+
+    .feature-name {
+      font-weight: 900;
+      color: #0f172a;
+      word-break: break-word;
+    }
+
+    .feature-meta {
+      color: var(--muted);
+      font-size: 10px;
+      margin-top: 2px;
+    }
+
+    .analog-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 9px;
+    }
+
+    .mini-button,
+    .mini-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      border: 1px solid var(--border);
+      background: white;
+      color: var(--blue);
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 6px 9px;
+      font-size: 11px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .mini-button:hover,
+    .mini-link:hover {
+      border-color: #93c5fd;
+      background: #eff6ff;
+    }
+
+    .report-box {
+      border: 1px solid var(--border);
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 9px;
+      margin-top: 9px;
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .report-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: baseline;
+      font-weight: 950;
+      color: #1e293b;
+      margin-bottom: 6px;
+    }
+
+    .report-counts {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 6px;
+    }
+
+    .report-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      border-radius: 999px;
+      padding: 3px 7px;
+      border: 1px solid var(--border);
+      background: #f8fafc;
+      color: #334155;
+      font-size: 10px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .report-badge.tor { background: #fef2f2; color: #991b1b; border-color: #fecaca; }
+    .report-badge.hail { background: #f0fdf4; color: #166534; border-color: #bbf7d0; }
+    .report-badge.wind { background: #eff6ff; color: #1d4ed8; border-color: #bfdbfe; }
+
+    .matched-report-list {
+      display: grid;
+      gap: 7px;
+      margin-top: 7px;
+    }
+
+    .matched-report {
+      border: 1px solid var(--border);
+      background: #f8fafc;
+      border-radius: 12px;
+      padding: 8px;
+      font-size: 11px;
+    }
+
+    .matched-report strong { color: #0f172a; }
+
+    details.feature-details {
+      margin-top: 10px;
+      border: 1px solid var(--border);
+      background: #fff;
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    details.feature-details summary {
+      cursor: pointer;
+      padding: 9px 10px;
+      font-size: 12px;
+      font-weight: 950;
+      color: #334155;
+      background: #f8fafc;
+      border-bottom: 1px solid var(--border);
+    }
+
+    details.feature-details:not([open]) summary { border-bottom: 0; }
+
+    .feature-details-body { padding: 9px 10px; }
+
+    .report-marker {
+      width: 18px;
+      height: 18px;
+      display: block;
+      transform: translate(-50%, -50%);
+    }
+
+    .report-marker.wind {
+      width: 13px;
+      height: 13px;
+      border-radius: 999px;
+      background: #2563eb;
+      border: 1.5px solid #1e3a8a;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.18);
+    }
+
+    .report-marker.hail {
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-bottom: 15px solid #16a34a;
+      filter: drop-shadow(0 0 1px #14532d);
+    }
+
+    .report-marker.tor {
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-top: 15px solid #dc2626;
+      filter: drop-shadow(0 0 1px #7f1d1d);
+    }
+
+    .footer-note {
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.45;
+      margin-top: 12px;
+    }
+
+    @media (max-width: 1120px) {
+      body { overflow: auto; }
+      .app { min-height: 100vh; height: auto; }
+      .main { grid-template-columns: 1fr; }
+      .side-card { min-height: 520px; }
+      #map { height: 68vh; }
+    }
+
+    @media (max-width: 780px) {
+      .header { grid-template-columns: 1fr; }
+      .header-meta { justify-content: flex-start; }
+      .controls { grid-template-columns: 1fr; }
+      .select-row { justify-content: flex-start; }
+      .hover-card { position: static; width: auto; margin: 10px; }
+      .legend { width: 210px; }
+      .stat-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="title-wrap">
+        <h1>WFO LIX Experimental Analog Severe Weather Guidance</h1>
+        <div class="subtitle" id="subtitle">Loading latest cycle metadata from web_latest.json...</div>
+      </div>
+      <div class="header-meta">
+        <div class="pill"><span class="dot"></span><span id="status-pill">Loading</span></div>
+        <div class="pill" id="cycle-pill">Cycle: --</div>
+        <div class="pill" id="created-pill">Updated: --</div>
+      </div>
+    </header>
+
+    <div class="caveat">
+      <strong>Experimental:</strong>
+      <span id="caveat-text">Probabilities are nearest-analog label frequencies and are not official calibrated NWS probabilistic guidance.</span>
+    </div>
+
+    <main class="main">
+      <section class="map-card" aria-label="Analog probability map">
+        <div class="controls">
+          <div class="day-tabs" id="day-tabs" aria-label="Forecast day tabs"></div>
+          <div class="select-row">
+            <div class="select-group">
+              <label for="valid-select">Valid time</label>
+              <select id="valid-select"></select>
+            </div>
+            <div class="select-group">
+              <label for="hazard-select">Hazard</label>
+              <select id="hazard-select"></select>
+            </div>
+            <button type="button" class="action-button danger" id="clear-report-overlay" title="Clear report-day overlay from the map">Clear reports</button>
+          </div>
+        </div>
+
+        <div class="map-wrap">
+          <div id="map"></div>
+
+          <div class="hover-card" id="hover-card">
+            <div class="hover-head">
+              <div class="hover-title">Hover a grid cell</div>
+              <span class="code-ish" id="hover-valid">--</span>
+            </div>
+            <div class="hover-body" id="hover-body">
+              Move over a probability grid cell to see all hazard probabilities and analog distance diagnostics.
+            </div>
+          </div>
+
+          <div class="legend" aria-label="Probability legend">
+            <div class="legend-title">
+              <span>Analog probability</span>
+              <span id="legend-hazard">%</span>
+            </div>
+            <div class="ramp"></div>
+            <div class="legend-scale">
+              <span>0</span><span>2</span><span>5</span><span>10</span><span>15</span><span>30</span><span>45</span><span>60+</span>
+            </div>
+            <div class="legend-note">Below 2% is transparent, matching the plotting script's low-probability treatment.</div>
+          </div>
+
+          <div class="map-loading" id="map-loading">
+            <div class="message-box">
+              <h3>Loading grid...</h3>
+              <p>Fetching GeoJSON for the selected valid time.</p>
+            </div>
+          </div>
+
+          <div class="map-error" id="map-error">
+            <div class="message-box">
+              <h3>Could not load map data</h3>
+              <p id="map-error-text"></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="side-card" aria-label="Selected grid cell details">
+        <div class="side-header">
+          <h2 id="panel-title">Cycle overview</h2>
+          <p id="panel-subtitle">Select a valid time and hazard. Click a grid cell for detailed probabilities and diagnostics.</p>
+        </div>
+        <div class="side-scroll" id="side-content"></div>
+      </aside>
+    </main>
+  </div>
+
+  <script>
+    "use strict";
+
+    const CONFIG = {
+      manifestUrl: "web_latest.json",
+      minFillPct: 2.0,
+      defaultCenter: [30.25, -90.15],
+      defaultZoom: 7,
+      fallbackHazards: [
+        { id: "any", field: "prob_any", label: "Any Severe", units: "percent" },
+        { id: "tor", field: "prob_tor", label: "Tornado", units: "percent" },
+        { id: "hail", field: "prob_hail", label: "Severe Hail", units: "percent" },
+        { id: "wind", field: "prob_wind", label: "Damaging Wind", units: "percent" },
+        { id: "sigtor", field: "prob_sigtor", label: "Significant Tornado", units: "percent" },
+        { id: "sighail", field: "prob_sighail", label: "Significant Hail", units: "percent" },
+        { id: "sigwind", field: "prob_sigwind", label: "Significant Damaging Wind", units: "percent" }
+      ]
+    };
+
+    const state = {
+      manifest: null,
+      days: [],
+      hazards: [],
+      dayIndex: 0,
+      productIndex: 0,
+      hazardId: "any",
+      map: null,
+      geoLayer: null,
+      selectedLayer: null,
+      selectedFeature: null,
+      geojsonCache: new Map(),
+      analogJsonCache: new Map(),
+      analogIndexCache: new Map(),
+      reportManifestCache: new Map(),
+      matchedReportsCache: new Map(),
+      reportGeoJsonCache: new Map(),
+      reportAssetIndexCache: new Map(),
+      reportOverlayLayer: null,
+      currentReportOverlayLabel: "",
+      hasFitBounds: false
+    };
+
+    const el = {
+      subtitle: document.getElementById("subtitle"),
+      statusPill: document.getElementById("status-pill"),
+      cyclePill: document.getElementById("cycle-pill"),
+      createdPill: document.getElementById("created-pill"),
+      caveatText: document.getElementById("caveat-text"),
+      dayTabs: document.getElementById("day-tabs"),
+      validSelect: document.getElementById("valid-select"),
+      hazardSelect: document.getElementById("hazard-select"),
+      clearReportOverlay: document.getElementById("clear-report-overlay"),
+      mapLoading: document.getElementById("map-loading"),
+      mapError: document.getElementById("map-error"),
+      mapErrorText: document.getElementById("map-error-text"),
+      hoverCard: document.getElementById("hover-card"),
+      hoverValid: document.getElementById("hover-valid"),
+      hoverBody: document.getElementById("hover-body"),
+      legendHazard: document.getElementById("legend-hazard"),
+      panelTitle: document.getElementById("panel-title"),
+      panelSubtitle: document.getElementById("panel-subtitle"),
+      sideContent: document.getElementById("side-content")
+    };
+
+    document.addEventListener("DOMContentLoaded", init);
+
+    async function init() {
+      initMap();
+      attachControlEvents();
+
+      try {
+        const manifest = await fetchJson(CONFIG.manifestUrl, true);
+        loadManifest(manifest);
+        renderAllControls();
+        await loadSelectedProduct();
+      } catch (error) {
+        showFatalError(error);
+      }
+    }
+
+    function initMap() {
+      state.map = L.map("map", {
+        preferCanvas: true,
+        zoomControl: true,
+        attributionControl: true
+      }).setView(CONFIG.defaultCenter, CONFIG.defaultZoom);
+
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 18,
+        attribution: "&copy; OpenStreetMap contributors"
+      }).addTo(state.map);
+
+      L.control.scale({ imperial: true, metric: true }).addTo(state.map);
+    }
+
+    function attachControlEvents() {
+      el.validSelect.addEventListener("change", async () => {
+        state.productIndex = Number(el.validSelect.value);
+        state.selectedLayer = null;
+        state.selectedFeature = null;
+        await loadSelectedProduct();
+      });
+
+      el.hazardSelect.addEventListener("change", async () => {
+        state.hazardId = el.hazardSelect.value;
+        state.selectedLayer = null;
+        state.selectedFeature = null;
+        renderLegendLabel();
+        renderOverviewPanel();
+        await loadSelectedProduct({ keepBounds: true });
+      });
+
+      el.clearReportOverlay?.addEventListener("click", () => clearReportOverlay());
+    }
+
+    function loadManifest(manifest) {
+      state.manifest = manifest || {};
+      state.days = normalizeDays(state.manifest);
+      state.hazards = normalizeHazards(state.manifest);
+      state.hazardId = state.hazards[0]?.id || "any";
+
+      el.statusPill.textContent = (state.manifest.status || "loaded").toUpperCase();
+      el.cyclePill.textContent = `Cycle: ${state.manifest.cycle_label || state.manifest.cycle || "unknown"}`;
+      el.createdPill.textContent = `Updated: ${formatDateTime(state.manifest.created_utc)}`;
+      el.subtitle.textContent = `${(state.manifest.model || "model").toUpperCase()} ${(state.manifest.product || "").toUpperCase()} • ${state.manifest.product_count || countProducts(state.days)} forecast products • ${state.manifest.domain || "domain"}`;
+      el.caveatText.textContent = state.manifest.experimental_caveat || "Experimental analog guidance. Not official calibrated NWS probabilistic guidance. Verify locally before use.";
+    }
+
+    function normalizeDays(manifest) {
+      if (Array.isArray(manifest.days) && manifest.days.length) {
+        return manifest.days.map((day) => ({
+          ...day,
+          products: Array.isArray(day.products) ? day.products : []
+        })).filter((day) => day.products.length);
+      }
+
+      const products = Array.isArray(manifest.products) ? manifest.products : [];
+      const grouped = new Map();
+      for (const product of products) {
+        const date = product.valid_date || String(product.valid_time || "unknown").slice(0, 10) || "unknown";
+        if (!grouped.has(date)) grouped.set(date, { date, label: date, products: [] });
+        grouped.get(date).products.push(product);
+      }
+      return Array.from(grouped.values());
+    }
+
+    function normalizeHazards(manifest) {
+      const raw = Array.isArray(manifest.hazards) && manifest.hazards.length ? manifest.hazards : CONFIG.fallbackHazards;
+      return raw.map((h) => ({
+        id: h.id,
+        field: h.field || `prob_${h.id}`,
+        label: h.label || h.id,
+        units: h.units || "percent"
+      })).filter((h) => h.id && h.field);
+    }
+
+    function renderAllControls() {
+      renderDayTabs();
+      renderValidSelect();
+      renderHazardSelect();
+      renderLegendLabel();
+      renderOverviewPanel();
+    }
+
+    function renderDayTabs() {
+      el.dayTabs.innerHTML = "";
+      state.days.forEach((day, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = `tab${index === state.dayIndex ? " active" : ""}`;
+        button.textContent = `${day.label || day.date} (${day.products.length})`;
+        button.addEventListener("click", async () => {
+          state.dayIndex = index;
+          state.productIndex = 0;
+          state.selectedLayer = null;
+          state.selectedFeature = null;
+          renderAllControls();
+          await loadSelectedProduct();
+        });
+        el.dayTabs.appendChild(button);
+      });
+    }
+
+    function renderValidSelect() {
+      const day = getSelectedDay();
+      el.validSelect.innerHTML = "";
+      (day?.products || []).forEach((product, index) => {
+        const option = document.createElement("option");
+        option.value = index;
+        option.textContent = `${formatValidLabel(product.valid_time)} • ${product.forecast_hour_label || formatFhr(product.forecast_hour)}`;
+        el.validSelect.appendChild(option);
+      });
+      el.validSelect.value = String(state.productIndex);
+    }
+
+    function renderHazardSelect() {
+      el.hazardSelect.innerHTML = "";
+      state.hazards.forEach((hazard) => {
+        const option = document.createElement("option");
+        option.value = hazard.id;
+        option.textContent = hazard.label;
+        el.hazardSelect.appendChild(option);
+      });
+      el.hazardSelect.value = state.hazardId;
+    }
+
+    function renderLegendLabel() {
+      const hazard = getSelectedHazard();
+      el.legendHazard.textContent = `${hazard?.label || "Probability"} (%)`;
+    }
+
+    async function loadSelectedProduct(options = {}) {
+      const product = getSelectedProduct();
+      if (!product) {
+        showMapError("No product is available for the selected day.");
+        return;
+      }
+
+      hideMapError();
+      setLoading(true);
+      renderOverviewPanel();
+      updateHoverReadout(null);
+
+      try {
+        const geojson = await loadGeoJson(product.geojson);
+        drawGeoJson(geojson, product, options);
+        renderOverviewPanel();
+      } catch (error) {
+        showMapError(`${error.message || error}. Make sure this page is served from the web_lix_analog folder and that the cycles/.../webdata GeoJSON files exist.`);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    async function loadGeoJson(path) {
+      if (!path) throw new Error("The selected product does not include a GeoJSON path");
+      if (state.geojsonCache.has(path)) return state.geojsonCache.get(path);
+      const geojson = await fetchJson(path, false);
+      state.geojsonCache.set(path, geojson);
+      return geojson;
+    }
+
+    function drawGeoJson(geojson, product, options = {}) {
+      if (state.geoLayer) {
+        state.geoLayer.remove();
+        state.geoLayer = null;
+      }
+
+      state.geoLayer = L.geoJSON(geojson, {
+        style: (feature) => getCellStyle(feature, product, false),
+        onEachFeature: (feature, layer) => bindFeatureEvents(feature, layer, product)
+      }).addTo(state.map);
+
+      const bounds = state.geoLayer.getBounds();
+      if (bounds.isValid()) {
+        if (!options.keepBounds || !state.hasFitBounds) {
+          state.map.fitBounds(bounds.pad(0.08));
+          state.hasFitBounds = true;
+        }
+      } else if (Array.isArray(product.bbox) && product.bbox.length === 4) {
+        const [west, south, east, north] = product.bbox;
+        state.map.fitBounds([[south, west], [north, east]], { padding: [20, 20] });
+      }
+    }
+
+    function bindFeatureEvents(feature, layer, product) {
+      const tooltip = layer.bindTooltip(() => makeTooltipHtml(feature, layer, product), {
+        className: "lix-tooltip",
+        direction: "top",
+        opacity: 1,
+        sticky: true
+      });
+
+      layer.on("mouseover", () => {
+        if (layer !== state.selectedLayer) {
+          layer.setStyle(getCellStyle(feature, product, true));
+        }
+        updateHoverReadout(feature, layer, product);
+        tooltip.openTooltip();
+      });
+
+      layer.on("mouseout", () => {
+        if (layer !== state.selectedLayer && state.geoLayer) {
+          state.geoLayer.resetStyle(layer);
+        }
+      });
+
+      layer.on("click", async () => {
+        if (state.selectedLayer && state.selectedLayer !== layer && state.geoLayer) {
+          state.geoLayer.resetStyle(state.selectedLayer);
+        }
+        state.selectedLayer = layer;
+        state.selectedFeature = feature;
+        layer.setStyle(getSelectedCellStyle(feature, product));
+        layer.bringToFront();
+        renderFeaturePanel(feature, layer, product);
+        await loadAndRenderAnalogsForSelected(feature, product);
+      });
+    }
+
+    function getCellStyle(feature, product, hover) {
+      const hazard = getSelectedHazard();
+      const props = feature?.properties || {};
+      const value = toPercent(props[hazard.field], product, hazard.field);
+      const ramp = probabilityColor(value);
+
+      return {
+        color: hover ? "#0f172a" : "#334155",
+        weight: hover ? 1.8 : 0.35,
+        opacity: hover ? 0.82 : (value >= CONFIG.minFillPct ? 0.24 : 0.0),
+        fillColor: ramp.color,
+        fillOpacity: hover ? Math.max(ramp.opacity, 0.18) : ramp.opacity,
+        interactive: true
+      };
+    }
+
+    function getSelectedCellStyle(feature, product) {
+      const base = getCellStyle(feature, product, true);
+      return {
+        ...base,
+        color: "#020617",
+        weight: 2.3,
+        opacity: 0.95,
+        fillOpacity: Math.max(base.fillOpacity, 0.28)
+      };
+    }
+
+    function probabilityColor(value) {
+      if (!Number.isFinite(value) || value < CONFIG.minFillPct) {
+        return { color: "rgba(255,255,255,0)", opacity: 0 };
+      }
+      if (value < 5) return { color: "#fff0e8", opacity: 0.55 };
+      if (value < 10) return { color: "#fcd1bf", opacity: 0.70 };
+      if (value < 15) return { color: "#fcad96", opacity: 0.80 };
+      if (value < 30) return { color: "#fc7d63", opacity: 0.88 };
+      if (value < 45) return { color: "#f03b2e", opacity: 0.94 };
+      if (value < 60) return { color: "#bf0000", opacity: 0.98 };
+      return { color: "#ff2400", opacity: 1.0 };
+    }
+
+    function makeTooltipHtml(feature, layer, product) {
+      const hazard = getSelectedHazard();
+      const props = feature?.properties || {};
+      const center = getLayerCenter(layer);
+
+      return `
+        <div class="tooltip-inner">
+          <div class="tooltip-title">${escapeHtml(hazard.label)}: ${formatProb(toPercent(props[hazard.field], product, hazard.field))}</div>
+          <div class="mini-grid">
+            ${probabilityRows(props, product, true)}
+          </div>
+          <div style="height:8px"></div>
+          <div class="mini-grid">
+            ${distanceRows(props, true)}
+          </div>
+          <div style="height:8px"></div>
+          <div style="color:rgba(255,255,255,0.62)">${formatLatLon(center)}</div>
+        </div>
+      `;
+    }
+
+    function updateHoverReadout(feature, layer, product) {
+      const selectedProduct = product || getSelectedProduct();
+      if (!feature || !selectedProduct) {
+        el.hoverValid.textContent = "--";
+        el.hoverBody.innerHTML = "Move over a probability grid cell to see all hazard probabilities and analog distance diagnostics.";
+        return;
+      }
+
+      const props = feature.properties || {};
+      const hazard = getSelectedHazard();
+      const center = getLayerCenter(layer);
+      el.hoverValid.textContent = formatValidLabel(selectedProduct.valid_time);
+      el.hoverBody.innerHTML = `
+        <div class="kv">
+          <div>Selected hazard</div><div>${escapeHtml(hazard.label)}</div>
+          <div>Probability</div><div>${formatProb(toPercent(props[hazard.field], selectedProduct, hazard.field))}</div>
+          <div>Location</div><div>${formatLatLon(center)}</div>
+        </div>
+        <div style="height:10px"></div>
+        <div class="kv">${probabilityRows(props, selectedProduct, false)}</div>
+        <div style="height:10px"></div>
+        <div class="kv">${distanceRows(props, false)}</div>
+      `;
+    }
+
+    function renderOverviewPanel() {
+      const product = getSelectedProduct();
+      const hazard = getSelectedHazard();
+      if (!product || !hazard) return;
+
+      el.panelTitle.textContent = `${hazard.label} Overview`;
+      el.panelSubtitle.textContent = `${formatValidLabel(product.valid_time)} • ${product.forecast_hour_label || formatFhr(product.forecast_hour)} • ${(product.model || state.manifest?.model || "model").toUpperCase()} cycle ${state.manifest?.cycle_label || product.cycle || "unknown"}`;
+
+      const stats = product.probability_stats?.[hazard.field] || {};
+      const distanceStats = product.distance_stats || {};
+      const plotLinks = getPlotLinks(product, hazard);
+
+      el.sideContent.innerHTML = `
+        <div class="card-section">
+          <div class="section-title">Selected product</div>
+          <div class="section-body">
+            <div class="kv">
+              <div>Cycle</div><div>${escapeHtml(state.manifest?.cycle_label || product.cycle || "unknown")}</div>
+              <div>Valid</div><div>${escapeHtml(formatValidLabel(product.valid_time))}</div>
+              <div>Forecast hour</div><div>${escapeHtml(product.forecast_hour_label || formatFhr(product.forecast_hour))}</div>
+              <div>Grid cells</div><div>${formatNumber(product.feature_count)}</div>
+              <div>GeoJSON</div><div>${escapeHtml(shortenPath(product.geojson || "missing"))}</div>
+            </div>
+            <div class="stat-row">
+              <div class="stat"><div class="label">Max</div><div class="value">${formatProb(stats.max)}</div></div>
+              <div class="stat"><div class="label">Mean</div><div class="value">${formatProb(stats.mean)}</div></div>
+              <div class="stat"><div class="label">Nonzero</div><div class="value">${formatNumber(stats.nonzero_count)}</div></div>
+              <div class="stat"><div class="label">Eff. K</div><div class="value">${formatNumber(distanceStats.effective_k?.mean)}</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-section">
+          <div class="section-title">Analog distance diagnostics</div>
+          <div class="section-body">
+            <div class="kv">
+              <div>Mean distance</div><div>${formatNumber(distanceStats.mean_distance?.mean, 3)}</div>
+              <div>Min distance</div><div>${formatNumber(distanceStats.min_distance?.mean, 3)}</div>
+              <div>Max distance</div><div>${formatNumber(distanceStats.max_distance?.mean, 3)}</div>
+              <div>Effective K</div><div>${formatNumber(distanceStats.effective_k?.mean, 0)}</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-section">
+          <div class="section-title">Static PNG quick links</div>
+          <div class="section-body">
+            ${plotLinks || "<div class='placeholder'>No static PNG path was included for this hazard.</div>"}
+          </div>
+        </div>
+
+        <div class="card-section">
+          <div class="section-title">Grid cell details</div>
+          <div class="section-body placeholder">
+            Click a grid cell on the map to populate this panel with all probabilities, analog distance diagnostics, and top analog details when available.
+          </div>
+        </div>
+      `;
+    }
+
+    function renderFeaturePanel(feature, layer, product) {
+      const props = feature.properties || {};
+      const hazard = getSelectedHazard();
+      const center = getLayerCenter(layer);
+
+      el.panelTitle.textContent = "Selected grid cell";
+      el.panelSubtitle.textContent = `${hazard.label}: ${formatProb(toPercent(props[hazard.field], product, hazard.field))} • ${formatValidLabel(product.valid_time)}`;
+
+      el.sideContent.innerHTML = `
+        <div class="card-section">
+          <div class="section-title">Cell location and metadata</div>
+          <div class="section-body">
+            <div class="kv">
+              <div>Latitude</div><div>${Number.isFinite(center?.lat) ? center.lat.toFixed(4) : "N/A"}</div>
+              <div>Longitude</div><div>${Number.isFinite(center?.lng) ? center.lng.toFixed(4) : "N/A"}</div>
+              <div>Grid index</div><div>${escapeHtml(getGridId(props))}</div>
+              <div>Valid</div><div>${escapeHtml(formatValidLabel(product.valid_time))}</div>
+              <div>Forecast hour</div><div>${escapeHtml(product.forecast_hour_label || formatFhr(product.forecast_hour))}</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-section">
+          <div class="section-title">All probabilities</div>
+          <div class="section-body">
+            <div class="explain-copy">Analog probabilities are fractions of the nearest historical analog labels for this grid point and valid time. They are not calibrated official NWS probabilities.</div>
+            <div class="kv">${probabilityRows(props, product, false)}</div>
+          </div>
+        </div>
+
+        <div class="card-section">
+          <div class="section-title">Analog distance diagnostics</div>
+          <div class="section-body">
+            <div class="kv">${distanceRows(props, false)}</div>
+          </div>
+        </div>
+
+        <div class="card-section">
+          <div class="section-title">Why these analogs matched</div>
+          <div class="section-body" id="feature-summary-content">
+            <div class="loading-inline"><span class="spinner" aria-hidden="true"></span><span>Loading feature-level explanation if available...</span></div>
+          </div>
+        </div>
+
+        <div class="card-section">
+          <div class="section-title">Top analogs</div>
+          <div class="section-body" id="top-analogs-content">
+            ${renderTopAnalogsInitialHtml(props, product)}
+          </div>
+        </div>
+
+        <div class="card-section">
+          <div class="section-title">How to interpret the explainability sections</div>
+          <div class="section-body placeholder">
+            Feature explanations rank which standardized fields were most similar or different. Report-day assets show reports on the analog local calendar date. Matched reports are stricter and only include reports near the analog sample in space/time. A null analog can have no matched reports even if the broader analog day had reports elsewhere.
+          </div>
+        </div>
+
+        <div class="card-section">
+          <div class="section-title">Raw fields</div>
+          <div class="section-body">
+            <div class="kv">${rawFieldRows(props)}</div>
+          </div>
+        </div>
+      `;
+    }
+
+    function probabilityRows(props, product, darkTooltip) {
+      return state.hazards.map((hazard) => {
+        const value = toPercent(props[hazard.field], product, hazard.field);
+        return `<div>${escapeHtml(hazard.label)}</div><div>${formatProb(value)}</div>`;
+      }).join("");
+    }
+
+    function distanceRows(props, darkTooltip) {
+      const rows = [
+        ["Mean distance", props.mean_distance],
+        ["Min distance", props.min_distance],
+        ["Max distance", props.max_distance],
+        ["Effective K", props.effective_k]
+      ];
+      return rows.map(([label, value]) => `<div>${escapeHtml(label)}</div><div>${formatNumber(value, label === "Effective K" ? 0 : 3)}</div>`).join("");
+    }
+
+    function rawFieldRows(props) {
+      const skip = new Set([
+        ...state.hazards.map((h) => h.field),
+        "mean_distance", "min_distance", "max_distance", "effective_k",
+        "analog_json", "analogs_json", "top_analogs_json", "nearest_analogs_json", "analog_metadata_json",
+        "top_analogs", "analogs", "nearest_analogs", "neighbors", "top_neighbors"
+      ]);
+      const keys = Object.keys(props || {}).filter((key) => !skip.has(key)).slice(0, 28);
+      if (!keys.length) return `<div>Other fields</div><div>N/A</div>`;
+      return keys.map((key) => `<div>${escapeHtml(key)}</div><div>${escapeHtml(formatRaw(props[key]))}</div>`).join("");
+    }
+
+    function renderTopAnalogsInitialHtml(props, product) {
+      const inlineAnalogs = getInlineAnalogs(props);
+      if (inlineAnalogs.length) {
+        return renderAnalogList(inlineAnalogs, { source: "grid-cell GeoJSON", props, product });
+      }
+
+      const candidates = getAnalogJsonCandidates(props, product);
+      if (!candidates.length) {
+        return renderAnalogMissingMessage();
+      }
+
+      return `
+        <div class="loading-inline">
+          <span class="spinner" aria-hidden="true"></span>
+          <span>Loading top analog details for this valid time...</span>
+        </div>
+        <div class="analog-note">Trying ${candidates.length === 1 ? "1 candidate JSON path" : `${candidates.length} candidate JSON paths`} lazily from this browser session.</div>
+      `;
+    }
+
+    async function loadAndRenderAnalogsForSelected(feature, product) {
+      const analogTarget = document.getElementById("top-analogs-content");
+      const featureTarget = document.getElementById("feature-summary-content");
+      if ((!analogTarget && !featureTarget) || feature !== state.selectedFeature) return;
+
+      const props = feature?.properties || {};
+      let analogs = getInlineAnalogs(props);
+      let cell = props;
+      let sourcePath = "grid-cell GeoJSON";
+      let analogJson = null;
+
+      if (!analogs.length) {
+        const candidates = getAnalogJsonCandidates(props, product);
+        if (!candidates.length) {
+          if (analogTarget) analogTarget.innerHTML = renderAnalogMissingMessage();
+          if (featureTarget) featureTarget.innerHTML = renderFeatureSummaryMissingMessage();
+          return;
+        }
+
+        if (analogTarget) analogTarget.innerHTML = renderTopAnalogsInitialHtml(props, product);
+        const result = await loadFirstAvailableAnalogJson(candidates);
+        if (feature !== state.selectedFeature) return;
+
+        if (!result.ok) {
+          if (analogTarget) analogTarget.innerHTML = renderAnalogMissingMessage();
+          if (featureTarget) featureTarget.innerHTML = renderFeatureSummaryMissingMessage();
+          return;
+        }
+
+        sourcePath = result.path;
+        analogJson = result.json;
+        cell = findAnalogCell(result.path, result.json, props);
+        if (!cell) {
+          if (analogTarget) {
+            analogTarget.innerHTML = `
+              ${renderAnalogMissingMessage()}
+              <div class="analog-note">Loaded <span class="code-ish">${escapeHtml(shortenPath(result.path))}</span>, but no point matched grid cell <span class="code-ish">${escapeHtml(getGridId(props))}</span>.</div>
+            `;
+          }
+          if (featureTarget) featureTarget.innerHTML = renderFeatureSummaryMissingMessage();
+          return;
+        }
+        analogs = getInlineAnalogs(cell);
+      }
+
+      if (featureTarget) {
+        featureTarget.innerHTML = renderFeatureMatchSummary(cell);
+      }
+
+      if (!analogs.length) {
+        if (analogTarget) {
+          analogTarget.innerHTML = `
+            ${renderAnalogMissingMessage()}
+            <div class="analog-note">The analog JSON matched this grid cell, but the cell did not contain an analog list.</div>
+          `;
+        }
+        return;
+      }
+
+      let reportsContext = null;
+      if (analogTarget) {
+        analogTarget.innerHTML = `<div class="loading-inline"><span class="spinner" aria-hidden="true"></span><span>Loading analog-day report assets if available...</span></div>`;
+      }
+      reportsContext = await loadReportsContext(product);
+      if (feature !== state.selectedFeature) return;
+
+      if (analogTarget) {
+        analogTarget.innerHTML = renderAnalogList(analogs, {
+          source: sourcePath,
+          cell,
+          props,
+          product,
+          analogJson,
+          reportsContext
+        });
+      }
+    }
+
+    function getInlineAnalogs(obj) {
+      if (!obj || typeof obj !== "object") return [];
+      const analogs = obj.top_analogs || obj.analogs || obj.nearest_analogs || obj.neighbors || obj.top_neighbors;
+      return Array.isArray(analogs) ? analogs : [];
+    }
+
+    async function loadFirstAvailableAnalogJson(paths) {
+      const unique = uniqueStrings(paths);
+      const errors = [];
+      for (const path of unique) {
+        const attempt = await loadAnalogJson(path);
+        if (attempt.ok) return attempt;
+        errors.push(attempt);
+      }
+      return { ok: false, errors };
+    }
+
+    async function loadAnalogJson(path) {
+      path = normalizeWebPath(path);
+      if (!path) return { ok: false, path, error: new Error("Missing analog JSON path") };
+      if (state.analogJsonCache.has(path)) return state.analogJsonCache.get(path);
+
+      const promise = fetchJson(path, false)
+        .then((json) => ({ ok: true, path, json }))
+        .catch((error) => ({ ok: false, path, error }));
+
+      state.analogJsonCache.set(path, promise);
+      return promise;
+    }
+
+    function findAnalogCell(path, analogJson, props) {
+      const key = getGridKey(props);
+      if (!key) return null;
+
+      const cacheKey = path || "inline-analog-json";
+      let index = state.analogIndexCache.get(cacheKey);
+      if (!index) {
+        index = buildAnalogIndex(analogJson);
+        state.analogIndexCache.set(cacheKey, index);
+      }
+      return index.get(key) || null;
+    }
+
+    function buildAnalogIndex(analogJson) {
+      const index = new Map();
+      const points = extractAnalogPoints(analogJson);
+
+      for (const point of points) {
+        const key = getGridKey(point);
+        if (key && !index.has(key)) index.set(key, point);
+      }
+
+      return index;
+    }
+
+    function extractAnalogPoints(analogJson) {
+      if (!analogJson) return [];
+      if (Array.isArray(analogJson)) return analogJson;
+      if (Array.isArray(analogJson.points)) return analogJson.points;
+      if (Array.isArray(analogJson.grid_points)) return analogJson.grid_points;
+      if (Array.isArray(analogJson.cells)) return analogJson.cells;
+      if (Array.isArray(analogJson.features)) {
+        return analogJson.features.map((feature) => ({
+          ...(feature.properties || {}),
+          geometry: feature.geometry
+        }));
+      }
+      if (analogJson.points_by_grid && typeof analogJson.points_by_grid === "object") {
+        return Object.entries(analogJson.points_by_grid).map(([key, value]) => {
+          const match = String(key).match(/(-?\d+)\D+(-?\d+)/);
+          return {
+            ...(value || {}),
+            grid_i: value?.grid_i ?? (match ? Number(match[1]) : undefined),
+            grid_j: value?.grid_j ?? (match ? Number(match[2]) : undefined)
+          };
+        });
+      }
+      return [];
+    }
+
+    function getAnalogJsonCandidates(props, product) {
+      const candidates = [];
+      const add = (value) => {
+        if (!value) return;
+        if (Array.isArray(value)) {
+          value.forEach(add);
+          return;
+        }
+        if (typeof value === "object") return;
+        candidates.push(normalizeWebPath(value));
+      };
+
+      const fields = [
+        props.analog_json,
+        props.analogs_json,
+        props.top_analogs_json,
+        props.nearest_analogs_json,
+        props.analog_metadata_json,
+        props.analog_json_url,
+        props.analogs_json_url,
+        product?.analog_json,
+        product?.analogs_json,
+        product?.top_analogs_json,
+        product?.nearest_analogs_json,
+        product?.analog_metadata_json,
+        product?.analog_json_url,
+        product?.analogs_json_url,
+        product?.analog_json_candidates,
+        product?.analogs_json_candidates
+      ];
+      fields.forEach(add);
+
+      for (const ncPath of [product?.source_netcdf, product?.probability_netcdf, product?.probability_netcdf_url]) {
+        const clean = normalizeWebPath(ncPath);
+        if (clean && clean.toLowerCase().endsWith(".nc")) {
+          add(clean.replace(/\.nc$/i, "_analogs.json"));
+        }
+      }
+
+      if (product?.geojson) {
+        const geo = normalizeWebPath(product.geojson);
+        add(geo.replace(/\.geojson$/i, "_analogs.json"));
+
+        const slash = geo.lastIndexOf("/");
+        const dir = slash >= 0 ? geo.slice(0, slash + 1) : "";
+        const file = slash >= 0 ? geo.slice(slash + 1) : geo;
+        const probAnalogName = file
+          .replace(/^lix_analog_grid_/i, "lix_analog_probs_")
+          .replace(/\.geojson$/i, "_analogs.json");
+        add(dir + probAnalogName);
+
+        const webdataToken = "/webdata/";
+        const webdataIndex = geo.indexOf(webdataToken);
+        if (webdataIndex >= 0) {
+          const cycleRoot = geo.slice(0, webdataIndex);
+          add(`${cycleRoot}/netcdf/${probAnalogName}`);
+        }
+      }
+
+      return uniqueStrings(candidates).filter((path) => path && path.toLowerCase().endsWith(".json"));
+    }
+
+    function renderFeatureMatchSummary(cell) {
+      const summary = cell?.feature_match_summary || cell?.feature_summary || cell?.match_summary || null;
+      if (!summary) return renderFeatureSummaryMissingMessage();
+      const similar = featureList(summary.top_similar_features || summary.similar_features || summary.closest_features);
+      const different = featureList(summary.top_different_features || summary.different_features || summary.largest_difference_features);
+      return `
+        <div class="explain-copy">Feature similarity is based on standardized differences in the features currently included in the analog library. Smaller differences mean the forecast and analog were more alike for that field.</div>
+        <div class="explain-copy"><strong>Caveat:</strong> This only reflects the fields currently in the library. If CAPE, shear, lapse rates, or surface moisture are not in the library, they are not part of this explanation.</div>
+        <div style="font-weight:950; font-size:12px; color:#334155; margin-top:8px">Top similar features</div>
+        ${renderFeatureTable(similar, "similar")}
+        <div style="font-weight:950; font-size:12px; color:#334155; margin-top:12px">Top different features</div>
+        ${renderFeatureTable(different, "different")}
+        ${summary.method ? `<div class="analog-note">Method: ${escapeHtml(summary.method)}</div>` : ""}
+      `;
+    }
+
+    function renderFeatureSummaryMissingMessage() {
+      return `
+        <div class="placeholder">Feature-level explanation is not available for this grid cell.</div>
+        <div class="analog-note">Re-run script 03 with <span class="code-ish">--save-analog-feature-explain 1</span> to populate this section.</div>
+      `;
+    }
+
+    function renderPerAnalogFeatureDetails(analog) {
+      const explain = analog?.feature_explain || analog?.feature_match_details || analog?.explain;
+      if (!explain) return "";
+      const similar = featureList(explain.top_similar_features || explain.similar_features || explain.closest_features);
+      const different = featureList(explain.top_different_features || explain.different_features || explain.largest_difference_features);
+      return `
+        <details class="feature-details">
+          <summary>Feature match details</summary>
+          <div class="feature-details-body">
+            <div class="explain-copy">Top standardized fields for this specific analog pair.</div>
+            <div style="font-weight:900; font-size:11px; color:#334155">Similar</div>
+            ${renderFeatureTable(similar, "similar", 4)}
+            <div style="font-weight:900; font-size:11px; color:#334155; margin-top:10px">Different</div>
+            ${renderFeatureTable(different, "different", 4)}
+          </div>
+        </details>
+      `;
+    }
+
+    function featureList(value) {
+      if (!Array.isArray(value)) return [];
+      return value.filter((item) => item && typeof item === "object");
+    }
+
+    function renderFeatureTable(items, mode, limit = 6) {
+      if (!items.length) return `<div class="placeholder" style="margin-top:6px">No ${escapeHtml(mode)} feature records found.</div>`;
+      const rows = items.slice(0, limit).map((item) => {
+        const name = item.feature || item.feature_name || item.name || "Unknown feature";
+        const meta = featureMetaText(item);
+        const diff = firstFiniteNumber(
+          item.median_abs_standardized_difference,
+          item.absolute_standardized_difference,
+          item.standardized_difference,
+          item.abs_standardized_difference,
+          item.standardized_diff,
+          item.contribution
+        );
+        const forecastRaw = firstPresentValue(item.mean_forecast_raw_value, item.forecast_raw_value, item.forecast_value, item.forecast_raw);
+        const analogRaw = firstPresentValue(item.mean_analog_raw_estimated_value, item.analog_raw_estimated_value, item.analog_raw_value, item.analog_value, item.analog_raw);
+        const pct = firstFiniteNumber(item.percent_of_total_squared_distance, item.percent_of_distance_contribution, item.pct_distance_contribution);
+        const contrib = firstFiniteNumber(item.mean_squared_distance_contribution, item.squared_distance_contribution, item.distance_contribution, item.contribution);
+        const right = mode === "different"
+          ? `${formatNumber(diff, 3)}${Number.isFinite(pct) ? `<div class="feature-meta">${formatNumber(pct, 1)}% dist.</div>` : ""}${Number.isFinite(contrib) ? `<div class="feature-meta">contrib ${formatNumber(contrib, 3)}</div>` : ""}`
+          : `${formatNumber(diff, 3)}`;
+        return `
+          <tr>
+            <td><div class="feature-name">${escapeHtml(name)}</div>${meta ? `<div class="feature-meta">${escapeHtml(meta)}</div>` : ""}</td>
+            <td>${right}</td>
+            <td>${escapeHtml(formatCompactValue(forecastRaw))}</td>
+            <td>${escapeHtml(formatCompactValue(analogRaw))}</td>
+          </tr>
+        `;
+      }).join("");
+      return `
+        <table class="feature-table">
+          <thead><tr><th>Feature</th><th>${mode === "different" ? "Diff / contrib" : "Std. diff"}</th><th>Forecast</th><th>Analog</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      `;
+    }
+
+    function featureMetaText(item) {
+      const parts = [];
+      if (item.variable) parts.push(item.variable);
+      if (item.level_hpa !== undefined && item.level_hpa !== null) parts.push(`${item.level_hpa} hPa`);
+      if (item.units) parts.push(item.units);
+      return parts.join(" • ");
+    }
+
+    function renderAnalogList(analogs, context = {}) {
+      const reportsAvailable = context.reportsContext?.available;
+      const items = analogs.slice(0, 12).map((analog, index) => renderAnalogCard(analog, index, context)).join("");
+      const source = context.source ? `<div class="analog-note">Source: <span class="code-ish">${escapeHtml(shortenPath(context.source))}</span></div>` : "";
+      const count = analogs.length > 12 ? `<div class="analog-note">Showing the first 12 of ${formatNumber(analogs.length)} analogs saved for this grid cell.</div>` : "";
+      const reportNote = reportsAvailable ? "" : `<div class="analog-note">Analog-day report assets are not available for this run.</div>`;
+      return `<div class="analog-list">${items}</div>${count}${source}${reportNote}`;
+    }
+
+    function renderAnalogCard(analog, index, context = {}) {
+      if (typeof analog === "string") {
+        return `
+          <div class="analog-card">
+            <div class="analog-card-head">
+              <span class="analog-rank">#${index + 1}</span>
+              <div class="analog-time">${escapeHtml(analog)}</div>
+              <div class="analog-distance">Distance N/A</div>
+            </div>
+            ${renderLabelBadges({})}
+          </div>
+        `;
+      }
+
+      const rank = analog.rank ?? index + 1;
+      const time = analog.analog_valid_time || analog.valid_time || analog.time || analog.date || analog.event_time || "Unknown analog time";
+      const distance = analog.neighbor_distance ?? analog.distance ?? analog.analog_distance ?? analog.dist;
+      const lat = analog.analog_sample_latitude ?? analog.analog_latitude ?? analog.sample_latitude ?? analog.latitude ?? analog.lat;
+      const lon = analog.analog_sample_longitude ?? analog.analog_longitude ?? analog.sample_longitude ?? analog.longitude ?? analog.lon;
+      const labels = analog.labels || analog.label_flags || analog.hazard_labels || {};
+      const localDate = analog.analog_local_date || analog.local_date || analogLocalDateFromTime(time);
+      const reportAssetHtml = renderReportsOnAnalogDay(analog, localDate, context);
+      const matchedReportsHtml = renderMatchedReportsForAnalog(analog, rank, context);
+      const featureDetailsHtml = renderPerAnalogFeatureDetails(analog);
+
+      return `
+        <div class="analog-card">
+          <div class="analog-card-head">
+            <span class="analog-rank">#${escapeHtml(rank)}</span>
+            <div class="analog-time" title="${escapeAttr(time)}">${escapeHtml(formatValidLabel(time))}</div>
+            <div class="analog-distance">d=${formatNumber(distance, 3)}</div>
+          </div>
+          <div class="analog-meta">
+            <span>Analog lat/lon: <strong>${formatAnalogLatLon(lat, lon)}</strong></span>
+            <span>Local day: <strong>${escapeHtml(localDate || "N/A")}</strong></span>
+            ${analog.sample_index !== undefined ? `<span>Sample: <span class="code-ish">${escapeHtml(analog.sample_index)}</span></span>` : ""}
+          </div>
+          ${renderLabelBadges(labels)}
+          ${featureDetailsHtml}
+          ${reportAssetHtml}
+          ${matchedReportsHtml}
+        </div>
+      `;
+    }
+
+    async function loadReportsContext(product) {
+      const manifestResult = await loadAnalogReportManifest(product);
+      if (!manifestResult.ok) return { available: false, manifest: null, matchedIndex: null, assetsByDate: new Map(), manifestPath: "" };
+
+      const manifest = manifestResult.json;
+      const assetsByDate = buildReportAssetIndex(manifest, product);
+      const matchedPath = normalizeWebPath(
+        manifest.matched_reports_index ||
+        product?.matched_reports_index ||
+        getSelectedDay()?.matched_reports_index ||
+        state.manifest?.matched_reports_index ||
+        ""
+      );
+      const matchedResult = matchedPath ? await loadMatchedReportsIndex(matchedPath) : { ok: false, json: null };
+      return {
+        available: true,
+        manifest,
+        manifestPath: manifestResult.path,
+        matchedIndex: matchedResult.ok ? matchedResult.json : null,
+        matchedPath,
+        assetsByDate
+      };
+    }
+
+    async function loadAnalogReportManifest(product) {
+      const candidates = getAnalogReportManifestCandidates(product);
+      for (const path of candidates) {
+        if (state.reportManifestCache.has(path)) return state.reportManifestCache.get(path);
+        const result = await fetchJson(path, false)
+          .then((json) => ({ ok: true, path, json }))
+          .catch((error) => ({ ok: false, path, error }));
+        state.reportManifestCache.set(path, result);
+        if (result.ok) return result;
+      }
+      if (Array.isArray(product?.analog_report_day_assets) && product.analog_report_day_assets.length) {
+        return {
+          ok: true,
+          path: "web_latest.json product analog_report_day_assets",
+          json: {
+            report_day_assets: product.analog_report_day_assets,
+            matched_reports_index: product.matched_reports_index || getSelectedDay()?.matched_reports_index || state.manifest?.matched_reports_index || ""
+          }
+        };
+      }
+      return { ok: false, path: "", error: new Error("No report manifest available") };
+    }
+
+    function getAnalogReportManifestCandidates(product) {
+      const candidates = [];
+      const add = (value) => {
+        if (!value) return;
+        if (Array.isArray(value)) { value.forEach(add); return; }
+        if (typeof value === "object") return;
+        candidates.push(normalizeWebPath(value));
+      };
+      add(product?.analog_report_manifest);
+      add(getSelectedDay()?.analog_report_manifest);
+      add(state.manifest?.analog_report_manifest);
+      add(product?.analog_report_manifest_url);
+      add(state.manifest?.analog_report_manifest_url);
+      const cycle = product?.cycle || state.manifest?.cycle;
+      if (cycle) add(`cycles/${cycle}/webdata/analog_reports/analog_report_manifest.json`);
+      if (product?.geojson) {
+        const geo = normalizeWebPath(product.geojson);
+        const token = "/webdata/";
+        const idx = geo.indexOf(token);
+        if (idx >= 0) add(`${geo.slice(0, idx + token.length)}analog_reports/analog_report_manifest.json`);
+      }
+      return uniqueStrings(candidates).filter((path) => path.toLowerCase().endsWith(".json"));
+    }
+
+    async function loadMatchedReportsIndex(path) {
+      path = normalizeWebPath(path);
+      if (!path) return { ok: false, path, error: new Error("Missing matched reports index path") };
+      if (state.matchedReportsCache.has(path)) return state.matchedReportsCache.get(path);
+      const result = await fetchJson(path, false)
+        .then((json) => ({ ok: true, path, json }))
+        .catch((error) => ({ ok: false, path, error }));
+      state.matchedReportsCache.set(path, result);
+      return result;
+    }
+
+    function buildReportAssetIndex(manifest, product) {
+      const cacheKey = JSON.stringify([
+        manifest?.created_utc || "",
+        manifest?.cycle || product?.cycle || "",
+        (manifest?.report_day_assets || product?.analog_report_day_assets || []).length
+      ]);
+      if (state.reportAssetIndexCache.has(cacheKey)) return state.reportAssetIndexCache.get(cacheKey);
+      const assets = [];
+      if (Array.isArray(manifest?.report_day_assets)) assets.push(...manifest.report_day_assets);
+      if (Array.isArray(product?.analog_report_day_assets)) assets.push(...product.analog_report_day_assets);
+      const map = new Map();
+      for (const asset of assets) {
+        if (!asset || !asset.date) continue;
+        if (!map.has(asset.date)) map.set(asset.date, asset);
+      }
+      state.reportAssetIndexCache.set(cacheKey, map);
+      return map;
+    }
+
+    function renderReportsOnAnalogDay(analog, localDate, context) {
+      const ctx = context.reportsContext;
+      if (!ctx?.available) {
+        return `<div class="report-box"><div class="report-title"><span>Reports on analog day</span></div><div class="placeholder">Analog-day report assets are not available for this run.</div></div>`;
+      }
+      const asset = localDate ? ctx.assetsByDate.get(localDate) : null;
+      if (!asset || Number(asset.report_count || 0) <= 0) {
+        return `<div class="report-box"><div class="report-title"><span>Reports on analog day</span><span>${escapeHtml(localDate || "N/A")}</span></div><div class="placeholder">No reports found in the report-day asset for this date.</div></div>`;
+      }
+      const hazardCounts = renderHazardCountBadges(asset.hazard_counts || {});
+      const png = normalizeWebPath(asset.png);
+      const geojson = normalizeWebPath(asset.geojson);
+      return `
+        <div class="report-box">
+          <div class="report-title"><span>Reports on analog day</span><span>${escapeHtml(localDate)}</span></div>
+          <div>${formatNumber(asset.report_count, 0)} report${Number(asset.report_count) === 1 ? "" : "s"}</div>
+          ${hazardCounts}
+          <div class="analog-actions">
+            ${png ? `<a class="mini-link" href="${escapeAttr(png)}" target="_blank" rel="noopener">Open PNG map</a>` : ""}
+            ${geojson ? `<button type="button" class="mini-button" onclick="window.lixLoadReportOverlay('${escapeAttr(geojson)}','${escapeAttr(localDate)}')">Overlay reports</button>` : ""}
+          </div>
+        </div>
+      `;
+    }
+
+    function renderMatchedReportsForAnalog(analog, rank, context) {
+      const ctx = context.reportsContext;
+      const product = context.product;
+      const props = context.props || context.cell || {};
+      const matched = findMatchedReportRecord(analog, rank, props, product, context.source, ctx?.matchedIndex);
+      const reports = Array.isArray(matched?.matched_reports) ? matched.matched_reports : [];
+      if (!ctx?.available || !ctx?.matchedIndex) {
+        return `<div class="report-box"><div class="report-title"><span>Reports matched to this analog sample</span></div><div class="placeholder">Matched-report index is not available for this run.</div></div>`;
+      }
+      if (!reports.length) {
+        return `<div class="report-box"><div class="report-title"><span>Reports matched to this analog sample</span></div><div class="placeholder">No reports matched this specific analog grid point/time within the configured radius/time window. This is expected for null analogs.</div></div>`;
+      }
+      return `
+        <div class="report-box">
+          <div class="report-title"><span>Reports matched to this analog sample</span><span>${reports.length}</span></div>
+          <div class="matched-report-list">
+            ${reports.slice(0, 6).map(renderMatchedReport).join("")}
+          </div>
+        </div>
+      `;
+    }
+
+    function renderMatchedReport(report) {
+      const hazard = report.hazard || "unknown";
+      const mag = report.rating_int !== null && report.rating_int !== undefined
+        ? `EF/F${report.rating_int}`
+        : (report.magnitude !== null && report.magnitude !== undefined ? report.magnitude : "N/A");
+      return `
+        <div class="matched-report">
+          <div><span class="report-badge ${escapeAttr(hazard)}">${escapeHtml(reportHazardLabel(hazard))}</span> <strong>${escapeHtml(report.label || "Report")}</strong></div>
+          <div style="margin-top:5px">${escapeHtml(report.time_local || report.time_utc || "Time N/A")} • magnitude/rating: <strong>${escapeHtml(mag)}</strong></div>
+          <div>distance: <strong>${formatNumber(report.distance_km, 1)} km</strong> • time offset: <strong>${formatNumber(report.time_delta_minutes, 0)} min</strong></div>
+        </div>
+      `;
+    }
+
+    function findMatchedReportRecord(analog, rank, props, product, sourcePath, matchedIndex) {
+      if (!matchedIndex) return null;
+      const records = matchedIndex.records || matchedIndex;
+      if (!records || typeof records !== "object") return null;
+      const gridI = firstFiniteInteger(props.grid_i, props.i, props.row, props.y);
+      const gridJ = firstFiniteInteger(props.grid_j, props.j, props.col, props.x);
+      const analogRank = firstFiniteInteger(analog.rank, rank);
+      const validToken = validTokenFromTime(product?.valid_time || props.valid_time);
+      const fileStem = sourcePath ? fileStemFromPath(sourcePath) : "";
+      const keys = [];
+      if (validToken && gridI !== null && gridJ !== null && analogRank !== null) {
+        if (fileStem) keys.push(`${validToken}|grid_i=${gridI}|grid_j=${gridJ}|rank=${analogRank}|file=${fileStem}`);
+        keys.push(`${validToken}|grid_i=${gridI}|grid_j=${gridJ}|rank=${analogRank}`);
+      }
+      for (const key of keys) {
+        if (records[key]) return records[key];
+      }
+      const values = Object.values(records);
+      const sourceNorm = normalizeWebPath(sourcePath || "");
+      return values.find((rec) => {
+        if (!rec || typeof rec !== "object") return false;
+        const sameGrid = Number(rec.forecast_grid_i) === Number(gridI) && Number(rec.forecast_grid_j) === Number(gridJ);
+        const sameRank = Number(rec.analog_rank) === Number(analogRank);
+        const sameValid = validTokenFromTime(rec.forecast_valid_time) === validToken;
+        if (!sameGrid || !sameRank || !sameValid) return false;
+        const recSource = normalizeWebPath(rec.source_analog_json || "");
+        if (sourceNorm && recSource && fileStemFromPath(recSource) !== fileStemFromPath(sourceNorm)) return false;
+        return true;
+      }) || null;
+    }
+
+    function renderHazardCountBadges(counts) {
+      const entries = Object.entries(counts || {}).filter(([, count]) => Number(count) > 0);
+      if (!entries.length) return `<div class="report-counts"><span class="report-badge">No hazard counts</span></div>`;
+      return `<div class="report-counts">${entries.map(([hazard, count]) => `<span class="report-badge ${escapeAttr(hazard)}">${escapeHtml(reportHazardLabel(hazard))}: ${formatNumber(count, 0)}</span>`).join("")}</div>`;
+    }
+
+    async function loadReportOverlay(path, label) {
+      path = normalizeWebPath(path);
+      if (!path) return;
+      let geojson;
+      if (state.reportGeoJsonCache.has(path)) {
+        geojson = await state.reportGeoJsonCache.get(path);
+      } else {
+        const promise = fetchJson(path, false);
+        state.reportGeoJsonCache.set(path, promise);
+        try {
+          geojson = await promise;
+        } catch (error) {
+          alert(`Could not load report overlay: ${error.message || error}`);
+          return;
+        }
+      }
+      clearReportOverlay();
+      state.reportOverlayLayer = L.geoJSON(geojson, {
+        pointToLayer: (feature, latlng) => L.marker(latlng, { icon: reportDivIcon(feature) }),
+        onEachFeature: (feature, layer) => {
+          layer.bindPopup(reportPopupHtml(feature));
+        }
+      }).addTo(state.map);
+      state.currentReportOverlayLabel = label || path;
+      try {
+        const bounds = state.reportOverlayLayer.getBounds();
+        if (bounds.isValid()) state.map.fitBounds(bounds.pad(0.18));
+      } catch (e) {}
+    }
+
+    function clearReportOverlay() {
+      if (state.reportOverlayLayer) {
+        state.reportOverlayLayer.remove();
+        state.reportOverlayLayer = null;
+      }
+      state.currentReportOverlayLabel = "";
+    }
+
+    function reportDivIcon(feature) {
+      const props = feature?.properties || {};
+      const hazard = normalizeHazardId(props.hazard || props.type || props.category);
+      return L.divIcon({
+        className: "",
+        html: `<span class="report-marker ${escapeAttr(hazard)}"></span>`,
+        iconSize: [18, 18],
+        iconAnchor: [9, 9]
+      });
+    }
+
+    function reportPopupHtml(feature) {
+      const p = feature?.properties || {};
+      const hazard = normalizeHazardId(p.hazard || p.type || p.category);
+      const mag = p.rating_int !== null && p.rating_int !== undefined
+        ? `EF/F${p.rating_int}`
+        : (p.magnitude !== null && p.magnitude !== undefined ? p.magnitude : "N/A");
+      return `
+        <div style="min-width:190px">
+          <div style="font-weight:900; margin-bottom:5px">${escapeHtml(reportHazardLabel(hazard))}</div>
+          <div>Time: <strong>${escapeHtml(p.time_local || p.time_utc || "N/A")}</strong></div>
+          <div>Magnitude/rating: <strong>${escapeHtml(mag)}</strong></div>
+          <div>Source: <span style="font-size:11px">${escapeHtml(shortenPath(p.source_file || "N/A"))}</span></div>
+        </div>
+      `;
+    }
+
+    window.lixLoadReportOverlay = loadReportOverlay;
+
+    function reportHazardLabel(id) {
+      const hazard = normalizeHazardId(id);
+      if (hazard === "tor") return "Tornado";
+      if (hazard === "hail") return "Hail";
+      if (hazard === "wind") return "Wind";
+      return String(id || "Report");
+    }
+
+    function normalizeHazardId(value) {
+      const text = String(value || "").trim().toLowerCase();
+      if (["tornado", "tor"].includes(text)) return "tor";
+      if (["hail", "severe_hail", "sighail"].includes(text)) return "hail";
+      if (["wind", "damaging wind", "damaging_wind", "sigwind"].includes(text)) return "wind";
+      return text || "wind";
+    }
+
+    function analogLocalDateFromTime(time) {
+      if (!time) return "";
+      const d = new Date(time);
+      if (Number.isNaN(d.getTime())) {
+        const m = String(time).match(/\d{4}-\d{2}-\d{2}/);
+        return m ? m[0] : "";
+      }
+      try {
+        const parts = new Intl.DateTimeFormat("en-CA", {
+          timeZone: "America/Chicago",
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit"
+        }).formatToParts(d);
+        const y = parts.find((p) => p.type === "year")?.value;
+        const m = parts.find((p) => p.type === "month")?.value;
+        const day = parts.find((p) => p.type === "day")?.value;
+        if (y && m && day) return `${y}-${m}-${day}`;
+      } catch (e) {}
+      return d.toISOString().slice(0, 10);
+    }
+
+    function validTokenFromTime(value) {
+      if (!value) return "";
+      const d = new Date(value);
+      if (Number.isNaN(d.getTime())) {
+        const s = String(value);
+        const m = s.match(/(\d{4})-?(\d{2})-?(\d{2}).*?(\d{2})/);
+        return m ? `${m[1]}${m[2]}${m[3]}_${m[4]}Z` : "";
+      }
+      const yyyy = d.getUTCFullYear();
+      const mm = String(d.getUTCMonth() + 1).padStart(2, "0");
+      const dd = String(d.getUTCDate()).padStart(2, "0");
+      const hh = String(d.getUTCHours()).padStart(2, "0");
+      return `${yyyy}${mm}${dd}_${hh}Z`;
+    }
+
+    function fileStemFromPath(path) {
+      const clean = normalizeWebPath(path).split("?")[0].split("#")[0];
+      const name = clean.slice(clean.lastIndexOf("/") + 1);
+      return name.replace(/\.json$/i, "").replace(/\.geojson$/i, "").replace(/\.png$/i, "").replace(/\.nc$/i, "");
+    }
+
+    function normalizeWebPath(value) {
+      return String(value || "").trim().replaceAll("\\", "/");
+    }
+
+    function uniqueStrings(values) {
+      const seen = new Set();
+      const out = [];
+      for (const value of values) {
+        const text = normalizeWebPath(value);
+        if (!text || seen.has(text)) continue;
+        seen.add(text);
+        out.push(text);
+      }
+      return out;
+    }
+
+    function getGridKey(obj) {
+      if (!obj || typeof obj !== "object") return null;
+      const i = firstFiniteInteger(obj.grid_i, obj.i, obj.row, obj.y, obj.lat_index, obj.latitude_index);
+      const j = firstFiniteInteger(obj.grid_j, obj.j, obj.col, obj.column, obj.x, obj.lon_index, obj.longitude_index);
+      if (i === null || j === null) return null;
+      return `${i}:${j}`;
+    }
+
+    function firstFiniteInteger(...values) {
+      for (const value of values) {
+        const number = Number(value);
+        if (Number.isFinite(number)) return Math.trunc(number);
+      }
+      return null;
+    }
+
+    function firstFiniteNumber(...values) {
+      for (const value of values) {
+        const number = Number(value);
+        if (Number.isFinite(number)) return number;
+      }
+      return NaN;
+    }
+
+    function firstPresentValue(...values) {
+      for (const value of values) {
+        if (value !== undefined && value !== null && value !== "") return value;
+      }
+      return null;
+    }
+
+    function formatCompactValue(value) {
+      if (value === null || value === undefined || value === "") return "N/A";
+      const number = Number(value);
+      if (Number.isFinite(number)) return Math.abs(number) >= 100 ? number.toFixed(0) : number.toFixed(2);
+      return String(value);
+    }
+
+    function renderLabelBadges(labels) {
+      const labelObj = labels && typeof labels === "object" ? labels : {};
+      const ids = uniqueStrings([
+        ...state.hazards.map((h) => h.id),
+        "any", "tor", "hail", "wind", "sigtor", "sighail", "sigwind"
+      ]);
+
+      const badges = ids.map((id) => {
+        const hazard = state.hazards.find((h) => h.id === id) || { id, label: fallbackHazardLabel(id) };
+        const positive = isPositiveLabel(labelObj[id] ?? labelObj[hazard.field] ?? labelObj[`prob_${id}`]);
+        return `<span class="label-badge ${positive ? "positive" : "neutral"}" title="${escapeAttr(hazard.label)} ${positive ? "positive" : "not positive"}">${escapeHtml(shortHazardLabel(hazard.label))}</span>`;
+      }).join("");
+
+      return `<div class="analog-labels">${badges}</div>`;
+    }
+
+    function isPositiveLabel(value) {
+      if (value === true) return true;
+      if (typeof value === "string") return ["1", "true", "yes", "y", "positive", "pos"].includes(value.trim().toLowerCase());
+      const number = Number(value);
+      return Number.isFinite(number) && number > 0;
+    }
+
+    function fallbackHazardLabel(id) {
+      const labels = {
+        any: "Any Severe",
+        tor: "Tornado",
+        hail: "Severe Hail",
+        wind: "Damaging Wind",
+        sigtor: "Significant Tornado",
+        sighail: "Significant Hail",
+        sigwind: "Significant Damaging Wind"
+      };
+      return labels[id] || id;
+    }
+
+    function shortHazardLabel(label) {
+      return String(label || "")
+        .replace("Significant Tornado", "Sig Tor")
+        .replace("Significant Hail", "Sig Hail")
+        .replace("Significant Damaging Wind", "Sig Wind")
+        .replace("Damaging Wind", "Wind")
+        .replace("Severe Hail", "Hail")
+        .replace("Any Severe", "Any");
+    }
+
+    function formatAnalogLatLon(lat, lon) {
+      const latNum = Number(lat);
+      const lonNum = Number(lon);
+      if (!Number.isFinite(latNum) || !Number.isFinite(lonNum)) return "N/A";
+      return `${latNum.toFixed(3)}, ${lonNum.toFixed(3)}`;
+    }
+
+    function renderAnalogMissingMessage() {
+      return `<div class="placeholder">Top analog details are not available for this run.</div>`;
+    }
+
+    function getPlotLinks(product, hazard) {
+      const plots = Array.isArray(product.plots) ? product.plots : [];
+      const matching = plots.filter((p) => p.hazard === hazard.id || p.hazard === hazard.field);
+      if (!matching.length) return "";
+      return `<div class="link-list">${matching.map((p) => {
+        const href = p.url || p.file;
+        if (!href) return "";
+        return `<a class="plain-link" href="${escapeAttr(href)}" target="_blank" rel="noopener"><span>${escapeHtml(p.label || hazard.label)}</span><span>PNG</span></a>`;
+      }).join("")}</div>`;
+    }
+
+    function getSelectedDay() {
+      return state.days[state.dayIndex];
+    }
+
+    function getSelectedProduct() {
+      const day = getSelectedDay();
+      return day?.products?.[state.productIndex];
+    }
+
+    function getSelectedHazard() {
+      return state.hazards.find((h) => h.id === state.hazardId) || state.hazards[0];
+    }
+
+    function countProducts(days) {
+      return days.reduce((sum, day) => sum + (day.products?.length || 0), 0);
+    }
+
+    async function fetchJson(path, noCache) {
+      const separator = path.includes("?") ? "&" : "?";
+      const url = noCache ? `${path}${separator}v=${Date.now()}` : path;
+      const response = await fetch(url, { cache: noCache ? "no-store" : "default" });
+      if (!response.ok) throw new Error(`HTTP ${response.status} while loading ${path}`);
+      return response.json();
+    }
+
+    function toPercent(value, product, field) {
+      const number = Number(value);
+      if (!Number.isFinite(number)) return NaN;
+      const units = product?.probability_units || getSelectedHazard()?.units || "percent";
+      if (String(units).toLowerCase().includes("percent")) return number;
+
+      const maxFromStats = product?.probability_stats?.[field]?.max;
+      if (Number.isFinite(Number(maxFromStats)) && Number(maxFromStats) <= 1.5) return number * 100;
+      if (Math.abs(number) <= 1.5) return number * 100;
+      return number;
+    }
+
+    function getLayerCenter(layer) {
+      try {
+        const bounds = layer.getBounds?.();
+        if (bounds?.isValid?.()) return bounds.getCenter();
+      } catch (e) {
+        return null;
+      }
+      return null;
+    }
+
+    function getGridId(props) {
+      const candidates = [
+        props.grid_i !== undefined && props.grid_j !== undefined ? `grid_i=${props.grid_i}, grid_j=${props.grid_j}` : null,
+        props.grid_id,
+        props.cell_id,
+        props.point_id,
+        props.id,
+        props.index,
+        props.grid_index,
+        props.i !== undefined && props.j !== undefined ? `i=${props.i}, j=${props.j}` : null,
+        props.row !== undefined && props.col !== undefined ? `row=${props.row}, col=${props.col}` : null,
+        props.y !== undefined && props.x !== undefined ? `y=${props.y}, x=${props.x}` : null
+      ];
+      return candidates.find((value) => value !== undefined && value !== null && String(value).trim() !== "") || "N/A";
+    }
+
+    function formatValidLabel(value) {
+      if (!value) return "Unknown valid";
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return String(value);
+      const yyyy = date.getUTCFullYear();
+      const mm = String(date.getUTCMonth() + 1).padStart(2, "0");
+      const dd = String(date.getUTCDate()).padStart(2, "0");
+      const hh = String(date.getUTCHours()).padStart(2, "0");
+      return `${yyyy}-${mm}-${dd} ${hh}Z`;
+    }
+
+    function formatDateTime(value) {
+      if (!value) return "unknown";
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return String(value);
+      const yyyy = date.getUTCFullYear();
+      const mm = String(date.getUTCMonth() + 1).padStart(2, "0");
+      const dd = String(date.getUTCDate()).padStart(2, "0");
+      const hh = String(date.getUTCHours()).padStart(2, "0");
+      const min = String(date.getUTCMinutes()).padStart(2, "0");
+      return `${yyyy}-${mm}-${dd} ${hh}:${min}Z`;
+    }
+
+    function formatFhr(value) {
+      const number = Number(value);
+      return Number.isFinite(number) ? `f${String(number).padStart(3, "0")}` : "f???";
+    }
+
+    function formatProb(value) {
+      const number = Number(value);
+      if (!Number.isFinite(number)) return "N/A";
+      if (Math.abs(number) < 0.05) return "0%";
+      if (number < 10) return `${number.toFixed(1)}%`;
+      return `${number.toFixed(1)}%`;
+    }
+
+    function formatNumber(value, digits = 0) {
+      const number = Number(value);
+      if (!Number.isFinite(number)) return "N/A";
+      return number.toLocaleString(undefined, {
+        minimumFractionDigits: digits,
+        maximumFractionDigits: digits
+      });
+    }
+
+    function formatLatLon(center) {
+      if (!center || !Number.isFinite(center.lat) || !Number.isFinite(center.lng)) return "Lat/lon N/A";
+      return `${center.lat.toFixed(3)}, ${center.lng.toFixed(3)}`;
+    }
+
+    function formatRaw(value) {
+      if (value === null || value === undefined) return "N/A";
+      if (typeof value === "number") return Number.isFinite(value) ? String(value) : "N/A";
+      if (Array.isArray(value)) return value.length > 6 ? JSON.stringify(value.slice(0, 6)) + "..." : JSON.stringify(value);
+      if (typeof value === "object") return JSON.stringify(value).slice(0, 90);
+      return String(value);
+    }
+
+    function shortenPath(path) {
+      if (!path) return "";
+      const text = String(path);
+      if (text.length <= 42) return text;
+      return `...${text.slice(-39)}`;
+    }
+
+    function setLoading(isLoading) {
+      el.mapLoading.style.display = isLoading ? "flex" : "none";
+    }
+
+    function showMapError(message) {
+      el.mapErrorText.textContent = message;
+      el.mapError.style.display = "flex";
+    }
+
+    function hideMapError() {
+      el.mapError.style.display = "none";
+      el.mapErrorText.textContent = "";
+    }
+
+    function showFatalError(error) {
+      el.statusPill.textContent = "ERROR";
+      el.subtitle.textContent = "Could not load web_latest.json.";
+      showMapError(`${error.message || error}. Serve this folder with a small local web server, for example: python -m http.server 8000`);
+      el.sideContent.innerHTML = `
+        <div class="card-section">
+          <div class="section-title">Startup error</div>
+          <div class="section-body placeholder">
+            The browser could not fetch <span class="code-ish">web_latest.json</span>. Chrome and Edge usually block fetches from local file paths.
+            Put this <span class="code-ish">index.html</span> beside <span class="code-ish">web_latest.json</span> and open it through a web server.
+          </div>
+        </div>
+      `;
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function escapeAttr(value) {
+      return escapeHtml(value).replaceAll("`", "&#096;");
+    }
+  </script>
+</body>
+</html>

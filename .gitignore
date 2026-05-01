@@ -17,3 +17,13 @@ era5_cache/
 # Optional local scratch folders
 scratch/
 temp/
+
+# Never publish credentials or tokens
+API key.txt
+api_key.txt
+apikey.txt
+token.txt
+tokens.txt
+*.key
+*.pem
+*.env

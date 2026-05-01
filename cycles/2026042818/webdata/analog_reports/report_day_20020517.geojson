@@ -1,0 +1,258 @@
+{
+  "features": [
+    {
+      "geometry": {
+        "coordinates": [
+          -91.6,
+          30.73
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "wind",
+        "label": "Wind 0 mph",
+        "local_date": "2002-05-17",
+        "magnitude": 0.0,
+        "marker_style": {
+          "category": "wind",
+          "color": "#2563eb",
+          "marker": "o",
+          "shape": "circle"
+        },
+        "rating_int": null,
+        "report_id": "wind_f3c17081970f7bc5",
+        "source_file": "[Old] 1950-2023 Severe Weather Climo LIX - LIX_WIND.csv",
+        "time_local": "2002-05-17 12:25 CDT",
+        "time_utc": "2002-05-17T17:25:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -91.4,
+          30.9
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "wind",
+        "label": "Wind 0 mph",
+        "local_date": "2002-05-17",
+        "magnitude": 0.0,
+        "marker_style": {
+          "category": "wind",
+          "color": "#2563eb",
+          "marker": "o",
+          "shape": "circle"
+        },
+        "rating_int": null,
+        "report_id": "wind_ab2e1a20fb5be34a",
+        "source_file": "[Old] 1950-2023 Severe Weather Climo LIX - LIX_WIND.csv",
+        "time_local": "2002-05-17 12:50 CDT",
+        "time_utc": "2002-05-17T17:50:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -91.17,
+          30.47
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "wind",
+        "label": "Wind 0 mph",
+        "local_date": "2002-05-17",
+        "magnitude": 0.0,
+        "marker_style": {
+          "category": "wind",
+          "color": "#2563eb",
+          "marker": "o",
+          "shape": "circle"
+        },
+        "rating_int": null,
+        "report_id": "wind_c62bbf79d9ea0210",
+        "source_file": "[Old] 1950-2023 Severe Weather Climo LIX - LIX_WIND.csv",
+        "time_local": "2002-05-17 13:00 CDT",
+        "time_utc": "2002-05-17T18:00:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -90.47,
+          30.5
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "wind",
+        "label": "Wind 0 mph",
+        "local_date": "2002-05-17",
+        "magnitude": 0.0,
+        "marker_style": {
+          "category": "wind",
+          "color": "#2563eb",
+          "marker": "o",
+          "shape": "circle"
+        },
+        "rating_int": null,
+        "report_id": "wind_9b2b4412b439acd6",
+        "source_file": "[Old] 1950-2023 Severe Weather Climo LIX - LIX_WIND.csv",
+        "time_local": "2002-05-17 13:46 CDT",
+        "time_utc": "2002-05-17T18:46:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -90.47,
+          31.25
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "wind",
+        "label": "Wind 0 mph",
+        "local_date": "2002-05-17",
+        "magnitude": 0.0,
+        "marker_style": {
+          "category": "wind",
+          "color": "#2563eb",
+          "marker": "o",
+          "shape": "circle"
+        },
+        "rating_int": null,
+        "report_id": "wind_5be4979bff7d8a98",
+        "source_file": "[Old] 1950-2023 Severe Weather Climo LIX - LIX_WIND.csv",
+        "time_local": "2002-05-17 14:00 CDT",
+        "time_utc": "2002-05-17T19:00:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -90.05,
+          31.2
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "wind",
+        "label": "Wind 0 mph",
+        "local_date": "2002-05-17",
+        "magnitude": 0.0,
+        "marker_style": {
+          "category": "wind",
+          "color": "#2563eb",
+          "marker": "o",
+          "shape": "circle"
+        },
+        "rating_int": null,
+        "report_id": "wind_b9ed30fb10a9334f",
+        "source_file": "[Old] 1950-2023 Severe Weather Climo LIX - LIX_WIND.csv",
+        "time_local": "2002-05-17 14:15 CDT",
+        "time_utc": "2002-05-17T19:15:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -89.92,
+          30.47
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "wind",
+        "label": "Wind 0 mph",
+        "local_date": "2002-05-17",
+        "magnitude": 0.0,
+        "marker_style": {
+          "category": "wind",
+          "color": "#2563eb",
+          "marker": "o",
+          "shape": "circle"
+        },
+        "rating_int": null,
+        "report_id": "wind_499a36cf1800b897",
+        "source_file": "[Old] 1950-2023 Severe Weather Climo LIX - LIX_WIND.csv",
+        "time_local": "2002-05-17 14:20 CDT",
+        "time_utc": "2002-05-17T19:20:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -90.05,
+          30.83
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "wind",
+        "label": "Wind 0 mph",
+        "local_date": "2002-05-17",
+        "magnitude": 0.0,
+        "marker_style": {
+          "category": "wind",
+          "color": "#2563eb",
+          "marker": "o",
+          "shape": "circle"
+        },
+        "rating_int": null,
+        "report_id": "wind_6fd4393af79e768a",
+        "source_file": "[Old] 1950-2023 Severe Weather Climo LIX - LIX_WIND.csv",
+        "time_local": "2002-05-17 14:40 CDT",
+        "time_utc": "2002-05-17T19:40:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -89.43,
+          29.35
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "wind",
+        "label": "Wind 0 mph",
+        "local_date": "2002-05-17",
+        "magnitude": 0.0,
+        "marker_style": {
+          "category": "wind",
+          "color": "#2563eb",
+          "marker": "o",
+          "shape": "circle"
+        },
+        "rating_int": null,
+        "report_id": "wind_74c17c3f2f2d39dc",
+        "source_file": "[Old] 1950-2023 Severe Weather Climo LIX - LIX_WIND.csv",
+        "time_local": "2002-05-17 20:59 CDT",
+        "time_utc": "2002-05-18T01:59:00Z"
+      },
+      "type": "Feature"
+    }
+  ],
+  "properties": {
+    "caveat": "This file contains reports on the analog local calendar date, not matched analog-sample reports.",
+    "date": "2002-05-17",
+    "generator": "08_build_analog_report_assets.py",
+    "hazard_counts": {
+      "wind": 9
+    },
+    "report_count": 9,
+    "schema_version": 1
+  },
+  "type": "FeatureCollection"
+}

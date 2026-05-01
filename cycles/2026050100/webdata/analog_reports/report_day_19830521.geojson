@@ -1,0 +1,178 @@
+{
+  "features": [
+    {
+      "geometry": {
+        "coordinates": [
+          -91.17,
+          30.47
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "hail",
+        "label": "Hail 1.75 in",
+        "local_date": "1983-05-21",
+        "magnitude": 1.75,
+        "marker_style": {
+          "category": "hail",
+          "color": "#16a34a",
+          "marker": "^",
+          "shape": "triangle"
+        },
+        "rating_int": null,
+        "report_id": "hail_8ffb4d5bb820bb4b",
+        "source_file": "1950-2024 Severe Weather Climo LIX - LIX_HAIL.csv",
+        "time_local": "1983-05-21 22:00 CDT",
+        "time_utc": "1983-05-22T03:00:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -91.25,
+          30.45
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "hail",
+        "label": "Hail 1.50 in",
+        "local_date": "1983-05-21",
+        "magnitude": 1.5,
+        "marker_style": {
+          "category": "hail",
+          "color": "#16a34a",
+          "marker": "^",
+          "shape": "triangle"
+        },
+        "rating_int": null,
+        "report_id": "hail_23b11b267c2b17ab",
+        "source_file": "1950-2024 Severe Weather Climo LIX - LIX_HAIL.csv",
+        "time_local": "1983-05-21 22:20 CDT",
+        "time_utc": "1983-05-22T03:20:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -91.07,
+          30.53
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "hail",
+        "label": "Hail 1.50 in",
+        "local_date": "1983-05-21",
+        "magnitude": 1.5,
+        "marker_style": {
+          "category": "hail",
+          "color": "#16a34a",
+          "marker": "^",
+          "shape": "triangle"
+        },
+        "rating_int": null,
+        "report_id": "hail_87e4953d577f8d58",
+        "source_file": "1950-2024 Severe Weather Climo LIX - LIX_HAIL.csv",
+        "time_local": "1983-05-21 22:20 CDT",
+        "time_utc": "1983-05-22T03:20:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -91.25,
+          30.45
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "wind",
+        "label": "Wind 0 mph",
+        "local_date": "1983-05-21",
+        "magnitude": 0.0,
+        "marker_style": {
+          "category": "wind",
+          "color": "#2563eb",
+          "marker": "o",
+          "shape": "circle"
+        },
+        "rating_int": null,
+        "report_id": "wind_0f5daca7e1d9b184",
+        "source_file": "[Old] 1950-2023 Severe Weather Climo LIX - LIX_WIND.csv",
+        "time_local": "1983-05-21 22:20 CDT",
+        "time_utc": "1983-05-22T03:20:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -91.07,
+          30.53
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "wind",
+        "label": "Wind 0 mph",
+        "local_date": "1983-05-21",
+        "magnitude": 0.0,
+        "marker_style": {
+          "category": "wind",
+          "color": "#2563eb",
+          "marker": "o",
+          "shape": "circle"
+        },
+        "rating_int": null,
+        "report_id": "wind_ea8ca8bfd1015512",
+        "source_file": "[Old] 1950-2023 Severe Weather Climo LIX - LIX_WIND.csv",
+        "time_local": "1983-05-21 22:20 CDT",
+        "time_utc": "1983-05-22T03:20:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -90.95,
+          30.38
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "wind",
+        "label": "Wind 0 mph",
+        "local_date": "1983-05-21",
+        "magnitude": 0.0,
+        "marker_style": {
+          "category": "wind",
+          "color": "#2563eb",
+          "marker": "o",
+          "shape": "circle"
+        },
+        "rating_int": null,
+        "report_id": "wind_3690420847c3f259",
+        "source_file": "[Old] 1950-2023 Severe Weather Climo LIX - LIX_WIND.csv",
+        "time_local": "1983-05-21 23:30 CDT",
+        "time_utc": "1983-05-22T04:30:00Z"
+      },
+      "type": "Feature"
+    }
+  ],
+  "properties": {
+    "caveat": "This file contains reports on the analog local calendar date, not matched analog-sample reports.",
+    "date": "1983-05-21",
+    "generator": "08_build_analog_report_assets.py",
+    "hazard_counts": {
+      "hail": 3,
+      "wind": 3
+    },
+    "report_count": 6,
+    "schema_version": 1
+  },
+  "type": "FeatureCollection"
+}

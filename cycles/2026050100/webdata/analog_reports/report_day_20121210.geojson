@@ -1,0 +1,178 @@
+{
+  "features": [
+    {
+      "geometry": {
+        "coordinates": [
+          -91.2,
+          30.57
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "tor",
+        "label": "Tornado EF/F1",
+        "local_date": "2012-12-10",
+        "magnitude": 1.0,
+        "marker_style": {
+          "category": "tornado",
+          "color": "#dc2626",
+          "marker": "v",
+          "shape": "triangle_down"
+        },
+        "rating_int": 1,
+        "report_id": "tor_f2eaa800e6e63bfb",
+        "source_file": "lix_tornadoes_all_1974_2023.csv",
+        "time_local": "2012-12-10 06:48 CST",
+        "time_utc": "2012-12-10T12:48:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -91.2592,
+          30.37
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "wind",
+        "label": "Wind 52 mph",
+        "local_date": "2012-12-10",
+        "magnitude": 52.0,
+        "marker_style": {
+          "category": "wind",
+          "color": "#2563eb",
+          "marker": "o",
+          "shape": "circle"
+        },
+        "rating_int": null,
+        "report_id": "wind_7ff58c67eae619ab",
+        "source_file": "[Old] 1950-2023 Severe Weather Climo LIX - LIX_WIND.csv",
+        "time_local": "2012-12-10 07:24 CST",
+        "time_utc": "2012-12-10T13:24:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -90.9943,
+          30.5796
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "wind",
+        "label": "Wind 52 mph",
+        "local_date": "2012-12-10",
+        "magnitude": 52.0,
+        "marker_style": {
+          "category": "wind",
+          "color": "#2563eb",
+          "marker": "o",
+          "shape": "circle"
+        },
+        "rating_int": null,
+        "report_id": "wind_444e105057bcda09",
+        "source_file": "[Old] 1950-2023 Severe Weather Climo LIX - LIX_WIND.csv",
+        "time_local": "2012-12-10 07:36 CST",
+        "time_utc": "2012-12-10T13:36:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -90.18,
+          31.01
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "tor",
+        "label": "Tornado EF/F1",
+        "local_date": "2012-12-10",
+        "magnitude": 1.0,
+        "marker_style": {
+          "category": "tornado",
+          "color": "#dc2626",
+          "marker": "v",
+          "shape": "triangle_down"
+        },
+        "rating_int": 1,
+        "report_id": "tor_48f2eb63a002191d",
+        "source_file": "lix_tornadoes_all_1974_2023.csv",
+        "time_local": "2012-12-10 07:52 CST",
+        "time_utc": "2012-12-10T13:52:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -90.94,
+          30.26
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "tor",
+        "label": "Tornado EF/F1",
+        "local_date": "2012-12-10",
+        "magnitude": 1.0,
+        "marker_style": {
+          "category": "tornado",
+          "color": "#dc2626",
+          "marker": "v",
+          "shape": "triangle_down"
+        },
+        "rating_int": 1,
+        "report_id": "tor_d2bff0d98a161a7b",
+        "source_file": "lix_tornadoes_all_1974_2023.csv",
+        "time_local": "2012-12-10 08:50 CST",
+        "time_utc": "2012-12-10T14:50:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -89.85,
+          30.77
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "wind",
+        "label": "Wind 52 mph",
+        "local_date": "2012-12-10",
+        "magnitude": 52.0,
+        "marker_style": {
+          "category": "wind",
+          "color": "#2563eb",
+          "marker": "o",
+          "shape": "circle"
+        },
+        "rating_int": null,
+        "report_id": "wind_19b80130ffa38719",
+        "source_file": "[Old] 1950-2023 Severe Weather Climo LIX - LIX_WIND.csv",
+        "time_local": "2012-12-10 09:30 CST",
+        "time_utc": "2012-12-10T15:30:00Z"
+      },
+      "type": "Feature"
+    }
+  ],
+  "properties": {
+    "caveat": "This file contains reports on the analog local calendar date, not matched analog-sample reports.",
+    "date": "2012-12-10",
+    "generator": "08_build_analog_report_assets.py",
+    "hazard_counts": {
+      "tor": 3,
+      "wind": 3
+    },
+    "report_count": 6,
+    "schema_version": 1
+  },
+  "type": "FeatureCollection"
+}

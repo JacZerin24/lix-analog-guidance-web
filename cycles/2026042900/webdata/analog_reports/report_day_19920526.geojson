@@ -1,0 +1,70 @@
+{
+  "features": [
+    {
+      "geometry": {
+        "coordinates": [
+          -88.5,
+          30.67
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "hail",
+        "label": "Hail 0.75 in",
+        "local_date": "1992-05-26",
+        "magnitude": 0.75,
+        "marker_style": {
+          "category": "hail",
+          "color": "#16a34a",
+          "marker": "^",
+          "shape": "triangle"
+        },
+        "rating_int": null,
+        "report_id": "hail_1e75e355649ab378",
+        "source_file": "1950-2024 Severe Weather Climo LIX - LIX_HAIL.csv",
+        "time_local": "1992-05-26 08:45 CDT",
+        "time_utc": "1992-05-26T13:45:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -90.75,
+          30.5
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "wind",
+        "label": "Wind 51 mph",
+        "local_date": "1992-05-26",
+        "magnitude": 51.0,
+        "marker_style": {
+          "category": "wind",
+          "color": "#2563eb",
+          "marker": "o",
+          "shape": "circle"
+        },
+        "rating_int": null,
+        "report_id": "wind_6d010f09201426a9",
+        "source_file": "[Old] 1950-2023 Severe Weather Climo LIX - LIX_WIND.csv",
+        "time_local": "1992-05-26 16:40 CDT",
+        "time_utc": "1992-05-26T21:40:00Z"
+      },
+      "type": "Feature"
+    }
+  ],
+  "properties": {
+    "caveat": "This file contains reports on the analog local calendar date, not matched analog-sample reports.",
+    "date": "1992-05-26",
+    "generator": "08_build_analog_report_assets.py",
+    "hazard_counts": {
+      "hail": 1,
+      "wind": 1
+    },
+    "report_count": 2,
+    "schema_version": 1
+  },
+  "type": "FeatureCollection"
+}

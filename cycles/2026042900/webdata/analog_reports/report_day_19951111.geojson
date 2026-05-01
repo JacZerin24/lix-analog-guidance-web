@@ -1,0 +1,97 @@
+{
+  "features": [
+    {
+      "geometry": {
+        "coordinates": [
+          -91.23,
+          30.38
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "wind",
+        "label": "Wind 52 mph",
+        "local_date": "1995-11-11",
+        "magnitude": 52.0,
+        "marker_style": {
+          "category": "wind",
+          "color": "#2563eb",
+          "marker": "o",
+          "shape": "circle"
+        },
+        "rating_int": null,
+        "report_id": "wind_750bb55174ef186d",
+        "source_file": "[Old] 1950-2023 Severe Weather Climo LIX - LIX_WIND.csv",
+        "time_local": "1995-11-11 05:00 CST",
+        "time_utc": "1995-11-11T11:00:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -90.15,
+          31.15
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "tor",
+        "label": "Tornado EF/F1",
+        "local_date": "1995-11-11",
+        "magnitude": 1.0,
+        "marker_style": {
+          "category": "tornado",
+          "color": "#dc2626",
+          "marker": "v",
+          "shape": "triangle_down"
+        },
+        "rating_int": 1,
+        "report_id": "tor_dc1cc4e52527f8a8",
+        "source_file": "lix_tornadoes_all_1974_2023.csv",
+        "time_local": "1995-11-11 05:15 CST",
+        "time_utc": "1995-11-11T11:15:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -90.03,
+          30.05
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "wind",
+        "label": "Wind 52 mph",
+        "local_date": "1995-11-11",
+        "magnitude": 52.0,
+        "marker_style": {
+          "category": "wind",
+          "color": "#2563eb",
+          "marker": "o",
+          "shape": "circle"
+        },
+        "rating_int": null,
+        "report_id": "wind_3160d656db199988",
+        "source_file": "[Old] 1950-2023 Severe Weather Climo LIX - LIX_WIND.csv",
+        "time_local": "1995-11-11 06:05 CST",
+        "time_utc": "1995-11-11T12:05:00Z"
+      },
+      "type": "Feature"
+    }
+  ],
+  "properties": {
+    "caveat": "This file contains reports on the analog local calendar date, not matched analog-sample reports.",
+    "date": "1995-11-11",
+    "generator": "08_build_analog_report_assets.py",
+    "hazard_counts": {
+      "tor": 1,
+      "wind": 2
+    },
+    "report_count": 3,
+    "schema_version": 1
+  },
+  "type": "FeatureCollection"
+}

@@ -1,0 +1,150 @@
+{
+  "features": [
+    {
+      "geometry": {
+        "coordinates": [
+          -89.43,
+          30.63
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "wind",
+        "label": "Wind 0 mph",
+        "local_date": "1996-01-24",
+        "magnitude": 0.0,
+        "marker_style": {
+          "category": "wind",
+          "color": "#2563eb",
+          "marker": "o",
+          "shape": "circle"
+        },
+        "rating_int": null,
+        "report_id": "wind_d04cdbcd21bbba3d",
+        "source_file": "[Old] 1950-2023 Severe Weather Climo LIX - LIX_WIND.csv",
+        "time_local": "1996-01-24 02:15 CST",
+        "time_utc": "1996-01-24T08:15:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -90.03,
+          30.05
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "wind",
+        "label": "Wind 53 mph",
+        "local_date": "1996-01-24",
+        "magnitude": 53.0,
+        "marker_style": {
+          "category": "wind",
+          "color": "#2563eb",
+          "marker": "o",
+          "shape": "circle"
+        },
+        "rating_int": null,
+        "report_id": "wind_e18a4e40b5598f65",
+        "source_file": "[Old] 1950-2023 Severe Weather Climo LIX - LIX_WIND.csv",
+        "time_local": "1996-01-24 02:19 CST",
+        "time_utc": "1996-01-24T08:19:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -89.43,
+          30.57
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "wind",
+        "label": "Wind 0 mph",
+        "local_date": "1996-01-24",
+        "magnitude": 0.0,
+        "marker_style": {
+          "category": "wind",
+          "color": "#2563eb",
+          "marker": "o",
+          "shape": "circle"
+        },
+        "rating_int": null,
+        "report_id": "wind_d78aceac91ac9047",
+        "source_file": "[Old] 1950-2023 Severe Weather Climo LIX - LIX_WIND.csv",
+        "time_local": "1996-01-24 02:30 CST",
+        "time_utc": "1996-01-24T08:30:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -89.97,
+          29.93
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "wind",
+        "label": "Wind 0 mph",
+        "local_date": "1996-01-24",
+        "magnitude": 0.0,
+        "marker_style": {
+          "category": "wind",
+          "color": "#2563eb",
+          "marker": "o",
+          "shape": "circle"
+        },
+        "rating_int": null,
+        "report_id": "wind_4f4da2851e0fa2e3",
+        "source_file": "[Old] 1950-2023 Severe Weather Climo LIX - LIX_WIND.csv",
+        "time_local": "1996-01-24 02:40 CST",
+        "time_utc": "1996-01-24T08:40:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -88.9,
+          30.4
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "wind",
+        "label": "Wind 0 mph",
+        "local_date": "1996-01-24",
+        "magnitude": 0.0,
+        "marker_style": {
+          "category": "wind",
+          "color": "#2563eb",
+          "marker": "o",
+          "shape": "circle"
+        },
+        "rating_int": null,
+        "report_id": "wind_6d20590846a2e62d",
+        "source_file": "[Old] 1950-2023 Severe Weather Climo LIX - LIX_WIND.csv",
+        "time_local": "1996-01-24 03:30 CST",
+        "time_utc": "1996-01-24T09:30:00Z"
+      },
+      "type": "Feature"
+    }
+  ],
+  "properties": {
+    "caveat": "This file contains reports on the analog local calendar date, not matched analog-sample reports.",
+    "date": "1996-01-24",
+    "generator": "08_build_analog_report_assets.py",
+    "hazard_counts": {
+      "wind": 5
+    },
+    "report_count": 5,
+    "schema_version": 1
+  },
+  "type": "FeatureCollection"
+}

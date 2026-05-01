@@ -1,0 +1,2585 @@
+{
+  "analog_report_assets_available": true,
+  "analog_report_caveat": "Report-day assets show all standardized severe reports on the analog local calendar date. Matched reports are more specific and require a report to be within the configured radius and time window of the analog sample latitude, longitude, and valid time. A null analog or metadata-limited analog can have zero matched reports even if the broader calendar day had severe weather elsewhere.",
+  "analog_report_manifest": "cycles/2026050100/webdata/analog_reports/analog_report_manifest.json",
+  "created_utc": "2026-05-01T07:54:25Z",
+  "cycle": "2026050100",
+  "cycle_label": "2026-05-01 00Z",
+  "cycle_time": "2026-05-01T00:00:00Z",
+  "day_count": 3,
+  "days": [
+    {
+      "analog_report_manifest": "cycles/2026050100/webdata/analog_reports/analog_report_manifest.json",
+      "date": "2026-05-01",
+      "label": "2026-05-01",
+      "matched_reports_index": "cycles/2026050100/webdata/analog_reports/matched_reports_index.json",
+      "product_count": 2,
+      "products": [
+        {
+          "analog_report_assets_available": true,
+          "analog_report_day_assets": [
+            {
+              "date": "1975-04-30",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19750430.geojson",
+              "hazard_counts": {
+                "tor": 1,
+                "wind": 6
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19750430.png",
+              "report_count": 7
+            },
+            {
+              "date": "1975-05-07",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19750507.geojson",
+              "hazard_counts": {
+                "hail": 3,
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19750507.png",
+              "report_count": 4
+            },
+            {
+              "date": "1975-05-08",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19750508.geojson",
+              "hazard_counts": {
+                "hail": 1,
+                "tor": 2,
+                "wind": 8
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19750508.png",
+              "report_count": 11
+            },
+            {
+              "date": "1978-05-17",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19780517.geojson",
+              "hazard_counts": {
+                "hail": 3,
+                "wind": 2
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19780517.png",
+              "report_count": 5
+            },
+            {
+              "date": "1980-03-09",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19800309.geojson",
+              "hazard_counts": {
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19800309.png",
+              "report_count": 1
+            },
+            {
+              "date": "1981-05-19",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19810519.geojson",
+              "hazard_counts": {
+                "wind": 3
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19810519.png",
+              "report_count": 3
+            },
+            {
+              "date": "1986-05-26",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19860526.geojson",
+              "hazard_counts": {
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19860526.png",
+              "report_count": 1
+            },
+            {
+              "date": "1988-04-02",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19880402.geojson",
+              "hazard_counts": {
+                "tor": 1,
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19880402.png",
+              "report_count": 2
+            },
+            {
+              "date": "1988-05-24",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19880524.geojson",
+              "hazard_counts": {
+                "hail": 5,
+                "wind": 5
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19880524.png",
+              "report_count": 10
+            },
+            {
+              "date": "1989-06-08",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19890608.geojson",
+              "hazard_counts": {
+                "tor": 8,
+                "wind": 9
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19890608.png",
+              "report_count": 17
+            },
+            {
+              "date": "1990-04-02",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19900402.geojson",
+              "hazard_counts": {
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19900402.png",
+              "report_count": 1
+            },
+            {
+              "date": "1990-05-21",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19900521.geojson",
+              "hazard_counts": {
+                "hail": 1,
+                "wind": 2
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19900521.png",
+              "report_count": 3
+            },
+            {
+              "date": "1990-05-27",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19900527.geojson",
+              "hazard_counts": {
+                "hail": 1,
+                "tor": 1,
+                "wind": 21
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19900527.png",
+              "report_count": 23
+            },
+            {
+              "date": "1991-04-14",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19910414.geojson",
+              "hazard_counts": {
+                "wind": 4
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19910414.png",
+              "report_count": 4
+            },
+            {
+              "date": "1991-04-18",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19910418.geojson",
+              "hazard_counts": {
+                "wind": 5
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19910418.png",
+              "report_count": 5
+            },
+            {
+              "date": "1991-04-25",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19910425.geojson",
+              "hazard_counts": {
+                "hail": 2,
+                "wind": 10
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19910425.png",
+              "report_count": 12
+            },
+            {
+              "date": "1991-04-26",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19910426.geojson",
+              "hazard_counts": {
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19910426.png",
+              "report_count": 1
+            },
+            {
+              "date": "1992-05-26",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19920526.geojson",
+              "hazard_counts": {
+                "hail": 1,
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19920526.png",
+              "report_count": 2
+            },
+            {
+              "date": "1992-05-28",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19920528.geojson",
+              "hazard_counts": {
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19920528.png",
+              "report_count": 1
+            },
+            {
+              "date": "1992-06-13",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19920613.geojson",
+              "hazard_counts": {
+                "wind": 13
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19920613.png",
+              "report_count": 13
+            },
+            {
+              "date": "1993-03-25",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19930325.geojson",
+              "hazard_counts": {
+                "hail": 13,
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19930325.png",
+              "report_count": 14
+            },
+            {
+              "date": "1993-05-01",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19930501.geojson",
+              "hazard_counts": {
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19930501.png",
+              "report_count": 1
+            },
+            {
+              "date": "1994-03-25",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19940325.geojson",
+              "hazard_counts": {
+                "hail": 1,
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19940325.png",
+              "report_count": 2
+            },
+            {
+              "date": "1994-05-03",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19940503.geojson",
+              "hazard_counts": {
+                "hail": 1,
+                "tor": 1,
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19940503.png",
+              "report_count": 3
+            },
+            {
+              "date": "1995-05-10",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19950510.geojson",
+              "hazard_counts": {
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19950510.png",
+              "report_count": 1
+            },
+            {
+              "date": "1995-05-11",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19950511.geojson",
+              "hazard_counts": {
+                "wind": 3
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19950511.png",
+              "report_count": 3
+            },
+            {
+              "date": "1995-05-12",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19950512.geojson",
+              "hazard_counts": {
+                "hail": 2,
+                "wind": 2
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19950512.png",
+              "report_count": 4
+            },
+            {
+              "date": "1995-05-18",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19950518.geojson",
+              "hazard_counts": {
+                "tor": 1,
+                "wind": 3
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19950518.png",
+              "report_count": 4
+            },
+            {
+              "date": "1996-02-28",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19960228.geojson",
+              "hazard_counts": {
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19960228.png",
+              "report_count": 1
+            },
+            {
+              "date": "1996-09-21",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19960921.geojson",
+              "hazard_counts": {
+                "wind": 2
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19960921.png",
+              "report_count": 2
+            },
+            {
+              "date": "2001-03-01",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_20010301.geojson",
+              "hazard_counts": {
+                "wind": 2
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_20010301.png",
+              "report_count": 2
+            },
+            {
+              "date": "2006-05-08",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_20060508.geojson",
+              "hazard_counts": {
+                "hail": 6,
+                "tor": 1,
+                "wind": 3
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_20060508.png",
+              "report_count": 10
+            },
+            {
+              "date": "2010-05-29",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_20100529.geojson",
+              "hazard_counts": {
+                "hail": 3,
+                "wind": 2
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_20100529.png",
+              "report_count": 5
+            },
+            {
+              "date": "2011-03-29",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_20110329.geojson",
+              "hazard_counts": {
+                "hail": 20,
+                "tor": 3,
+                "wind": 10
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_20110329.png",
+              "report_count": 33
+            },
+            {
+              "date": "2015-04-27",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_20150427.geojson",
+              "hazard_counts": {
+                "hail": 1,
+                "tor": 5,
+                "wind": 21
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_20150427.png",
+              "report_count": 27
+            },
+            {
+              "date": "2020-04-09",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_20200409.geojson",
+              "hazard_counts": {
+                "wind": 4
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_20200409.png",
+              "report_count": 4
+            }
+          ],
+          "analog_report_manifest": "cycles/2026050100/webdata/analog_reports/analog_report_manifest.json",
+          "bbox": [
+            -91.875,
+            27.875,
+            -87.875,
+            31.625
+          ],
+          "cycle": "2026050100",
+          "cycle_time": "2026-05-01T00:00:00Z",
+          "distance_fields": [
+            "mean_distance",
+            "min_distance",
+            "max_distance",
+            "effective_k"
+          ],
+          "distance_stats": {
+            "effective_k": {
+              "max": 40.0,
+              "mean": 40.0,
+              "min": 40.0,
+              "nonzero_count": 240
+            },
+            "max_distance": {
+              "max": 2.783,
+              "mean": 2.06,
+              "min": 1.639,
+              "nonzero_count": 240
+            },
+            "mean_distance": {
+              "max": 2.692,
+              "mean": 1.936,
+              "min": 1.431,
+              "nonzero_count": 240
+            },
+            "min_distance": {
+              "max": 2.445,
+              "mean": 1.697,
+              "min": 1.182,
+              "nonzero_count": 240
+            }
+          },
+          "feature_count": 240,
+          "forecast_hour": 0,
+          "forecast_hour_label": "f000",
+          "geojson": "cycles/2026050100/webdata/lix_analog_grid_rrfs_2026050100_f000_valid_20260501_00Z.geojson",
+          "grid_shape": [
+            15,
+            16
+          ],
+          "matched_reports_index": "cycles/2026050100/webdata/analog_reports/matched_reports_index.json",
+          "missing_probability_fields": [],
+          "model": "rrfs",
+          "plot_dir": "cycles/2026050100/plots/valid_20260501_00Z_f000",
+          "plots": [
+            {
+              "file": "cycles/2026050100/plots/valid_20260501_00Z_f000/lix_analog_any_rrfs_2026050100_f000_valid_20260501_00Z.png",
+              "hazard": "any",
+              "label": "Any Severe",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050100/plots/valid_20260501_00Z_f000/lix_analog_hail_rrfs_2026050100_f000_valid_20260501_00Z.png",
+              "hazard": "hail",
+              "label": "Severe Hail",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050100/plots/valid_20260501_00Z_f000/lix_analog_sighail_rrfs_2026050100_f000_valid_20260501_00Z.png",
+              "hazard": "sighail",
+              "label": "Significant Hail",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050100/plots/valid_20260501_00Z_f000/lix_analog_sigtor_rrfs_2026050100_f000_valid_20260501_00Z.png",
+              "hazard": "sigtor",
+              "label": "Significant Tornado",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050100/plots/valid_20260501_00Z_f000/lix_analog_sigwind_rrfs_2026050100_f000_valid_20260501_00Z.png",
+              "hazard": "sigwind",
+              "label": "Significant Damaging Wind",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050100/plots/valid_20260501_00Z_f000/lix_analog_tor_rrfs_2026050100_f000_valid_20260501_00Z.png",
+              "hazard": "tor",
+              "label": "Tornado",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050100/plots/valid_20260501_00Z_f000/lix_analog_wind_rrfs_2026050100_f000_valid_20260501_00Z.png",
+              "hazard": "wind",
+              "label": "Damaging Wind",
+              "url": ""
+            }
+          ],
+          "probability_fields": [
+            "prob_any",
+            "prob_tor",
+            "prob_hail",
+            "prob_wind",
+            "prob_sigtor",
+            "prob_sighail",
+            "prob_sigwind"
+          ],
+          "probability_stats": {
+            "prob_any": {
+              "max": 82.5,
+              "mean": 13.042,
+              "min": 0.0,
+              "nonzero_count": 172
+            },
+            "prob_hail": {
+              "max": 32.5,
+              "mean": 5.479,
+              "min": 0.0,
+              "nonzero_count": 104
+            },
+            "prob_sighail": {
+              "max": 15.0,
+              "mean": 0.604,
+              "min": 0.0,
+              "nonzero_count": 27
+            },
+            "prob_sigtor": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "nonzero_count": 0
+            },
+            "prob_sigwind": {
+              "max": 12.5,
+              "mean": 0.563,
+              "min": 0.0,
+              "nonzero_count": 25
+            },
+            "prob_tor": {
+              "max": 27.5,
+              "mean": 1.208,
+              "min": 0.0,
+              "nonzero_count": 37
+            },
+            "prob_wind": {
+              "max": 82.5,
+              "mean": 11.427,
+              "min": 0.0,
+              "nonzero_count": 171
+            }
+          },
+          "probability_units": "percent",
+          "source_netcdf": "cycles/2026050100/netcdf/lix_analog_probs_rrfs_2026050100_f000_valid_20260501_00Z.nc",
+          "valid_date": "2026-05-01",
+          "valid_hour_utc": 0,
+          "valid_time": "2026-05-01T00:00:00Z"
+        },
+        {
+          "analog_report_assets_available": true,
+          "analog_report_day_assets": [
+            {
+              "date": "1975-05-07",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19750507.geojson",
+              "hazard_counts": {
+                "hail": 3,
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19750507.png",
+              "report_count": 4
+            },
+            {
+              "date": "1975-05-08",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19750508.geojson",
+              "hazard_counts": {
+                "hail": 1,
+                "tor": 2,
+                "wind": 8
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19750508.png",
+              "report_count": 11
+            },
+            {
+              "date": "1984-11-30",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19841130.geojson",
+              "hazard_counts": {
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19841130.png",
+              "report_count": 1
+            },
+            {
+              "date": "1990-04-02",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19900402.geojson",
+              "hazard_counts": {
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19900402.png",
+              "report_count": 1
+            },
+            {
+              "date": "1990-05-27",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19900527.geojson",
+              "hazard_counts": {
+                "hail": 1,
+                "tor": 1,
+                "wind": 21
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19900527.png",
+              "report_count": 23
+            },
+            {
+              "date": "1991-04-14",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19910414.geojson",
+              "hazard_counts": {
+                "wind": 4
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19910414.png",
+              "report_count": 4
+            },
+            {
+              "date": "1991-04-19",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19910419.geojson",
+              "hazard_counts": {
+                "hail": 4,
+                "tor": 1,
+                "wind": 7
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19910419.png",
+              "report_count": 12
+            },
+            {
+              "date": "1991-04-25",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19910425.geojson",
+              "hazard_counts": {
+                "hail": 2,
+                "wind": 10
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19910425.png",
+              "report_count": 12
+            },
+            {
+              "date": "1992-05-26",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19920526.geojson",
+              "hazard_counts": {
+                "hail": 1,
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19920526.png",
+              "report_count": 2
+            },
+            {
+              "date": "1994-03-25",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19940325.geojson",
+              "hazard_counts": {
+                "hail": 1,
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19940325.png",
+              "report_count": 2
+            },
+            {
+              "date": "1995-04-22",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19950422.geojson",
+              "hazard_counts": {
+                "hail": 2,
+                "tor": 3,
+                "wind": 3
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19950422.png",
+              "report_count": 8
+            },
+            {
+              "date": "1995-04-23",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19950423.geojson",
+              "hazard_counts": {
+                "tor": 2,
+                "wind": 5
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19950423.png",
+              "report_count": 7
+            },
+            {
+              "date": "1995-05-09",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19950509.geojson",
+              "hazard_counts": {
+                "hail": 1,
+                "tor": 3,
+                "wind": 6
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19950509.png",
+              "report_count": 10
+            },
+            {
+              "date": "1995-05-10",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19950510.geojson",
+              "hazard_counts": {
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19950510.png",
+              "report_count": 1
+            },
+            {
+              "date": "1995-05-11",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19950511.geojson",
+              "hazard_counts": {
+                "wind": 3
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19950511.png",
+              "report_count": 3
+            },
+            {
+              "date": "1995-05-12",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19950512.geojson",
+              "hazard_counts": {
+                "hail": 2,
+                "wind": 2
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19950512.png",
+              "report_count": 4
+            },
+            {
+              "date": "1996-02-28",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19960228.geojson",
+              "hazard_counts": {
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19960228.png",
+              "report_count": 1
+            },
+            {
+              "date": "1996-04-13",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19960413.geojson",
+              "hazard_counts": {
+                "hail": 1,
+                "tor": 1,
+                "wind": 2
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19960413.png",
+              "report_count": 4
+            },
+            {
+              "date": "1996-09-21",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19960921.geojson",
+              "hazard_counts": {
+                "wind": 2
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19960921.png",
+              "report_count": 2
+            },
+            {
+              "date": "2006-05-08",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_20060508.geojson",
+              "hazard_counts": {
+                "hail": 6,
+                "tor": 1,
+                "wind": 3
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_20060508.png",
+              "report_count": 10
+            },
+            {
+              "date": "2011-03-29",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_20110329.geojson",
+              "hazard_counts": {
+                "hail": 20,
+                "tor": 3,
+                "wind": 10
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_20110329.png",
+              "report_count": 33
+            },
+            {
+              "date": "2015-04-24",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_20150424.geojson",
+              "hazard_counts": {
+                "hail": 2,
+                "tor": 1,
+                "wind": 2
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_20150424.png",
+              "report_count": 5
+            },
+            {
+              "date": "2015-04-27",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_20150427.geojson",
+              "hazard_counts": {
+                "hail": 1,
+                "tor": 5,
+                "wind": 21
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_20150427.png",
+              "report_count": 27
+            },
+            {
+              "date": "2020-04-09",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_20200409.geojson",
+              "hazard_counts": {
+                "wind": 4
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_20200409.png",
+              "report_count": 4
+            }
+          ],
+          "analog_report_manifest": "cycles/2026050100/webdata/analog_reports/analog_report_manifest.json",
+          "bbox": [
+            -91.875,
+            27.875,
+            -87.875,
+            31.625
+          ],
+          "cycle": "2026050100",
+          "cycle_time": "2026-05-01T00:00:00Z",
+          "distance_fields": [
+            "mean_distance",
+            "min_distance",
+            "max_distance",
+            "effective_k"
+          ],
+          "distance_stats": {
+            "effective_k": {
+              "max": 40.0,
+              "mean": 40.0,
+              "min": 40.0,
+              "nonzero_count": 240
+            },
+            "max_distance": {
+              "max": 2.448,
+              "mean": 1.92,
+              "min": 1.474,
+              "nonzero_count": 240
+            },
+            "mean_distance": {
+              "max": 2.319,
+              "mean": 1.788,
+              "min": 1.339,
+              "nonzero_count": 240
+            },
+            "min_distance": {
+              "max": 2.034,
+              "mean": 1.509,
+              "min": 1.024,
+              "nonzero_count": 240
+            }
+          },
+          "feature_count": 240,
+          "forecast_hour": 12,
+          "forecast_hour_label": "f012",
+          "geojson": "cycles/2026050100/webdata/lix_analog_grid_rrfs_2026050100_f012_valid_20260501_12Z.geojson",
+          "grid_shape": [
+            15,
+            16
+          ],
+          "matched_reports_index": "cycles/2026050100/webdata/analog_reports/matched_reports_index.json",
+          "missing_probability_fields": [],
+          "model": "rrfs",
+          "plot_dir": "cycles/2026050100/plots/valid_20260501_12Z_f012",
+          "plots": [
+            {
+              "file": "cycles/2026050100/plots/valid_20260501_12Z_f012/lix_analog_any_rrfs_2026050100_f012_valid_20260501_12Z.png",
+              "hazard": "any",
+              "label": "Any Severe",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050100/plots/valid_20260501_12Z_f012/lix_analog_hail_rrfs_2026050100_f012_valid_20260501_12Z.png",
+              "hazard": "hail",
+              "label": "Severe Hail",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050100/plots/valid_20260501_12Z_f012/lix_analog_sighail_rrfs_2026050100_f012_valid_20260501_12Z.png",
+              "hazard": "sighail",
+              "label": "Significant Hail",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050100/plots/valid_20260501_12Z_f012/lix_analog_sigtor_rrfs_2026050100_f012_valid_20260501_12Z.png",
+              "hazard": "sigtor",
+              "label": "Significant Tornado",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050100/plots/valid_20260501_12Z_f012/lix_analog_sigwind_rrfs_2026050100_f012_valid_20260501_12Z.png",
+              "hazard": "sigwind",
+              "label": "Significant Damaging Wind",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050100/plots/valid_20260501_12Z_f012/lix_analog_tor_rrfs_2026050100_f012_valid_20260501_12Z.png",
+              "hazard": "tor",
+              "label": "Tornado",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050100/plots/valid_20260501_12Z_f012/lix_analog_wind_rrfs_2026050100_f012_valid_20260501_12Z.png",
+              "hazard": "wind",
+              "label": "Damaging Wind",
+              "url": ""
+            }
+          ],
+          "probability_fields": [
+            "prob_any",
+            "prob_tor",
+            "prob_hail",
+            "prob_wind",
+            "prob_sigtor",
+            "prob_sighail",
+            "prob_sigwind"
+          ],
+          "probability_stats": {
+            "prob_any": {
+              "max": 72.5,
+              "mean": 9.448,
+              "min": 0.0,
+              "nonzero_count": 162
+            },
+            "prob_hail": {
+              "max": 42.5,
+              "mean": 2.531,
+              "min": 0.0,
+              "nonzero_count": 78
+            },
+            "prob_sighail": {
+              "max": 27.5,
+              "mean": 1.281,
+              "min": 0.0,
+              "nonzero_count": 46
+            },
+            "prob_sigtor": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "nonzero_count": 0
+            },
+            "prob_sigwind": {
+              "max": 32.5,
+              "mean": 0.812,
+              "min": 0.0,
+              "nonzero_count": 23
+            },
+            "prob_tor": {
+              "max": 25.0,
+              "mean": 0.656,
+              "min": 0.0,
+              "nonzero_count": 14
+            },
+            "prob_wind": {
+              "max": 55.0,
+              "mean": 7.313,
+              "min": 0.0,
+              "nonzero_count": 155
+            }
+          },
+          "probability_units": "percent",
+          "source_netcdf": "cycles/2026050100/netcdf/lix_analog_probs_rrfs_2026050100_f012_valid_20260501_12Z.nc",
+          "valid_date": "2026-05-01",
+          "valid_hour_utc": 12,
+          "valid_time": "2026-05-01T12:00:00Z"
+        }
+      ]
+    },
+    {
+      "analog_report_manifest": "cycles/2026050100/webdata/analog_reports/analog_report_manifest.json",
+      "date": "2026-05-02",
+      "label": "2026-05-02",
+      "matched_reports_index": "cycles/2026050100/webdata/analog_reports/matched_reports_index.json",
+      "product_count": 2,
+      "products": [
+        {
+          "analog_report_assets_available": true,
+          "analog_report_day_assets": [
+            {
+              "date": "1974-02-07",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19740207.geojson",
+              "hazard_counts": {
+                "wind": 2
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19740207.png",
+              "report_count": 2
+            },
+            {
+              "date": "1974-04-01",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19740401.geojson",
+              "hazard_counts": {
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19740401.png",
+              "report_count": 1
+            },
+            {
+              "date": "1978-05-03",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19780503.geojson",
+              "hazard_counts": {
+                "wind": 4
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19780503.png",
+              "report_count": 4
+            },
+            {
+              "date": "1979-04-02",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19790402.geojson",
+              "hazard_counts": {
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19790402.png",
+              "report_count": 1
+            },
+            {
+              "date": "1980-04-25",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19800425.geojson",
+              "hazard_counts": {
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19800425.png",
+              "report_count": 1
+            },
+            {
+              "date": "1983-05-21",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19830521.geojson",
+              "hazard_counts": {
+                "hail": 3,
+                "wind": 3
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19830521.png",
+              "report_count": 6
+            },
+            {
+              "date": "1983-05-22",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19830522.geojson",
+              "hazard_counts": {
+                "hail": 1,
+                "tor": 1,
+                "wind": 2
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19830522.png",
+              "report_count": 4
+            },
+            {
+              "date": "1984-10-14",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19841014.geojson",
+              "hazard_counts": {
+                "tor": 1,
+                "wind": 6
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19841014.png",
+              "report_count": 7
+            },
+            {
+              "date": "1985-02-11",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19850211.geojson",
+              "hazard_counts": {
+                "wind": 8
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19850211.png",
+              "report_count": 8
+            },
+            {
+              "date": "1987-01-16",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19870116.geojson",
+              "hazard_counts": {
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19870116.png",
+              "report_count": 1
+            },
+            {
+              "date": "1988-04-18",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19880418.geojson",
+              "hazard_counts": {
+                "hail": 6,
+                "wind": 3
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19880418.png",
+              "report_count": 9
+            },
+            {
+              "date": "1989-06-08",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19890608.geojson",
+              "hazard_counts": {
+                "tor": 8,
+                "wind": 9
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19890608.png",
+              "report_count": 17
+            },
+            {
+              "date": "1990-01-24",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19900124.geojson",
+              "hazard_counts": {
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19900124.png",
+              "report_count": 1
+            },
+            {
+              "date": "1990-01-25",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19900125.geojson",
+              "hazard_counts": {
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19900125.png",
+              "report_count": 1
+            },
+            {
+              "date": "1991-04-14",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19910414.geojson",
+              "hazard_counts": {
+                "wind": 4
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19910414.png",
+              "report_count": 4
+            },
+            {
+              "date": "1991-04-25",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19910425.geojson",
+              "hazard_counts": {
+                "hail": 2,
+                "wind": 10
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19910425.png",
+              "report_count": 12
+            },
+            {
+              "date": "1992-02-17",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19920217.geojson",
+              "hazard_counts": {
+                "hail": 3,
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19920217.png",
+              "report_count": 4
+            },
+            {
+              "date": "1993-02-25",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19930225.geojson",
+              "hazard_counts": {
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19930225.png",
+              "report_count": 1
+            },
+            {
+              "date": "1993-12-04",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19931204.geojson",
+              "hazard_counts": {
+                "tor": 1,
+                "wind": 3
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19931204.png",
+              "report_count": 4
+            },
+            {
+              "date": "1993-12-13",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19931213.geojson",
+              "hazard_counts": {
+                "tor": 1,
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19931213.png",
+              "report_count": 2
+            },
+            {
+              "date": "1994-03-09",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19940309.geojson",
+              "hazard_counts": {
+                "tor": 1,
+                "wind": 15
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19940309.png",
+              "report_count": 16
+            },
+            {
+              "date": "1994-05-03",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19940503.geojson",
+              "hazard_counts": {
+                "hail": 1,
+                "tor": 1,
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19940503.png",
+              "report_count": 3
+            },
+            {
+              "date": "1995-04-23",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19950423.geojson",
+              "hazard_counts": {
+                "tor": 2,
+                "wind": 5
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19950423.png",
+              "report_count": 7
+            },
+            {
+              "date": "1995-05-10",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19950510.geojson",
+              "hazard_counts": {
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19950510.png",
+              "report_count": 1
+            },
+            {
+              "date": "1995-05-11",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19950511.geojson",
+              "hazard_counts": {
+                "wind": 3
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19950511.png",
+              "report_count": 3
+            },
+            {
+              "date": "1995-05-18",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19950518.geojson",
+              "hazard_counts": {
+                "tor": 1,
+                "wind": 3
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19950518.png",
+              "report_count": 4
+            },
+            {
+              "date": "1996-02-28",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19960228.geojson",
+              "hazard_counts": {
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19960228.png",
+              "report_count": 1
+            },
+            {
+              "date": "1996-11-07",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19961107.geojson",
+              "hazard_counts": {
+                "tor": 2,
+                "wind": 2
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19961107.png",
+              "report_count": 4
+            },
+            {
+              "date": "1998-04-17",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19980417.geojson",
+              "hazard_counts": {
+                "hail": 3,
+                "wind": 9
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19980417.png",
+              "report_count": 12
+            },
+            {
+              "date": "2001-03-01",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_20010301.geojson",
+              "hazard_counts": {
+                "wind": 2
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_20010301.png",
+              "report_count": 2
+            },
+            {
+              "date": "2002-11-11",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_20021111.geojson",
+              "hazard_counts": {
+                "tor": 1,
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_20021111.png",
+              "report_count": 2
+            },
+            {
+              "date": "2005-03-07",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_20050307.geojson",
+              "hazard_counts": {
+                "wind": 3
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_20050307.png",
+              "report_count": 3
+            },
+            {
+              "date": "2005-04-11",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_20050411.geojson",
+              "hazard_counts": {
+                "hail": 1,
+                "tor": 1,
+                "wind": 4
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_20050411.png",
+              "report_count": 6
+            },
+            {
+              "date": "2011-04-04",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_20110404.geojson",
+              "hazard_counts": {
+                "tor": 6,
+                "wind": 51
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_20110404.png",
+              "report_count": 57
+            },
+            {
+              "date": "2012-12-10",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_20121210.geojson",
+              "hazard_counts": {
+                "tor": 3,
+                "wind": 3
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_20121210.png",
+              "report_count": 6
+            },
+            {
+              "date": "2014-04-14",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_20140414.geojson",
+              "hazard_counts": {
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_20140414.png",
+              "report_count": 1
+            },
+            {
+              "date": "2015-04-25",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_20150425.geojson",
+              "hazard_counts": {
+                "hail": 5,
+                "wind": 6
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_20150425.png",
+              "report_count": 11
+            },
+            {
+              "date": "2015-04-27",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_20150427.geojson",
+              "hazard_counts": {
+                "hail": 1,
+                "tor": 5,
+                "wind": 21
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_20150427.png",
+              "report_count": 27
+            },
+            {
+              "date": "2016-04-01",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_20160401.geojson",
+              "hazard_counts": {
+                "hail": 1,
+                "wind": 2
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_20160401.png",
+              "report_count": 3
+            },
+            {
+              "date": "2017-05-12",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_20170512.geojson",
+              "hazard_counts": {
+                "hail": 4,
+                "tor": 4,
+                "wind": 7
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_20170512.png",
+              "report_count": 15
+            }
+          ],
+          "analog_report_manifest": "cycles/2026050100/webdata/analog_reports/analog_report_manifest.json",
+          "bbox": [
+            -91.875,
+            27.875,
+            -87.875,
+            31.625
+          ],
+          "cycle": "2026050100",
+          "cycle_time": "2026-05-01T00:00:00Z",
+          "distance_fields": [
+            "mean_distance",
+            "min_distance",
+            "max_distance",
+            "effective_k"
+          ],
+          "distance_stats": {
+            "effective_k": {
+              "max": 40.0,
+              "mean": 40.0,
+              "min": 40.0,
+              "nonzero_count": 240
+            },
+            "max_distance": {
+              "max": 3.403,
+              "mean": 2.183,
+              "min": 1.565,
+              "nonzero_count": 240
+            },
+            "mean_distance": {
+              "max": 3.195,
+              "mean": 2.071,
+              "min": 1.433,
+              "nonzero_count": 240
+            },
+            "min_distance": {
+              "max": 2.853,
+              "mean": 1.796,
+              "min": 1.155,
+              "nonzero_count": 240
+            }
+          },
+          "feature_count": 240,
+          "forecast_hour": 24,
+          "forecast_hour_label": "f024",
+          "geojson": "cycles/2026050100/webdata/lix_analog_grid_rrfs_2026050100_f024_valid_20260502_00Z.geojson",
+          "grid_shape": [
+            15,
+            16
+          ],
+          "matched_reports_index": "cycles/2026050100/webdata/analog_reports/matched_reports_index.json",
+          "missing_probability_fields": [],
+          "model": "rrfs",
+          "plot_dir": "cycles/2026050100/plots/valid_20260502_00Z_f024",
+          "plots": [
+            {
+              "file": "cycles/2026050100/plots/valid_20260502_00Z_f024/lix_analog_any_rrfs_2026050100_f024_valid_20260502_00Z.png",
+              "hazard": "any",
+              "label": "Any Severe",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050100/plots/valid_20260502_00Z_f024/lix_analog_hail_rrfs_2026050100_f024_valid_20260502_00Z.png",
+              "hazard": "hail",
+              "label": "Severe Hail",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050100/plots/valid_20260502_00Z_f024/lix_analog_sighail_rrfs_2026050100_f024_valid_20260502_00Z.png",
+              "hazard": "sighail",
+              "label": "Significant Hail",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050100/plots/valid_20260502_00Z_f024/lix_analog_sigtor_rrfs_2026050100_f024_valid_20260502_00Z.png",
+              "hazard": "sigtor",
+              "label": "Significant Tornado",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050100/plots/valid_20260502_00Z_f024/lix_analog_sigwind_rrfs_2026050100_f024_valid_20260502_00Z.png",
+              "hazard": "sigwind",
+              "label": "Significant Damaging Wind",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050100/plots/valid_20260502_00Z_f024/lix_analog_tor_rrfs_2026050100_f024_valid_20260502_00Z.png",
+              "hazard": "tor",
+              "label": "Tornado",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050100/plots/valid_20260502_00Z_f024/lix_analog_wind_rrfs_2026050100_f024_valid_20260502_00Z.png",
+              "hazard": "wind",
+              "label": "Damaging Wind",
+              "url": ""
+            }
+          ],
+          "probability_fields": [
+            "prob_any",
+            "prob_tor",
+            "prob_hail",
+            "prob_wind",
+            "prob_sigtor",
+            "prob_sighail",
+            "prob_sigwind"
+          ],
+          "probability_stats": {
+            "prob_any": {
+              "max": 77.5,
+              "mean": 25.312,
+              "min": 0.0,
+              "nonzero_count": 210
+            },
+            "prob_hail": {
+              "max": 55.0,
+              "mean": 8.573,
+              "min": 0.0,
+              "nonzero_count": 128
+            },
+            "prob_sighail": {
+              "max": 55.0,
+              "mean": 7.344,
+              "min": 0.0,
+              "nonzero_count": 95
+            },
+            "prob_sigtor": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "nonzero_count": 0
+            },
+            "prob_sigwind": {
+              "max": 30.0,
+              "mean": 0.896,
+              "min": 0.0,
+              "nonzero_count": 26
+            },
+            "prob_tor": {
+              "max": 22.5,
+              "mean": 1.573,
+              "min": 0.0,
+              "nonzero_count": 52
+            },
+            "prob_wind": {
+              "max": 75.0,
+              "mean": 20.042,
+              "min": 0.0,
+              "nonzero_count": 199
+            }
+          },
+          "probability_units": "percent",
+          "source_netcdf": "cycles/2026050100/netcdf/lix_analog_probs_rrfs_2026050100_f024_valid_20260502_00Z.nc",
+          "valid_date": "2026-05-02",
+          "valid_hour_utc": 0,
+          "valid_time": "2026-05-02T00:00:00Z"
+        },
+        {
+          "analog_report_assets_available": true,
+          "analog_report_day_assets": [
+            {
+              "date": "1974-02-07",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19740207.geojson",
+              "hazard_counts": {
+                "wind": 2
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19740207.png",
+              "report_count": 2
+            },
+            {
+              "date": "1974-04-01",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19740401.geojson",
+              "hazard_counts": {
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19740401.png",
+              "report_count": 1
+            },
+            {
+              "date": "1979-11-28",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19791128.geojson",
+              "hazard_counts": {
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19791128.png",
+              "report_count": 1
+            },
+            {
+              "date": "1980-03-09",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19800309.geojson",
+              "hazard_counts": {
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19800309.png",
+              "report_count": 1
+            },
+            {
+              "date": "1982-05-07",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19820507.geojson",
+              "hazard_counts": {
+                "wind": 2
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19820507.png",
+              "report_count": 2
+            },
+            {
+              "date": "1983-04-07",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19830407.geojson",
+              "hazard_counts": {
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19830407.png",
+              "report_count": 1
+            },
+            {
+              "date": "1983-04-14",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19830414.geojson",
+              "hazard_counts": {
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19830414.png",
+              "report_count": 1
+            },
+            {
+              "date": "1983-05-22",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19830522.geojson",
+              "hazard_counts": {
+                "hail": 1,
+                "tor": 1,
+                "wind": 2
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19830522.png",
+              "report_count": 4
+            },
+            {
+              "date": "1984-11-30",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19841130.geojson",
+              "hazard_counts": {
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19841130.png",
+              "report_count": 1
+            },
+            {
+              "date": "1985-01-27",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19850127.geojson",
+              "hazard_counts": {
+                "hail": 1,
+                "wind": 6
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19850127.png",
+              "report_count": 7
+            },
+            {
+              "date": "1987-01-16",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19870116.geojson",
+              "hazard_counts": {
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19870116.png",
+              "report_count": 1
+            },
+            {
+              "date": "1988-04-02",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19880402.geojson",
+              "hazard_counts": {
+                "tor": 1,
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19880402.png",
+              "report_count": 2
+            },
+            {
+              "date": "1988-04-18",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19880418.geojson",
+              "hazard_counts": {
+                "hail": 6,
+                "wind": 3
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19880418.png",
+              "report_count": 9
+            },
+            {
+              "date": "1988-10-02",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19881002.geojson",
+              "hazard_counts": {
+                "tor": 1,
+                "wind": 5
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19881002.png",
+              "report_count": 6
+            },
+            {
+              "date": "1990-01-25",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19900125.geojson",
+              "hazard_counts": {
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19900125.png",
+              "report_count": 1
+            },
+            {
+              "date": "1990-04-02",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19900402.geojson",
+              "hazard_counts": {
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19900402.png",
+              "report_count": 1
+            },
+            {
+              "date": "1991-04-14",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19910414.geojson",
+              "hazard_counts": {
+                "wind": 4
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19910414.png",
+              "report_count": 4
+            },
+            {
+              "date": "1991-04-25",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19910425.geojson",
+              "hazard_counts": {
+                "hail": 2,
+                "wind": 10
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19910425.png",
+              "report_count": 12
+            },
+            {
+              "date": "1992-06-03",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19920603.geojson",
+              "hazard_counts": {
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19920603.png",
+              "report_count": 1
+            },
+            {
+              "date": "1993-02-25",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19930225.geojson",
+              "hazard_counts": {
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19930225.png",
+              "report_count": 1
+            },
+            {
+              "date": "1994-03-25",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19940325.geojson",
+              "hazard_counts": {
+                "hail": 1,
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19940325.png",
+              "report_count": 2
+            },
+            {
+              "date": "1995-04-23",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19950423.geojson",
+              "hazard_counts": {
+                "tor": 2,
+                "wind": 5
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19950423.png",
+              "report_count": 7
+            },
+            {
+              "date": "1995-05-09",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19950509.geojson",
+              "hazard_counts": {
+                "hail": 1,
+                "tor": 3,
+                "wind": 6
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19950509.png",
+              "report_count": 10
+            },
+            {
+              "date": "1995-05-10",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19950510.geojson",
+              "hazard_counts": {
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19950510.png",
+              "report_count": 1
+            },
+            {
+              "date": "1995-05-11",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19950511.geojson",
+              "hazard_counts": {
+                "wind": 3
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19950511.png",
+              "report_count": 3
+            },
+            {
+              "date": "1995-05-12",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19950512.geojson",
+              "hazard_counts": {
+                "hail": 2,
+                "wind": 2
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19950512.png",
+              "report_count": 4
+            },
+            {
+              "date": "1995-05-18",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19950518.geojson",
+              "hazard_counts": {
+                "tor": 1,
+                "wind": 3
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19950518.png",
+              "report_count": 4
+            },
+            {
+              "date": "1996-01-24",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19960124.geojson",
+              "hazard_counts": {
+                "wind": 5
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19960124.png",
+              "report_count": 5
+            },
+            {
+              "date": "1996-02-28",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19960228.geojson",
+              "hazard_counts": {
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19960228.png",
+              "report_count": 1
+            },
+            {
+              "date": "1996-11-07",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19961107.geojson",
+              "hazard_counts": {
+                "tor": 2,
+                "wind": 2
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19961107.png",
+              "report_count": 4
+            },
+            {
+              "date": "2001-03-01",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_20010301.geojson",
+              "hazard_counts": {
+                "wind": 2
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_20010301.png",
+              "report_count": 2
+            },
+            {
+              "date": "2002-11-11",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_20021111.geojson",
+              "hazard_counts": {
+                "tor": 1,
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_20021111.png",
+              "report_count": 2
+            },
+            {
+              "date": "2009-02-14",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_20090214.geojson",
+              "hazard_counts": {
+                "hail": 4,
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_20090214.png",
+              "report_count": 5
+            },
+            {
+              "date": "2013-02-22",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_20130222.geojson",
+              "hazard_counts": {
+                "hail": 4,
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_20130222.png",
+              "report_count": 5
+            },
+            {
+              "date": "2015-04-24",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_20150424.geojson",
+              "hazard_counts": {
+                "hail": 2,
+                "tor": 1,
+                "wind": 2
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_20150424.png",
+              "report_count": 5
+            },
+            {
+              "date": "2015-04-27",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_20150427.geojson",
+              "hazard_counts": {
+                "hail": 1,
+                "tor": 5,
+                "wind": 21
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_20150427.png",
+              "report_count": 27
+            },
+            {
+              "date": "2016-04-01",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_20160401.geojson",
+              "hazard_counts": {
+                "hail": 1,
+                "wind": 2
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_20160401.png",
+              "report_count": 3
+            },
+            {
+              "date": "2019-04-25",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_20190425.geojson",
+              "hazard_counts": {
+                "tor": 1,
+                "wind": 6
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_20190425.png",
+              "report_count": 7
+            },
+            {
+              "date": "2020-04-09",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_20200409.geojson",
+              "hazard_counts": {
+                "wind": 4
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_20200409.png",
+              "report_count": 4
+            }
+          ],
+          "analog_report_manifest": "cycles/2026050100/webdata/analog_reports/analog_report_manifest.json",
+          "bbox": [
+            -91.875,
+            27.875,
+            -87.875,
+            31.625
+          ],
+          "cycle": "2026050100",
+          "cycle_time": "2026-05-01T00:00:00Z",
+          "distance_fields": [
+            "mean_distance",
+            "min_distance",
+            "max_distance",
+            "effective_k"
+          ],
+          "distance_stats": {
+            "effective_k": {
+              "max": 40.0,
+              "mean": 40.0,
+              "min": 40.0,
+              "nonzero_count": 240
+            },
+            "max_distance": {
+              "max": 3.033,
+              "mean": 2.317,
+              "min": 1.758,
+              "nonzero_count": 240
+            },
+            "mean_distance": {
+              "max": 2.93,
+              "mean": 2.185,
+              "min": 1.624,
+              "nonzero_count": 240
+            },
+            "min_distance": {
+              "max": 2.701,
+              "mean": 1.867,
+              "min": 1.239,
+              "nonzero_count": 240
+            }
+          },
+          "feature_count": 240,
+          "forecast_hour": 36,
+          "forecast_hour_label": "f036",
+          "geojson": "cycles/2026050100/webdata/lix_analog_grid_rrfs_2026050100_f036_valid_20260502_12Z.geojson",
+          "grid_shape": [
+            15,
+            16
+          ],
+          "matched_reports_index": "cycles/2026050100/webdata/analog_reports/matched_reports_index.json",
+          "missing_probability_fields": [],
+          "model": "rrfs",
+          "plot_dir": "cycles/2026050100/plots/valid_20260502_12Z_f036",
+          "plots": [
+            {
+              "file": "cycles/2026050100/plots/valid_20260502_12Z_f036/lix_analog_any_rrfs_2026050100_f036_valid_20260502_12Z.png",
+              "hazard": "any",
+              "label": "Any Severe",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050100/plots/valid_20260502_12Z_f036/lix_analog_hail_rrfs_2026050100_f036_valid_20260502_12Z.png",
+              "hazard": "hail",
+              "label": "Severe Hail",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050100/plots/valid_20260502_12Z_f036/lix_analog_sighail_rrfs_2026050100_f036_valid_20260502_12Z.png",
+              "hazard": "sighail",
+              "label": "Significant Hail",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050100/plots/valid_20260502_12Z_f036/lix_analog_sigtor_rrfs_2026050100_f036_valid_20260502_12Z.png",
+              "hazard": "sigtor",
+              "label": "Significant Tornado",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050100/plots/valid_20260502_12Z_f036/lix_analog_sigwind_rrfs_2026050100_f036_valid_20260502_12Z.png",
+              "hazard": "sigwind",
+              "label": "Significant Damaging Wind",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050100/plots/valid_20260502_12Z_f036/lix_analog_tor_rrfs_2026050100_f036_valid_20260502_12Z.png",
+              "hazard": "tor",
+              "label": "Tornado",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050100/plots/valid_20260502_12Z_f036/lix_analog_wind_rrfs_2026050100_f036_valid_20260502_12Z.png",
+              "hazard": "wind",
+              "label": "Damaging Wind",
+              "url": ""
+            }
+          ],
+          "probability_fields": [
+            "prob_any",
+            "prob_tor",
+            "prob_hail",
+            "prob_wind",
+            "prob_sigtor",
+            "prob_sighail",
+            "prob_sigwind"
+          ],
+          "probability_stats": {
+            "prob_any": {
+              "max": 65.0,
+              "mean": 11.49,
+              "min": 0.0,
+              "nonzero_count": 164
+            },
+            "prob_hail": {
+              "max": 32.5,
+              "mean": 3.833,
+              "min": 0.0,
+              "nonzero_count": 69
+            },
+            "prob_sighail": {
+              "max": 17.5,
+              "mean": 2.281,
+              "min": 0.0,
+              "nonzero_count": 55
+            },
+            "prob_sigtor": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "nonzero_count": 0
+            },
+            "prob_sigwind": {
+              "max": 10.0,
+              "mean": 0.198,
+              "min": 0.0,
+              "nonzero_count": 10
+            },
+            "prob_tor": {
+              "max": 35.0,
+              "mean": 1.833,
+              "min": 0.0,
+              "nonzero_count": 49
+            },
+            "prob_wind": {
+              "max": 50.0,
+              "mean": 6.188,
+              "min": 0.0,
+              "nonzero_count": 141
+            }
+          },
+          "probability_units": "percent",
+          "source_netcdf": "cycles/2026050100/netcdf/lix_analog_probs_rrfs_2026050100_f036_valid_20260502_12Z.nc",
+          "valid_date": "2026-05-02",
+          "valid_hour_utc": 12,
+          "valid_time": "2026-05-02T12:00:00Z"
+        }
+      ]
+    },
+    {
+      "analog_report_manifest": "cycles/2026050100/webdata/analog_reports/analog_report_manifest.json",
+      "date": "2026-05-03",
+      "label": "2026-05-03",
+      "matched_reports_index": "cycles/2026050100/webdata/analog_reports/matched_reports_index.json",
+      "product_count": 2,
+      "products": [
+        {
+          "analog_report_assets_available": true,
+          "analog_report_day_assets": [
+            {
+              "date": "1979-11-28",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19791128.geojson",
+              "hazard_counts": {
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19791128.png",
+              "report_count": 1
+            },
+            {
+              "date": "1980-04-18",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19800418.geojson",
+              "hazard_counts": {
+                "hail": 9,
+                "wind": 2
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19800418.png",
+              "report_count": 11
+            },
+            {
+              "date": "1982-04-26",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19820426.geojson",
+              "hazard_counts": {
+                "hail": 2,
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19820426.png",
+              "report_count": 3
+            },
+            {
+              "date": "1989-05-06",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19890506.geojson",
+              "hazard_counts": {
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19890506.png",
+              "report_count": 1
+            },
+            {
+              "date": "1995-05-09",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19950509.geojson",
+              "hazard_counts": {
+                "hail": 1,
+                "tor": 3,
+                "wind": 6
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19950509.png",
+              "report_count": 10
+            },
+            {
+              "date": "1995-05-11",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19950511.geojson",
+              "hazard_counts": {
+                "wind": 3
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19950511.png",
+              "report_count": 3
+            },
+            {
+              "date": "1996-02-28",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19960228.geojson",
+              "hazard_counts": {
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19960228.png",
+              "report_count": 1
+            },
+            {
+              "date": "1996-04-13",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19960413.geojson",
+              "hazard_counts": {
+                "hail": 1,
+                "tor": 1,
+                "wind": 2
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19960413.png",
+              "report_count": 4
+            },
+            {
+              "date": "1996-04-15",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19960415.geojson",
+              "hazard_counts": {
+                "hail": 1,
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19960415.png",
+              "report_count": 2
+            },
+            {
+              "date": "1997-05-03",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19970503.geojson",
+              "hazard_counts": {
+                "hail": 3,
+                "wind": 2
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19970503.png",
+              "report_count": 5
+            }
+          ],
+          "analog_report_manifest": "cycles/2026050100/webdata/analog_reports/analog_report_manifest.json",
+          "bbox": [
+            -91.875,
+            27.875,
+            -87.875,
+            31.625
+          ],
+          "cycle": "2026050100",
+          "cycle_time": "2026-05-01T00:00:00Z",
+          "distance_fields": [
+            "mean_distance",
+            "min_distance",
+            "max_distance",
+            "effective_k"
+          ],
+          "distance_stats": {
+            "effective_k": {
+              "max": 40.0,
+              "mean": 40.0,
+              "min": 40.0,
+              "nonzero_count": 240
+            },
+            "max_distance": {
+              "max": 3.066,
+              "mean": 2.619,
+              "min": 2.222,
+              "nonzero_count": 240
+            },
+            "mean_distance": {
+              "max": 2.91,
+              "mean": 2.494,
+              "min": 2.115,
+              "nonzero_count": 240
+            },
+            "min_distance": {
+              "max": 2.771,
+              "mean": 2.279,
+              "min": 1.839,
+              "nonzero_count": 240
+            }
+          },
+          "feature_count": 240,
+          "forecast_hour": 48,
+          "forecast_hour_label": "f048",
+          "geojson": "cycles/2026050100/webdata/lix_analog_grid_rrfs_2026050100_f048_valid_20260503_00Z.geojson",
+          "grid_shape": [
+            15,
+            16
+          ],
+          "matched_reports_index": "cycles/2026050100/webdata/analog_reports/matched_reports_index.json",
+          "missing_probability_fields": [],
+          "model": "rrfs",
+          "plot_dir": "cycles/2026050100/plots/valid_20260503_00Z_f048",
+          "plots": [
+            {
+              "file": "cycles/2026050100/plots/valid_20260503_00Z_f048/lix_analog_any_rrfs_2026050100_f048_valid_20260503_00Z.png",
+              "hazard": "any",
+              "label": "Any Severe",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050100/plots/valid_20260503_00Z_f048/lix_analog_hail_rrfs_2026050100_f048_valid_20260503_00Z.png",
+              "hazard": "hail",
+              "label": "Severe Hail",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050100/plots/valid_20260503_00Z_f048/lix_analog_sighail_rrfs_2026050100_f048_valid_20260503_00Z.png",
+              "hazard": "sighail",
+              "label": "Significant Hail",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050100/plots/valid_20260503_00Z_f048/lix_analog_sigtor_rrfs_2026050100_f048_valid_20260503_00Z.png",
+              "hazard": "sigtor",
+              "label": "Significant Tornado",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050100/plots/valid_20260503_00Z_f048/lix_analog_sigwind_rrfs_2026050100_f048_valid_20260503_00Z.png",
+              "hazard": "sigwind",
+              "label": "Significant Damaging Wind",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050100/plots/valid_20260503_00Z_f048/lix_analog_tor_rrfs_2026050100_f048_valid_20260503_00Z.png",
+              "hazard": "tor",
+              "label": "Tornado",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050100/plots/valid_20260503_00Z_f048/lix_analog_wind_rrfs_2026050100_f048_valid_20260503_00Z.png",
+              "hazard": "wind",
+              "label": "Damaging Wind",
+              "url": ""
+            }
+          ],
+          "probability_fields": [
+            "prob_any",
+            "prob_tor",
+            "prob_hail",
+            "prob_wind",
+            "prob_sigtor",
+            "prob_sighail",
+            "prob_sigwind"
+          ],
+          "probability_stats": {
+            "prob_any": {
+              "max": 22.5,
+              "mean": 3.708,
+              "min": 0.0,
+              "nonzero_count": 59
+            },
+            "prob_hail": {
+              "max": 5.0,
+              "mean": 0.021,
+              "min": 0.0,
+              "nonzero_count": 1
+            },
+            "prob_sighail": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "nonzero_count": 0
+            },
+            "prob_sigtor": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "nonzero_count": 0
+            },
+            "prob_sigwind": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "nonzero_count": 0
+            },
+            "prob_tor": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "nonzero_count": 0
+            },
+            "prob_wind": {
+              "max": 22.5,
+              "mean": 3.687,
+              "min": 0.0,
+              "nonzero_count": 59
+            }
+          },
+          "probability_units": "percent",
+          "source_netcdf": "cycles/2026050100/netcdf/lix_analog_probs_rrfs_2026050100_f048_valid_20260503_00Z.nc",
+          "valid_date": "2026-05-03",
+          "valid_hour_utc": 0,
+          "valid_time": "2026-05-03T00:00:00Z"
+        },
+        {
+          "analog_report_assets_available": true,
+          "analog_report_day_assets": [
+            {
+              "date": "1982-04-26",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19820426.geojson",
+              "hazard_counts": {
+                "hail": 2,
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19820426.png",
+              "report_count": 3
+            },
+            {
+              "date": "1982-09-24",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19820924.geojson",
+              "hazard_counts": {
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19820924.png",
+              "report_count": 1
+            },
+            {
+              "date": "1989-05-06",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19890506.geojson",
+              "hazard_counts": {
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19890506.png",
+              "report_count": 1
+            },
+            {
+              "date": "1992-11-03",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19921103.geojson",
+              "hazard_counts": {
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19921103.png",
+              "report_count": 1
+            },
+            {
+              "date": "1995-04-22",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19950422.geojson",
+              "hazard_counts": {
+                "hail": 2,
+                "tor": 3,
+                "wind": 3
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19950422.png",
+              "report_count": 8
+            },
+            {
+              "date": "1995-05-11",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19950511.geojson",
+              "hazard_counts": {
+                "wind": 3
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19950511.png",
+              "report_count": 3
+            },
+            {
+              "date": "1996-04-15",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_19960415.geojson",
+              "hazard_counts": {
+                "hail": 1,
+                "wind": 1
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_19960415.png",
+              "report_count": 2
+            },
+            {
+              "date": "2006-05-08",
+              "geojson": "cycles/2026050100/webdata/analog_reports/report_day_20060508.geojson",
+              "hazard_counts": {
+                "hail": 6,
+                "tor": 1,
+                "wind": 3
+              },
+              "png": "cycles/2026050100/webdata/analog_reports/report_day_20060508.png",
+              "report_count": 10
+            }
+          ],
+          "analog_report_manifest": "cycles/2026050100/webdata/analog_reports/analog_report_manifest.json",
+          "bbox": [
+            -91.875,
+            27.875,
+            -87.875,
+            31.625
+          ],
+          "cycle": "2026050100",
+          "cycle_time": "2026-05-01T00:00:00Z",
+          "distance_fields": [
+            "mean_distance",
+            "min_distance",
+            "max_distance",
+            "effective_k"
+          ],
+          "distance_stats": {
+            "effective_k": {
+              "max": 40.0,
+              "mean": 40.0,
+              "min": 40.0,
+              "nonzero_count": 240
+            },
+            "max_distance": {
+              "max": 2.944,
+              "mean": 2.526,
+              "min": 2.114,
+              "nonzero_count": 240
+            },
+            "mean_distance": {
+              "max": 2.865,
+              "mean": 2.384,
+              "min": 1.962,
+              "nonzero_count": 240
+            },
+            "min_distance": {
+              "max": 2.758,
+              "mean": 2.177,
+              "min": 1.686,
+              "nonzero_count": 240
+            }
+          },
+          "feature_count": 240,
+          "forecast_hour": 60,
+          "forecast_hour_label": "f060",
+          "geojson": "cycles/2026050100/webdata/lix_analog_grid_rrfs_2026050100_f060_valid_20260503_12Z.geojson",
+          "grid_shape": [
+            15,
+            16
+          ],
+          "matched_reports_index": "cycles/2026050100/webdata/analog_reports/matched_reports_index.json",
+          "missing_probability_fields": [],
+          "model": "rrfs",
+          "plot_dir": "cycles/2026050100/plots/valid_20260503_12Z_f060",
+          "plots": [
+            {
+              "file": "cycles/2026050100/plots/valid_20260503_12Z_f060/lix_analog_any_rrfs_2026050100_f060_valid_20260503_12Z.png",
+              "hazard": "any",
+              "label": "Any Severe",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050100/plots/valid_20260503_12Z_f060/lix_analog_hail_rrfs_2026050100_f060_valid_20260503_12Z.png",
+              "hazard": "hail",
+              "label": "Severe Hail",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050100/plots/valid_20260503_12Z_f060/lix_analog_sighail_rrfs_2026050100_f060_valid_20260503_12Z.png",
+              "hazard": "sighail",
+              "label": "Significant Hail",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050100/plots/valid_20260503_12Z_f060/lix_analog_sigtor_rrfs_2026050100_f060_valid_20260503_12Z.png",
+              "hazard": "sigtor",
+              "label": "Significant Tornado",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050100/plots/valid_20260503_12Z_f060/lix_analog_sigwind_rrfs_2026050100_f060_valid_20260503_12Z.png",
+              "hazard": "sigwind",
+              "label": "Significant Damaging Wind",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050100/plots/valid_20260503_12Z_f060/lix_analog_tor_rrfs_2026050100_f060_valid_20260503_12Z.png",
+              "hazard": "tor",
+              "label": "Tornado",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050100/plots/valid_20260503_12Z_f060/lix_analog_wind_rrfs_2026050100_f060_valid_20260503_12Z.png",
+              "hazard": "wind",
+              "label": "Damaging Wind",
+              "url": ""
+            }
+          ],
+          "probability_fields": [
+            "prob_any",
+            "prob_tor",
+            "prob_hail",
+            "prob_wind",
+            "prob_sigtor",
+            "prob_sighail",
+            "prob_sigwind"
+          ],
+          "probability_stats": {
+            "prob_any": {
+              "max": 17.5,
+              "mean": 1.385,
+              "min": 0.0,
+              "nonzero_count": 59
+            },
+            "prob_hail": {
+              "max": 5.0,
+              "mean": 0.396,
+              "min": 0.0,
+              "nonzero_count": 27
+            },
+            "prob_sighail": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "nonzero_count": 0
+            },
+            "prob_sigtor": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "nonzero_count": 0
+            },
+            "prob_sigwind": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "nonzero_count": 0
+            },
+            "prob_tor": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "nonzero_count": 0
+            },
+            "prob_wind": {
+              "max": 17.5,
+              "mean": 0.99,
+              "min": 0.0,
+              "nonzero_count": 34
+            }
+          },
+          "probability_units": "percent",
+          "source_netcdf": "cycles/2026050100/netcdf/lix_analog_probs_rrfs_2026050100_f060_valid_20260503_12Z.nc",
+          "valid_date": "2026-05-03",
+          "valid_hour_utc": 12,
+          "valid_time": "2026-05-03T12:00:00Z"
+        }
+      ]
+    }
+  ],
+  "domain": "conus",
+  "errors": [],
+  "experimental_caveat": "Experimental analog guidance. Probabilities are nearest-analog label frequencies from a historical ERA5 gridpoint library and are not calibrated official NWS probabilistic guidance. Verify locally before use.",
+  "generator": "07_export_interactive_web.py",
+  "hazards": [
+    {
+      "field": "prob_any",
+      "id": "any",
+      "label": "Any Severe",
+      "units": "percent"
+    },
+    {
+      "field": "prob_tor",
+      "id": "tor",
+      "label": "Tornado",
+      "units": "percent"
+    },
+    {
+      "field": "prob_hail",
+      "id": "hail",
+      "label": "Severe Hail",
+      "units": "percent"
+    },
+    {
+      "field": "prob_wind",
+      "id": "wind",
+      "label": "Damaging Wind",
+      "units": "percent"
+    },
+    {
+      "field": "prob_sigtor",
+      "id": "sigtor",
+      "label": "Significant Tornado",
+      "units": "percent"
+    },
+    {
+      "field": "prob_sighail",
+      "id": "sighail",
+      "label": "Significant Hail",
+      "units": "percent"
+    },
+    {
+      "field": "prob_sigwind",
+      "id": "sigwind",
+      "label": "Significant Damaging Wind",
+      "units": "percent"
+    }
+  ],
+  "matched_reports_index": "cycles/2026050100/webdata/analog_reports/matched_reports_index.json",
+  "model": "rrfs",
+  "product": "prslev",
+  "product_count": 6,
+  "schema_version": 1,
+  "status": "ok",
+  "web_manifest": "cycles/2026050100/webdata/web_manifest.json",
+  "webdata_directory": "cycles/2026050100/webdata"
+}

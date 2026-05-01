@@ -1,0 +1,21 @@
+@'
+# Do not publish model/reanalysis/data-heavy files
+*.nc
+*.grib2
+*.idx
+*.tmp
+*.log
+*.npz
+
+# Python/cache clutter
+__pycache__/
+.ipynb_checkpoints/
+
+# Never publish local model/cache folders
+model_cache/
+era5_cache/
+
+# Optional local scratch folders
+scratch/
+temp/
+'@ | Set-Content ".gitignore"

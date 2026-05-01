@@ -1,0 +1,287 @@
+{
+  "features": [
+    {
+      "geometry": {
+        "coordinates": [
+          -89.77,
+          30.78
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "hail",
+        "label": "Hail 0.75 in",
+        "local_date": "2006-05-08",
+        "magnitude": 0.75,
+        "marker_style": {
+          "category": "hail",
+          "color": "#16a34a",
+          "marker": "^",
+          "shape": "triangle"
+        },
+        "rating_int": null,
+        "report_id": "hail_08b1f5a1c76db784",
+        "source_file": "1950-2024 Severe Weather Climo LIX - LIX_HAIL.csv",
+        "time_local": "2006-05-08 19:15 CDT",
+        "time_utc": "2006-05-09T00:15:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -89.45,
+          30.77
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "hail",
+        "label": "Hail 0.75 in",
+        "local_date": "2006-05-08",
+        "magnitude": 0.75,
+        "marker_style": {
+          "category": "hail",
+          "color": "#16a34a",
+          "marker": "^",
+          "shape": "triangle"
+        },
+        "rating_int": null,
+        "report_id": "hail_252df3538e22ba9a",
+        "source_file": "1950-2024 Severe Weather Climo LIX - LIX_HAIL.csv",
+        "time_local": "2006-05-08 19:26 CDT",
+        "time_utc": "2006-05-09T00:26:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -89.77,
+          30.78
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "wind",
+        "label": "Wind 50 mph",
+        "local_date": "2006-05-08",
+        "magnitude": 50.0,
+        "marker_style": {
+          "category": "wind",
+          "color": "#2563eb",
+          "marker": "o",
+          "shape": "circle"
+        },
+        "rating_int": null,
+        "report_id": "wind_0dfd380dafa5792d",
+        "source_file": "[Old] 1950-2023 Severe Weather Climo LIX - LIX_WIND.csv",
+        "time_local": "2006-05-08 19:30 CDT",
+        "time_utc": "2006-05-09T00:30:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -89.78,
+          30.78
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "wind",
+        "label": "Wind 50 mph",
+        "local_date": "2006-05-08",
+        "magnitude": 50.0,
+        "marker_style": {
+          "category": "wind",
+          "color": "#2563eb",
+          "marker": "o",
+          "shape": "circle"
+        },
+        "rating_int": null,
+        "report_id": "wind_c749411d6c733110",
+        "source_file": "[Old] 1950-2023 Severe Weather Climo LIX - LIX_WIND.csv",
+        "time_local": "2006-05-08 19:35 CDT",
+        "time_utc": "2006-05-09T00:35:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -90.5,
+          31.0
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "hail",
+        "label": "Hail 0.75 in",
+        "local_date": "2006-05-08",
+        "magnitude": 0.75,
+        "marker_style": {
+          "category": "hail",
+          "color": "#16a34a",
+          "marker": "^",
+          "shape": "triangle"
+        },
+        "rating_int": null,
+        "report_id": "hail_1ea28be253833aac",
+        "source_file": "1950-2024 Severe Weather Climo LIX - LIX_HAIL.csv",
+        "time_local": "2006-05-08 20:15 CDT",
+        "time_utc": "2006-05-09T01:15:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -90.43,
+          30.93
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "hail",
+        "label": "Hail 1.00 in",
+        "local_date": "2006-05-08",
+        "magnitude": 1.0,
+        "marker_style": {
+          "category": "hail",
+          "color": "#16a34a",
+          "marker": "^",
+          "shape": "triangle"
+        },
+        "rating_int": null,
+        "report_id": "hail_e8691181bb324b19",
+        "source_file": "1950-2024 Severe Weather Climo LIX - LIX_HAIL.csv",
+        "time_local": "2006-05-08 20:20 CDT",
+        "time_utc": "2006-05-09T01:20:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -90.28,
+          30.95
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "hail",
+        "label": "Hail 1.00 in",
+        "local_date": "2006-05-08",
+        "magnitude": 1.0,
+        "marker_style": {
+          "category": "hail",
+          "color": "#16a34a",
+          "marker": "^",
+          "shape": "triangle"
+        },
+        "rating_int": null,
+        "report_id": "hail_78fdd57a2d80c6e7",
+        "source_file": "1950-2024 Severe Weather Climo LIX - LIX_HAIL.csv",
+        "time_local": "2006-05-08 20:40 CDT",
+        "time_utc": "2006-05-09T01:40:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -90.28,
+          30.95
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "wind",
+        "label": "Wind 50 mph",
+        "local_date": "2006-05-08",
+        "magnitude": 50.0,
+        "marker_style": {
+          "category": "wind",
+          "color": "#2563eb",
+          "marker": "o",
+          "shape": "circle"
+        },
+        "rating_int": null,
+        "report_id": "wind_52d24e13ed8d6cdd",
+        "source_file": "[Old] 1950-2023 Severe Weather Climo LIX - LIX_WIND.csv",
+        "time_local": "2006-05-08 20:40 CDT",
+        "time_utc": "2006-05-09T01:40:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -90.15,
+          30.85
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "hail",
+        "label": "Hail 0.75 in",
+        "local_date": "2006-05-08",
+        "magnitude": 0.75,
+        "marker_style": {
+          "category": "hail",
+          "color": "#16a34a",
+          "marker": "^",
+          "shape": "triangle"
+        },
+        "rating_int": null,
+        "report_id": "hail_82eaf8176c73ee54",
+        "source_file": "1950-2024 Severe Weather Climo LIX - LIX_HAIL.csv",
+        "time_local": "2006-05-08 21:00 CDT",
+        "time_utc": "2006-05-09T02:00:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -90.15,
+          30.78
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "tor",
+        "label": "Tornado EF/F1",
+        "local_date": "2006-05-08",
+        "magnitude": 1.0,
+        "marker_style": {
+          "category": "tornado",
+          "color": "#dc2626",
+          "marker": "v",
+          "shape": "triangle_down"
+        },
+        "rating_int": 1,
+        "report_id": "tor_e2b24d9bcddf72a9",
+        "source_file": "lix_tornadoes_all_1974_2023.csv",
+        "time_local": "2006-05-08 22:17 CDT",
+        "time_utc": "2006-05-09T03:17:00Z"
+      },
+      "type": "Feature"
+    }
+  ],
+  "properties": {
+    "caveat": "This file contains reports on the analog local calendar date, not matched analog-sample reports.",
+    "date": "2006-05-08",
+    "generator": "08_build_analog_report_assets.py",
+    "hazard_counts": {
+      "hail": 6,
+      "tor": 1,
+      "wind": 3
+    },
+    "report_count": 10,
+    "schema_version": 1
+  },
+  "type": "FeatureCollection"
+}
