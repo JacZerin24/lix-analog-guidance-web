@@ -2,7 +2,7 @@
   "analog_report_assets_available": true,
   "analog_report_caveat": "Report-day assets show all standardized severe reports on the analog local calendar date. Matched reports are more specific and require a report to be within the configured radius and time window of the analog sample latitude, longitude, and valid time. A null analog or metadata-limited analog can have zero matched reports even if the broader calendar day had severe weather elsewhere.",
   "analog_report_manifest": "cycles/2026050106/webdata/analog_reports/analog_report_manifest.json",
-  "created_utc": "2026-05-01T08:50:57Z",
+  "created_utc": "2026-05-01T10:32:58Z",
   "cycle": "2026050106",
   "cycle_label": "2026-05-01 06Z",
   "cycle_time": "2026-05-01T06:00:00Z",
@@ -16,6 +16,12 @@
       "product_count": 1,
       "products": [
         {
+          "analog_json": "cycles/2026050106/netcdf/lix_analog_probs_rrfs_2026050106_f006_valid_20260501_12Z_analogs.json",
+          "analog_json_url": "",
+          "analog_lookup_fields": [
+            "grid_i",
+            "grid_j"
+          ],
           "analog_report_assets_available": true,
           "analog_report_day_assets": [
             {
@@ -329,6 +335,7 @@
             }
           ],
           "analog_report_manifest": "cycles/2026050106/webdata/analog_reports/analog_report_manifest.json",
+          "analog_status": "available",
           "bbox": [
             -91.875,
             27.875,
@@ -494,6 +501,12 @@
       "product_count": 2,
       "products": [
         {
+          "analog_json": "cycles/2026050106/netcdf/lix_analog_probs_rrfs_2026050106_f018_valid_20260502_00Z_analogs.json",
+          "analog_json_url": "",
+          "analog_lookup_fields": [
+            "grid_i",
+            "grid_j"
+          ],
           "analog_report_assets_available": true,
           "analog_report_day_assets": [
             {
@@ -928,6 +941,7 @@
             }
           ],
           "analog_report_manifest": "cycles/2026050106/webdata/analog_reports/analog_report_manifest.json",
+          "analog_status": "available",
           "bbox": [
             -91.875,
             27.875,
@@ -1084,6 +1098,12 @@
           "valid_time": "2026-05-02T00:00:00Z"
         },
         {
+          "analog_json": "cycles/2026050106/netcdf/lix_analog_probs_rrfs_2026050106_f030_valid_20260502_12Z_analogs.json",
+          "analog_json_url": "",
+          "analog_lookup_fields": [
+            "grid_i",
+            "grid_j"
+          ],
           "analog_report_assets_available": true,
           "analog_report_day_assets": [
             {
@@ -1366,6 +1386,7 @@
             }
           ],
           "analog_report_manifest": "cycles/2026050106/webdata/analog_reports/analog_report_manifest.json",
+          "analog_status": "available",
           "bbox": [
             -91.875,
             27.875,
@@ -1531,6 +1552,12 @@
       "product_count": 2,
       "products": [
         {
+          "analog_json": "cycles/2026050106/netcdf/lix_analog_probs_rrfs_2026050106_f042_valid_20260503_00Z_analogs.json",
+          "analog_json_url": "",
+          "analog_lookup_fields": [
+            "grid_i",
+            "grid_j"
+          ],
           "analog_report_assets_available": true,
           "analog_report_day_assets": [
             {
@@ -1728,6 +1755,7 @@
             }
           ],
           "analog_report_manifest": "cycles/2026050106/webdata/analog_reports/analog_report_manifest.json",
+          "analog_status": "available",
           "bbox": [
             -91.875,
             27.875,
@@ -1884,6 +1912,12 @@
           "valid_time": "2026-05-03T00:00:00Z"
         },
         {
+          "analog_json": "cycles/2026050106/netcdf/lix_analog_probs_rrfs_2026050106_f054_valid_20260503_12Z_analogs.json",
+          "analog_json_url": "",
+          "analog_lookup_fields": [
+            "grid_i",
+            "grid_j"
+          ],
           "analog_report_assets_available": true,
           "analog_report_day_assets": [
             {
@@ -1966,6 +2000,7 @@
             }
           ],
           "analog_report_manifest": "cycles/2026050106/webdata/analog_reports/analog_report_manifest.json",
+          "analog_status": "available",
           "bbox": [
             -91.875,
             27.875,

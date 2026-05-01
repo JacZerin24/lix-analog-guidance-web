@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-05-01T08:50:57Z",
+  "created_utc": "2026-05-01T10:32:58Z",
   "cycle": "2026050106",
   "cycle_directory": "cycles/2026050106",
   "cycle_label": "2026-05-01 06Z",
@@ -12,6 +12,13 @@
       "product_count": 1,
       "products": [
         {
+          "analog_json": "cycles/2026050106/netcdf/lix_analog_probs_rrfs_2026050106_f006_valid_20260501_12Z_analogs.json",
+          "analog_json_url": "",
+          "analog_lookup_fields": [
+            "grid_i",
+            "grid_j"
+          ],
+          "analog_status": "available",
           "bbox": [
             -91.875,
             27.875,
@@ -174,6 +181,13 @@
       "product_count": 2,
       "products": [
         {
+          "analog_json": "cycles/2026050106/netcdf/lix_analog_probs_rrfs_2026050106_f018_valid_20260502_00Z_analogs.json",
+          "analog_json_url": "",
+          "analog_lookup_fields": [
+            "grid_i",
+            "grid_j"
+          ],
+          "analog_status": "available",
           "bbox": [
             -91.875,
             27.875,
@@ -329,6 +343,13 @@
           "valid_time": "2026-05-02T00:00:00Z"
         },
         {
+          "analog_json": "cycles/2026050106/netcdf/lix_analog_probs_rrfs_2026050106_f030_valid_20260502_12Z_analogs.json",
+          "analog_json_url": "",
+          "analog_lookup_fields": [
+            "grid_i",
+            "grid_j"
+          ],
+          "analog_status": "available",
           "bbox": [
             -91.875,
             27.875,
@@ -491,6 +512,13 @@
       "product_count": 2,
       "products": [
         {
+          "analog_json": "cycles/2026050106/netcdf/lix_analog_probs_rrfs_2026050106_f042_valid_20260503_00Z_analogs.json",
+          "analog_json_url": "",
+          "analog_lookup_fields": [
+            "grid_i",
+            "grid_j"
+          ],
+          "analog_status": "available",
           "bbox": [
             -91.875,
             27.875,
@@ -646,6 +674,13 @@
           "valid_time": "2026-05-03T00:00:00Z"
         },
         {
+          "analog_json": "cycles/2026050106/netcdf/lix_analog_probs_rrfs_2026050106_f054_valid_20260503_12Z_analogs.json",
+          "analog_json_url": "",
+          "analog_lookup_fields": [
+            "grid_i",
+            "grid_j"
+          ],
+          "analog_status": "available",
           "bbox": [
             -91.875,
             27.875,
@@ -856,6 +891,13 @@
   "product_count": 5,
   "products": [
     {
+      "analog_json": "cycles/2026050106/netcdf/lix_analog_probs_rrfs_2026050106_f006_valid_20260501_12Z_analogs.json",
+      "analog_json_url": "",
+      "analog_lookup_fields": [
+        "grid_i",
+        "grid_j"
+      ],
+      "analog_status": "available",
       "bbox": [
         -91.875,
         27.875,
@@ -1011,6 +1053,13 @@
       "valid_time": "2026-05-01T12:00:00Z"
     },
     {
+      "analog_json": "cycles/2026050106/netcdf/lix_analog_probs_rrfs_2026050106_f018_valid_20260502_00Z_analogs.json",
+      "analog_json_url": "",
+      "analog_lookup_fields": [
+        "grid_i",
+        "grid_j"
+      ],
+      "analog_status": "available",
       "bbox": [
         -91.875,
         27.875,
@@ -1166,6 +1215,13 @@
       "valid_time": "2026-05-02T00:00:00Z"
     },
     {
+      "analog_json": "cycles/2026050106/netcdf/lix_analog_probs_rrfs_2026050106_f030_valid_20260502_12Z_analogs.json",
+      "analog_json_url": "",
+      "analog_lookup_fields": [
+        "grid_i",
+        "grid_j"
+      ],
+      "analog_status": "available",
       "bbox": [
         -91.875,
         27.875,
@@ -1321,6 +1377,13 @@
       "valid_time": "2026-05-02T12:00:00Z"
     },
     {
+      "analog_json": "cycles/2026050106/netcdf/lix_analog_probs_rrfs_2026050106_f042_valid_20260503_00Z_analogs.json",
+      "analog_json_url": "",
+      "analog_lookup_fields": [
+        "grid_i",
+        "grid_j"
+      ],
+      "analog_status": "available",
       "bbox": [
         -91.875,
         27.875,
@@ -1476,6 +1539,13 @@
       "valid_time": "2026-05-03T00:00:00Z"
     },
     {
+      "analog_json": "cycles/2026050106/netcdf/lix_analog_probs_rrfs_2026050106_f054_valid_20260503_12Z_analogs.json",
+      "analog_json_url": "",
+      "analog_lookup_fields": [
+        "grid_i",
+        "grid_j"
+      ],
+      "analog_status": "available",
       "bbox": [
         -91.875,
         27.875,

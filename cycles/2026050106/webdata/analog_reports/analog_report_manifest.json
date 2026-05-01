@@ -11,7 +11,7 @@
   "caveats": [
     "Report-day assets show all standardized severe reports on the analog local calendar date. Matched reports are more specific and require a report to be within the configured radius and time window of the analog sample latitude, longitude, and valid time. A null analog or metadata-limited analog can have zero matched reports even if the broader calendar day had severe weather elsewhere."
   ],
-  "created_utc": "2026-05-01T09:05:02Z",
+  "created_utc": "2026-05-01T10:33:16Z",
   "cycle": "2026050106",
   "cycle_label": "2026-05-01 06Z",
   "cycle_time": "2026-05-01T06:00:00Z",
@@ -939,8 +939,8 @@
   "schema_version": 1,
   "settings": {
     "analog_day_tz": "America/Chicago",
-    "county_shapefile": "L:\\Users\\Zeringue\\LIXAnalog\\c_16ap26\\c_16ap26.shp",
-    "cwa_shapefile": "L:\\Users\\Zeringue\\LIXAnalog\\gis\\cwa\\w_16ap26.shp",
+    "county_shapefile": "\\\\lix-s-nas\\users\\Jacob.Zeringue\\Downloads\\gis\\counties\\c_16ap26.shp",
+    "cwa_shapefile": "\\\\lix-s-nas\\users\\Jacob.Zeringue\\Downloads\\gis\\cwa\\w_16ap26.shp",
     "event_tz": "America/Chicago",
     "make_pngs": 1,
     "radius_km": 40.0,

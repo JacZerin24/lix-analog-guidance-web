@@ -1,7 +1,7 @@
 {
   "analog_success_count": 5,
   "analog_top_n": 5,
-  "created_utc": "2026-05-01T08:50:54Z",
+  "created_utc": "2026-05-01T10:06:02Z",
   "cycle": "2026050106",
   "cycle_directory": "cycles/2026050106",
   "cycle_directory_url": "",
@@ -29,61 +29,61 @@
       {
         "cycle": "2026050106",
         "domain": "conus",
-        "downloaded": true,
+        "downloaded": false,
         "fhr": 18,
         "file_size_bytes": 589863373,
         "key": "rrfs_public/rrfs.20260501/06/rrfs.t06z.prslev.3km.f018.conus.grib2",
         "local_path": "model_cache\\rrfs\\20260501\\06\\rrfs.t06z.prslev.3km.f018.conus.grib2",
-        "message": "Downloaded successfully.",
+        "message": "Reused existing local nonzero file.",
         "model": "rrfs",
         "product": "prslev",
-        "reused": false,
-        "status": "downloaded",
+        "reused": true,
+        "status": "reused",
         "url": "https://noaa-rrfs-pds.s3.amazonaws.com/rrfs_public/rrfs.20260501/06/rrfs.t06z.prslev.3km.f018.conus.grib2"
       },
       {
         "cycle": "2026050106",
         "domain": "conus",
-        "downloaded": true,
+        "downloaded": false,
         "fhr": 30,
         "file_size_bytes": 574598372,
         "key": "rrfs_public/rrfs.20260501/06/rrfs.t06z.prslev.3km.f030.conus.grib2",
         "local_path": "model_cache\\rrfs\\20260501\\06\\rrfs.t06z.prslev.3km.f030.conus.grib2",
-        "message": "Downloaded successfully.",
+        "message": "Reused existing local nonzero file.",
         "model": "rrfs",
         "product": "prslev",
-        "reused": false,
-        "status": "downloaded",
+        "reused": true,
+        "status": "reused",
         "url": "https://noaa-rrfs-pds.s3.amazonaws.com/rrfs_public/rrfs.20260501/06/rrfs.t06z.prslev.3km.f030.conus.grib2"
       },
       {
         "cycle": "2026050106",
         "domain": "conus",
-        "downloaded": true,
+        "downloaded": false,
         "fhr": 42,
         "file_size_bytes": 597894783,
         "key": "rrfs_public/rrfs.20260501/06/rrfs.t06z.prslev.3km.f042.conus.grib2",
         "local_path": "model_cache\\rrfs\\20260501\\06\\rrfs.t06z.prslev.3km.f042.conus.grib2",
-        "message": "Downloaded successfully.",
+        "message": "Reused existing local nonzero file.",
         "model": "rrfs",
         "product": "prslev",
-        "reused": false,
-        "status": "downloaded",
+        "reused": true,
+        "status": "reused",
         "url": "https://noaa-rrfs-pds.s3.amazonaws.com/rrfs_public/rrfs.20260501/06/rrfs.t06z.prslev.3km.f042.conus.grib2"
       },
       {
         "cycle": "2026050106",
         "domain": "conus",
-        "downloaded": true,
+        "downloaded": false,
         "fhr": 54,
         "file_size_bytes": 589797233,
         "key": "rrfs_public/rrfs.20260501/06/rrfs.t06z.prslev.3km.f054.conus.grib2",
         "local_path": "model_cache\\rrfs\\20260501\\06\\rrfs.t06z.prslev.3km.f054.conus.grib2",
-        "message": "Downloaded successfully.",
+        "message": "Reused existing local nonzero file.",
         "model": "rrfs",
         "product": "prslev",
-        "reused": false,
-        "status": "downloaded",
+        "reused": true,
+        "status": "reused",
         "url": "https://noaa-rrfs-pds.s3.amazonaws.com/rrfs_public/rrfs.20260501/06/rrfs.t06z.prslev.3km.f054.conus.grib2"
       }
     ],
@@ -116,12 +116,12 @@
       "forecast_hour": 6,
       "forecast_hour_label": "f006",
       "messages": [
-        "Probability NetCDF and analog JSON created: \\\\lix-s-nas\\local_apps\\Users\\Zeringue\\LIXAnalog\\web_lix_analog\\cycles\\2026050106\\netcdf\\lix_analog_probs_rrfs_2026050106_f006_valid_20260501_12Z_analogs.json",
-        "Created/found 7 PNG plot(s)."
+        "Existing nonzero NetCDF and analog JSON reused.",
+        "Existing plots reused for 7/7 hazards."
       ],
       "model": "rrfs",
       "plot_dir": "cycles/2026050106/plots/valid_20260501_12Z_f006",
-      "plot_status": "created",
+      "plot_status": "reused",
       "plots": [
         {
           "file": "cycles/2026050106/plots/valid_20260501_12Z_f006/lix_analog_any_rrfs_2026050106_f006_valid_20260501_12Z.png",
@@ -168,7 +168,7 @@
       ],
       "probability_netcdf": "cycles/2026050106/netcdf/lix_analog_probs_rrfs_2026050106_f006_valid_20260501_12Z.nc",
       "probability_netcdf_url": "",
-      "score_status": "created",
+      "score_status": "reused",
       "valid_hour_utc": 12,
       "valid_time": "2026-05-01T12:00:00Z"
     },
@@ -181,16 +181,16 @@
       "download": {
         "cycle": "2026050106",
         "domain": "conus",
-        "downloaded": true,
+        "downloaded": false,
         "fhr": 18,
         "file_size_bytes": 589863373,
         "key": "rrfs_public/rrfs.20260501/06/rrfs.t06z.prslev.3km.f018.conus.grib2",
         "local_path": "model_cache\\rrfs\\20260501\\06\\rrfs.t06z.prslev.3km.f018.conus.grib2",
-        "message": "Downloaded successfully.",
+        "message": "Reused existing local nonzero file.",
         "model": "rrfs",
         "product": "prslev",
-        "reused": false,
-        "status": "downloaded",
+        "reused": true,
+        "status": "reused",
         "url": "https://noaa-rrfs-pds.s3.amazonaws.com/rrfs_public/rrfs.20260501/06/rrfs.t06z.prslev.3km.f018.conus.grib2"
       },
       "errors": [],
@@ -198,12 +198,12 @@
       "forecast_hour": 18,
       "forecast_hour_label": "f018",
       "messages": [
-        "Probability NetCDF and analog JSON created: \\\\lix-s-nas\\local_apps\\Users\\Zeringue\\LIXAnalog\\web_lix_analog\\cycles\\2026050106\\netcdf\\lix_analog_probs_rrfs_2026050106_f018_valid_20260502_00Z_analogs.json",
-        "Created/found 7 PNG plot(s)."
+        "Existing nonzero NetCDF and analog JSON reused.",
+        "Existing plots reused for 7/7 hazards."
       ],
       "model": "rrfs",
       "plot_dir": "cycles/2026050106/plots/valid_20260502_00Z_f018",
-      "plot_status": "created",
+      "plot_status": "reused",
       "plots": [
         {
           "file": "cycles/2026050106/plots/valid_20260502_00Z_f018/lix_analog_any_rrfs_2026050106_f018_valid_20260502_00Z.png",
@@ -250,7 +250,7 @@
       ],
       "probability_netcdf": "cycles/2026050106/netcdf/lix_analog_probs_rrfs_2026050106_f018_valid_20260502_00Z.nc",
       "probability_netcdf_url": "",
-      "score_status": "created",
+      "score_status": "reused",
       "valid_hour_utc": 0,
       "valid_time": "2026-05-02T00:00:00Z"
     },
@@ -263,16 +263,16 @@
       "download": {
         "cycle": "2026050106",
         "domain": "conus",
-        "downloaded": true,
+        "downloaded": false,
         "fhr": 30,
         "file_size_bytes": 574598372,
         "key": "rrfs_public/rrfs.20260501/06/rrfs.t06z.prslev.3km.f030.conus.grib2",
         "local_path": "model_cache\\rrfs\\20260501\\06\\rrfs.t06z.prslev.3km.f030.conus.grib2",
-        "message": "Downloaded successfully.",
+        "message": "Reused existing local nonzero file.",
         "model": "rrfs",
         "product": "prslev",
-        "reused": false,
-        "status": "downloaded",
+        "reused": true,
+        "status": "reused",
         "url": "https://noaa-rrfs-pds.s3.amazonaws.com/rrfs_public/rrfs.20260501/06/rrfs.t06z.prslev.3km.f030.conus.grib2"
       },
       "errors": [],
@@ -280,12 +280,12 @@
       "forecast_hour": 30,
       "forecast_hour_label": "f030",
       "messages": [
-        "Probability NetCDF and analog JSON created: \\\\lix-s-nas\\local_apps\\Users\\Zeringue\\LIXAnalog\\web_lix_analog\\cycles\\2026050106\\netcdf\\lix_analog_probs_rrfs_2026050106_f030_valid_20260502_12Z_analogs.json",
-        "Created/found 7 PNG plot(s)."
+        "Existing nonzero NetCDF and analog JSON reused.",
+        "Existing plots reused for 7/7 hazards."
       ],
       "model": "rrfs",
       "plot_dir": "cycles/2026050106/plots/valid_20260502_12Z_f030",
-      "plot_status": "created",
+      "plot_status": "reused",
       "plots": [
         {
           "file": "cycles/2026050106/plots/valid_20260502_12Z_f030/lix_analog_any_rrfs_2026050106_f030_valid_20260502_12Z.png",
@@ -332,7 +332,7 @@
       ],
       "probability_netcdf": "cycles/2026050106/netcdf/lix_analog_probs_rrfs_2026050106_f030_valid_20260502_12Z.nc",
       "probability_netcdf_url": "",
-      "score_status": "created",
+      "score_status": "reused",
       "valid_hour_utc": 12,
       "valid_time": "2026-05-02T12:00:00Z"
     },
@@ -345,16 +345,16 @@
       "download": {
         "cycle": "2026050106",
         "domain": "conus",
-        "downloaded": true,
+        "downloaded": false,
         "fhr": 42,
         "file_size_bytes": 597894783,
         "key": "rrfs_public/rrfs.20260501/06/rrfs.t06z.prslev.3km.f042.conus.grib2",
         "local_path": "model_cache\\rrfs\\20260501\\06\\rrfs.t06z.prslev.3km.f042.conus.grib2",
-        "message": "Downloaded successfully.",
+        "message": "Reused existing local nonzero file.",
         "model": "rrfs",
         "product": "prslev",
-        "reused": false,
-        "status": "downloaded",
+        "reused": true,
+        "status": "reused",
         "url": "https://noaa-rrfs-pds.s3.amazonaws.com/rrfs_public/rrfs.20260501/06/rrfs.t06z.prslev.3km.f042.conus.grib2"
       },
       "errors": [],
@@ -362,12 +362,12 @@
       "forecast_hour": 42,
       "forecast_hour_label": "f042",
       "messages": [
-        "Probability NetCDF and analog JSON created: \\\\lix-s-nas\\local_apps\\Users\\Zeringue\\LIXAnalog\\web_lix_analog\\cycles\\2026050106\\netcdf\\lix_analog_probs_rrfs_2026050106_f042_valid_20260503_00Z_analogs.json",
-        "Created/found 7 PNG plot(s)."
+        "Existing nonzero NetCDF and analog JSON reused.",
+        "Existing plots reused for 7/7 hazards."
       ],
       "model": "rrfs",
       "plot_dir": "cycles/2026050106/plots/valid_20260503_00Z_f042",
-      "plot_status": "created",
+      "plot_status": "reused",
       "plots": [
         {
           "file": "cycles/2026050106/plots/valid_20260503_00Z_f042/lix_analog_any_rrfs_2026050106_f042_valid_20260503_00Z.png",
@@ -414,7 +414,7 @@
       ],
       "probability_netcdf": "cycles/2026050106/netcdf/lix_analog_probs_rrfs_2026050106_f042_valid_20260503_00Z.nc",
       "probability_netcdf_url": "",
-      "score_status": "created",
+      "score_status": "reused",
       "valid_hour_utc": 0,
       "valid_time": "2026-05-03T00:00:00Z"
     },
@@ -427,16 +427,16 @@
       "download": {
         "cycle": "2026050106",
         "domain": "conus",
-        "downloaded": true,
+        "downloaded": false,
         "fhr": 54,
         "file_size_bytes": 589797233,
         "key": "rrfs_public/rrfs.20260501/06/rrfs.t06z.prslev.3km.f054.conus.grib2",
         "local_path": "model_cache\\rrfs\\20260501\\06\\rrfs.t06z.prslev.3km.f054.conus.grib2",
-        "message": "Downloaded successfully.",
+        "message": "Reused existing local nonzero file.",
         "model": "rrfs",
         "product": "prslev",
-        "reused": false,
-        "status": "downloaded",
+        "reused": true,
+        "status": "reused",
         "url": "https://noaa-rrfs-pds.s3.amazonaws.com/rrfs_public/rrfs.20260501/06/rrfs.t06z.prslev.3km.f054.conus.grib2"
       },
       "errors": [],
@@ -444,12 +444,12 @@
       "forecast_hour": 54,
       "forecast_hour_label": "f054",
       "messages": [
-        "Probability NetCDF and analog JSON created: \\\\lix-s-nas\\local_apps\\Users\\Zeringue\\LIXAnalog\\web_lix_analog\\cycles\\2026050106\\netcdf\\lix_analog_probs_rrfs_2026050106_f054_valid_20260503_12Z_analogs.json",
-        "Created/found 7 PNG plot(s)."
+        "Existing nonzero NetCDF and analog JSON reused.",
+        "Existing plots reused for 7/7 hazards."
       ],
       "model": "rrfs",
       "plot_dir": "cycles/2026050106/plots/valid_20260503_12Z_f054",
-      "plot_status": "created",
+      "plot_status": "reused",
       "plots": [
         {
           "file": "cycles/2026050106/plots/valid_20260503_12Z_f054/lix_analog_any_rrfs_2026050106_f054_valid_20260503_12Z.png",
@@ -496,7 +496,7 @@
       ],
       "probability_netcdf": "cycles/2026050106/netcdf/lix_analog_probs_rrfs_2026050106_f054_valid_20260503_12Z.nc",
       "probability_netcdf_url": "",
-      "score_status": "created",
+      "score_status": "reused",
       "valid_hour_utc": 12,
       "valid_time": "2026-05-03T12:00:00Z"
     }
@@ -541,7 +541,7 @@
     12,
     18
   ],
-  "log_file": "logs/06_run_lix_analog_cycle_20260501_083328Z.log",
+  "log_file": "logs/06_run_lix_analog_cycle_20260501_100559Z.log",
   "maximum_forecast_hour": 60,
   "model": "rrfs",
   "netcdf_success_count": 5,
