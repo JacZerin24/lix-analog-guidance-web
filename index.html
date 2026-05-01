@@ -845,6 +845,7 @@
       selectedLayer: null,
       selectedFeature: null,
       geojsonCache: new Map(),
+      analogJsonCache: new Map(),
       hasFitBounds: false
     };
 
@@ -1182,7 +1183,7 @@
         }
       });
 
-      layer.on("click", () => {
+      layer.on("click", async () => {
         if (state.selectedLayer && state.selectedLayer !== layer && state.geoLayer) {
           state.geoLayer.resetStyle(state.selectedLayer);
         }
@@ -1190,7 +1191,7 @@
         state.selectedFeature = feature;
         layer.setStyle(getSelectedCellStyle(feature, product));
         layer.bringToFront();
-        renderFeaturePanel(feature, layer, product);
+        await renderFeaturePanel(feature, layer, product);
       });
     }
 
@@ -1340,10 +1341,13 @@
       `;
     }
 
-    function renderFeaturePanel(feature, layer, product) {
+    async function renderFeaturePanel(feature, layer, product) {
       const props = feature.properties || {};
       const hazard = getSelectedHazard();
       const center = getLayerCenter(layer);
+      const panelToken = `${product?.geojson || "product"}|${props.grid_i ?? "i"}|${props.grid_j ?? "j"}|${Date.now()}`;
+
+      feature.__panelToken = panelToken;
 
       el.panelTitle.textContent = "Selected grid cell";
       el.panelSubtitle.textContent = `${hazard.label}: ${formatProb(toPercent(props[hazard.field], product, hazard.field))} • ${formatValidLabel(product.valid_time)}`;
@@ -1378,8 +1382,8 @@
 
         <div class="card-section">
           <div class="section-title">Top analogs</div>
-          <div class="section-body">
-            ${renderAnalogsPlaceholder(props, product)}
+          <div class="section-body" id="top-analogs-body">
+            ${renderAnalogsLoadingPlaceholder(props, product)}
           </div>
         </div>
 
@@ -1390,6 +1394,25 @@
           </div>
         </div>
       `;
+
+      const analogBody = document.getElementById("top-analogs-body");
+      if (!analogBody) return;
+
+      try {
+        const html = await renderAnalogsForCell(props, product);
+        if (state.selectedFeature === feature && feature.__panelToken === panelToken) {
+          analogBody.innerHTML = html;
+        }
+      } catch (error) {
+        if (state.selectedFeature === feature && feature.__panelToken === panelToken) {
+          analogBody.innerHTML = `
+            <div class="placeholder">
+              The analog JSON path was present, but the page could not load or parse it.
+              <div style="margin-top:8px">${escapeHtml(error.message || error)}</div>
+            </div>
+          `;
+        }
+      }
     }
 
     function probabilityRows(props, product, darkTooltip) {
@@ -1416,23 +1439,15 @@
       return keys.map((key) => `<div>${escapeHtml(key)}</div><div>${escapeHtml(formatRaw(props[key]))}</div>`).join("");
     }
 
-    function renderAnalogsPlaceholder(props, product) {
-      const analogs = props.top_analogs || props.analogs || props.nearest_analogs;
-      if (Array.isArray(analogs) && analogs.length) {
-        const items = analogs.slice(0, 8).map((analog, index) => {
-          if (typeof analog === "string") return `<li>${escapeHtml(analog)}</li>`;
-          const label = analog.valid_time || analog.time || analog.date || analog.event_id || `Analog ${index + 1}`;
-          const distance = analog.distance !== undefined ? ` - distance ${formatNumber(analog.distance, 3)}` : "";
-          return `<li>${escapeHtml(label)}${escapeHtml(distance)}</li>`;
-        }).join("");
-        return `<ol style="margin:0; padding-left:18px; font-size:13px; line-height:1.55">${items}</ol>`;
-      }
+    function renderAnalogsLoadingPlaceholder(props, product) {
+      const embedded = getEmbeddedAnalogs(props);
+      if (embedded.length) return renderAnalogList(embedded, props, product);
 
-      const analogPath = props.analog_json || props.analogs_json || product.analog_json || product.analogs_json;
+      const analogPath = getAnalogJsonPath(props, product);
       if (analogPath) {
         return `
           <div class="placeholder">
-            An analog JSON path is present but not loaded by this first-pass page yet:
+            Loading top analogs from:
             <div style="margin-top:8px"><span class="code-ish">${escapeHtml(analogPath)}</span></div>
           </div>
         `;
@@ -1440,10 +1455,235 @@
 
       return `
         <div class="placeholder">
-          Top analogs are not included in the current grid-cell GeoJSON. This section is ready for a future export that adds
-          <span class="code-ish">top_analogs</span>, <span class="code-ish">analogs</span>, or an <span class="code-ish">analog_json</span> path per grid cell.
+          Top analogs are not included in this grid-cell GeoJSON, and no <span class="code-ish">analog_json</span> path was provided.
         </div>
       `;
+    }
+
+    async function renderAnalogsForCell(props, product) {
+      const embedded = getEmbeddedAnalogs(props);
+      if (embedded.length) return renderAnalogList(embedded, props, product);
+
+      const analogPath = getAnalogJsonPath(props, product);
+      if (!analogPath) {
+        return `
+          <div class="placeholder">
+            Top analogs are not included in this grid-cell GeoJSON, and no <span class="code-ish">analog_json</span> path was provided.
+          </div>
+        `;
+      }
+
+      const analogPayload = await loadAnalogJson(analogPath);
+      const point = findAnalogPointForCell(analogPayload, props);
+
+      if (!point) {
+        return `
+          <div class="placeholder">
+            Analog JSON loaded, but no point matched this clicked grid cell.
+            <div style="margin-top:8px">
+              Looking for <span class="code-ish">grid_i=${escapeHtml(props.grid_i)}</span>
+              and <span class="code-ish">grid_j=${escapeHtml(props.grid_j)}</span>.
+            </div>
+            <div style="margin-top:8px"><span class="code-ish">${escapeHtml(analogPath)}</span></div>
+          </div>
+        `;
+      }
+
+      const analogs = getEmbeddedAnalogs(point);
+      if (!analogs.length) {
+        return `
+          <div class="placeholder">
+            Analog JSON loaded and the grid cell was found, but that record did not contain an
+            <span class="code-ish">analogs</span>, <span class="code-ish">top_analogs</span>, or
+            <span class="code-ish">nearest_analogs</span> list.
+          </div>
+        `;
+      }
+
+      return renderAnalogList(analogs, props, product, point);
+    }
+
+    function getAnalogJsonPath(props, product) {
+      return String(
+        props?.analog_json ||
+        props?.analogs_json ||
+        props?.top_analogs_json ||
+        props?.nearest_analogs_json ||
+        product?.analog_json ||
+        product?.analogs_json ||
+        product?.top_analogs_json ||
+        product?.nearest_analogs_json ||
+        ""
+      ).trim();
+    }
+
+    async function loadAnalogJson(path) {
+      const cleanPath = normalizeFetchPath(path);
+      if (!cleanPath) throw new Error("Empty analog JSON path.");
+      if (state.analogJsonCache.has(cleanPath)) return state.analogJsonCache.get(cleanPath);
+
+      const payload = await fetchJson(cleanPath, false);
+      state.analogJsonCache.set(cleanPath, payload);
+      return payload;
+    }
+
+    function normalizeFetchPath(path) {
+      let clean = String(path || "").trim().replaceAll("\\", "/");
+      if (!clean) return "";
+
+      if (/^https?:\/\//i.test(clean)) return clean;
+
+      // This page sits beside web_latest.json at the GitHub Pages root. Most
+      // exported paths are already relative to that root, for example cycles/...
+      clean = clean.replace(/^\.\/+/, "");
+      clean = clean.replace(/^\/+/, "");
+      return clean;
+    }
+
+    function extractAnalogPoints(payload) {
+      if (!payload) return [];
+      if (Array.isArray(payload)) return payload.filter((item) => item && typeof item === "object");
+
+      if (Array.isArray(payload.points)) return payload.points;
+      if (Array.isArray(payload.grid_points)) return payload.grid_points;
+      if (Array.isArray(payload.cells)) return payload.cells;
+
+      if (Array.isArray(payload.features)) {
+        return payload.features
+          .map((feature) => {
+            const props = feature?.properties || {};
+            return { ...props, geometry: feature?.geometry };
+          })
+          .filter((item) => item && typeof item === "object");
+      }
+
+      if (payload.points_by_grid && typeof payload.points_by_grid === "object") {
+        return Object.entries(payload.points_by_grid).map(([key, value]) => {
+          const rec = value && typeof value === "object" ? { ...value } : {};
+          const match = String(key).match(/(-?\d+)\D+(-?\d+)/);
+          if (match) {
+            rec.grid_i ??= Number(match[1]);
+            rec.grid_j ??= Number(match[2]);
+          }
+          return rec;
+        });
+      }
+
+      return [];
+    }
+
+    function findAnalogPointForCell(payload, props) {
+      const points = extractAnalogPoints(payload);
+      const gridI = Number(props?.grid_i);
+      const gridJ = Number(props?.grid_j);
+
+      if (Number.isFinite(gridI) && Number.isFinite(gridJ)) {
+        const exact = points.find((point) => {
+          const pointI = Number(point.grid_i ?? point.forecast_grid_i ?? point.i ?? point.row);
+          const pointJ = Number(point.grid_j ?? point.forecast_grid_j ?? point.j ?? point.col);
+          return Number.isFinite(pointI) && Number.isFinite(pointJ) && pointI === gridI && pointJ === gridJ;
+        });
+        if (exact) return exact;
+      }
+
+      const lat = Number(props?.center_lat);
+      const lon = Number(props?.center_lon);
+      if (Number.isFinite(lat) && Number.isFinite(lon)) {
+        return points.find((point) => {
+          const pointLat = Number(point.center_lat ?? point.forecast_center_lat ?? point.lat ?? point.latitude);
+          const pointLon = Number(point.center_lon ?? point.forecast_center_lon ?? point.lon ?? point.longitude);
+          return Number.isFinite(pointLat) && Number.isFinite(pointLon) &&
+            Math.abs(pointLat - lat) < 0.0005 &&
+            Math.abs(pointLon - lon) < 0.0005;
+        }) || null;
+      }
+
+      return null;
+    }
+
+    function getEmbeddedAnalogs(source) {
+      const candidates = [
+        source?.top_analogs,
+        source?.analogs,
+        source?.nearest_analogs,
+        source?.neighbors
+      ];
+
+      for (const candidate of candidates) {
+        if (Array.isArray(candidate) && candidate.length) return candidate;
+      }
+
+      return [];
+    }
+
+    function renderAnalogList(analogs, props, product, point = null) {
+      const rows = analogs.slice(0, 8).map((analog, index) => {
+        if (typeof analog === "string") {
+          return `<li>${escapeHtml(analog)}</li>`;
+        }
+
+        const rank = analog.rank ?? analog.analog_rank ?? analog.neighbor_rank ?? index + 1;
+        const time = analog.analog_valid_time || analog.sample_valid_time || analog.sample_time || analog.valid_time_utc || analog.valid_time || analog.time || analog.date || "Unknown time";
+        const distance = analog.neighbor_distance ?? analog.distance ?? analog.dist;
+        const lat = analog.analog_sample_latitude ?? analog.sample_latitude ?? analog.sample_lat ?? analog.analog_lat ?? analog.lat ?? analog.latitude;
+        const lon = analog.analog_sample_longitude ?? analog.sample_longitude ?? analog.sample_lon ?? analog.analog_lon ?? analog.lon ?? analog.longitude;
+        const labels = renderAnalogLabels(analog.labels || analog);
+
+        return `
+          <li style="margin-bottom:10px">
+            <div style="font-weight:900">#${escapeHtml(rank)} • ${escapeHtml(formatAnalogTime(time))}</div>
+            <div class="kv" style="margin-top:5px">
+              <div>Distance</div><div>${formatNumber(distance, 3)}</div>
+              <div>Sample location</div><div>${formatAnalogLatLon(lat, lon)}</div>
+              ${labels}
+            </div>
+          </li>
+        `;
+      }).join("");
+
+      const pointMeta = point ? `
+        <div class="footer-note">
+          Matched by <span class="code-ish">grid_i=${escapeHtml(point.grid_i ?? props.grid_i)}</span>
+          and <span class="code-ish">grid_j=${escapeHtml(point.grid_j ?? props.grid_j)}</span>.
+        </div>
+      ` : "";
+
+      return `
+        <ol style="margin:0; padding-left:18px; font-size:13px; line-height:1.45">
+          ${rows}
+        </ol>
+        ${pointMeta}
+      `;
+    }
+
+    function renderAnalogLabels(labels) {
+      const pairs = [
+        ["Any severe", labels.any ?? labels.label_any ?? labels.had_any],
+        ["Tor", labels.tor ?? labels.tornado ?? labels.label_tor],
+        ["Hail", labels.hail ?? labels.label_hail],
+        ["Wind", labels.wind ?? labels.label_wind]
+      ].filter(([, value]) => value !== undefined && value !== null && value !== "");
+
+      if (!pairs.length) return "";
+
+      return pairs.map(([label, value]) => {
+        const formatted = typeof value === "boolean" ? (value ? "yes" : "no") : formatRaw(value);
+        return `<div>${escapeHtml(label)}</div><div>${escapeHtml(formatted)}</div>`;
+      }).join("");
+    }
+
+    function formatAnalogTime(value) {
+      if (!value) return "Unknown time";
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return String(value);
+      return formatValidLabel(date.toISOString());
+    }
+
+    function formatAnalogLatLon(lat, lon) {
+      const latNum = Number(lat);
+      const lonNum = Number(lon);
+      if (!Number.isFinite(latNum) || !Number.isFinite(lonNum)) return "N/A";
+      return `${latNum.toFixed(3)}, ${lonNum.toFixed(3)}`;
     }
 
     function getPlotLinks(product, hazard) {
