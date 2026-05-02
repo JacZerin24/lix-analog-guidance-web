@@ -846,6 +846,8 @@
       selectedFeature: null,
       geojsonCache: new Map(),
       analogJsonCache: new Map(),
+      analogReportManifestCache: new Map(),
+      matchedReportsCache: new Map(),
       hasFitBounds: false
     };
 
@@ -1530,7 +1532,8 @@
 
       const embedded = props.top_analogs || props.analogs || props.nearest_analogs || props.neighbors;
       if (Array.isArray(embedded) && embedded.length) {
-        target.outerHTML = renderAnalogList(embedded);
+        const context = await loadAnalogReportContext(product);
+        target.outerHTML = renderAnalogList(embedded, product, props, context);
         return;
       }
 
@@ -1557,52 +1560,370 @@
           return;
         }
 
-        target.outerHTML = renderAnalogList(analogs);
+        const context = await loadAnalogReportContext(product);
+        target.outerHTML = renderAnalogList(analogs, product, props, context);
       } catch (error) {
         target.innerHTML = `
-          Could not load the analog JSON file:
+          Could not load the analog JSON/report files:
           <div style="margin-top:8px"><span class="code-ish">${escapeHtml(analogPath)}</span></div>
           <div style="margin-top:8px">${escapeHtml(error.message || error)}</div>
         `;
       }
     }
 
-    function renderAnalogList(analogs) {
-      const items = analogs.slice(0, 10).map((analog, index) => {
-        if (typeof analog === "string") return `<li>${escapeHtml(analog)}</li>`;
+    async function loadOptionalJson(path, cacheMap) {
+      const cleanPath = normalizeFetchPath(path);
+      if (!cleanPath) return null;
+      if (cacheMap.has(cleanPath)) return cacheMap.get(cleanPath);
+      try {
+        const data = await fetchJson(cleanPath, false);
+        cacheMap.set(cleanPath, data);
+        return data;
+      } catch (error) {
+        console.warn("Could not load optional JSON", cleanPath, error);
+        cacheMap.set(cleanPath, null);
+        return null;
+      }
+    }
 
-        const rank = analog.rank ?? analog.analog_rank ?? analog.neighbor_rank ?? index + 1;
-        const time = analog.analog_valid_time || analog.sample_valid_time || analog.valid_time ||
-          analog.analog_time || analog.sample_time || analog.time || analog.date || "Unknown time";
-        const lat = analog.analog_sample_latitude ?? analog.sample_latitude ?? analog.sample_lat ?? analog.lat ?? analog.latitude;
-        const lon = analog.analog_sample_longitude ?? analog.sample_longitude ?? analog.sample_lon ?? analog.lon ?? analog.longitude;
-        const distance = analog.neighbor_distance ?? analog.distance ?? analog.dist;
-        const labels = analog.labels && typeof analog.labels === "object" ? analog.labels : analog;
+    async function loadAnalogReportContext(product) {
+      const manifestPath = product?.analog_report_manifest || state.manifest?.analog_report_manifest || "";
+      const matchedPath = product?.matched_reports_index || state.manifest?.matched_reports_index || "";
 
-        const labelBits = [];
-        if (truthyLabel(labels.any_severe) || truthyLabel(labels.label_any) || truthyLabel(labels.any)) labelBits.push("Any severe");
-        if (truthyLabel(labels.tornado) || truthyLabel(labels.label_tor) || truthyLabel(labels.tor)) labelBits.push("Tor");
-        if (truthyLabel(labels.hail) || truthyLabel(labels.label_hail)) labelBits.push("Hail");
-        if (truthyLabel(labels.wind) || truthyLabel(labels.label_wind)) labelBits.push("Wind");
-        if (truthyLabel(labels.sigtor) || truthyLabel(labels.label_sigtor)) labelBits.push("Sig tor");
-        if (truthyLabel(labels.sighail) || truthyLabel(labels.label_sighail)) labelBits.push("Sig hail");
-        if (truthyLabel(labels.sigwind) || truthyLabel(labels.label_sigwind)) labelBits.push("Sig wind");
+      const [reportManifest, matchedIndex] = await Promise.all([
+        loadOptionalJson(manifestPath, state.analogReportManifestCache),
+        loadOptionalJson(matchedPath, state.matchedReportsCache)
+      ]);
 
-        const details = [
-          Number.isFinite(Number(distance)) ? `distance ${formatNumber(distance, 3)}` : "",
-          Number.isFinite(Number(lat)) && Number.isFinite(Number(lon)) ? `${Number(lat).toFixed(2)}, ${Number(lon).toFixed(2)}` : "",
-          labelBits.length ? labelBits.join(", ") : ""
-        ].filter(Boolean).join(" • ");
+      const dayAssets = [];
+      if (Array.isArray(product?.analog_report_day_assets)) dayAssets.push(...product.analog_report_day_assets);
+      if (Array.isArray(reportManifest?.report_day_assets)) dayAssets.push(...reportManifest.report_day_assets);
 
+      return {
+        reportManifest,
+        matchedIndex,
+        dayAssets
+      };
+    }
+
+    function renderAnalogList(analogs, product = null, props = {}, context = {}) {
+      const items = analogs.slice(0, 10).map((analog, index) => renderAnalogCard(analog, index, product, props, context)).join("");
+      return `<div style="display:grid; gap:10px; font-size:13px; line-height:1.45">${items}</div>`;
+    }
+
+    function renderAnalogCard(analog, index, product, props, context) {
+      if (typeof analog === "string") {
+        return `<div class="placeholder">${escapeHtml(analog)}</div>`;
+      }
+
+      const rank = analog.rank ?? analog.analog_rank ?? analog.neighbor_rank ?? index + 1;
+      const time = analog.analog_valid_time || analog.sample_valid_time || analog.valid_time ||
+        analog.analog_time || analog.sample_time || analog.time || analog.date || "Unknown time";
+      const lat = analog.analog_sample_latitude ?? analog.sample_latitude ?? analog.sample_lat ?? analog.lat ?? analog.latitude;
+      const lon = analog.analog_sample_longitude ?? analog.sample_longitude ?? analog.sample_lon ?? analog.lon ?? analog.longitude;
+      const distance = analog.neighbor_distance ?? analog.distance ?? analog.dist;
+      const labels = analog.labels && typeof analog.labels === "object" ? analog.labels : analog;
+      const labelBits = analogLabelBits(labels);
+      const matched = findMatchedReportItem(context?.matchedIndex, analog, product, props, rank);
+      const dayAsset = findReportDayAsset(context?.dayAssets, matched?.analog_local_date || localDateFromAnalogTime(time));
+
+      const metaBits = [
+        Number.isFinite(Number(distance)) ? `distance ${formatNumber(distance, 3)}` : "",
+        Number.isFinite(Number(lat)) && Number.isFinite(Number(lon)) ? `${Number(lat).toFixed(2)}, ${Number(lon).toFixed(2)}` : "",
+        labelBits.length ? labelBits.join(", ") : ""
+      ].filter(Boolean).join(" • ");
+
+      return `
+        <div style="border:1px solid var(--border); background:white; border-radius:14px; padding:10px; overflow:hidden">
+          <div style="display:flex; justify-content:space-between; gap:10px; align-items:flex-start">
+            <div>
+              <div style="font-weight:950"><span class="code-ish">#${escapeHtml(rank)}</span> ${escapeHtml(formatAnalogTime(time))}</div>
+              ${metaBits ? `<div class="placeholder" style="font-size:12px; margin-top:3px">${escapeHtml(metaBits)}</div>` : ""}
+            </div>
+            ${hazardPills(labelBits)}
+          </div>
+          ${renderClosestParameterSection(analog)}
+          ${renderMatchedReportsSection(matched)}
+          ${renderReportDaySection(dayAsset, time)}
+        </div>
+      `;
+    }
+
+    function analogLabelBits(labels) {
+      const bits = [];
+      if (truthyLabel(labels.any_severe) || truthyLabel(labels.label_any) || truthyLabel(labels.any)) bits.push("Any severe");
+      if (truthyLabel(labels.tornado) || truthyLabel(labels.label_tor) || truthyLabel(labels.tor)) bits.push("Tor");
+      if (truthyLabel(labels.hail) || truthyLabel(labels.label_hail)) bits.push("Hail");
+      if (truthyLabel(labels.wind) || truthyLabel(labels.label_wind)) bits.push("Wind");
+      if (truthyLabel(labels.sigtor) || truthyLabel(labels.label_sigtor)) bits.push("Sig tor");
+      if (truthyLabel(labels.sighail) || truthyLabel(labels.label_sighail)) bits.push("Sig hail");
+      if (truthyLabel(labels.sigwind) || truthyLabel(labels.label_sigwind)) bits.push("Sig wind");
+      return bits;
+    }
+
+    function hazardPills(bits) {
+      if (!bits.length) return "";
+      return `<div style="display:flex; flex-wrap:wrap; gap:4px; justify-content:flex-end">${bits.slice(0, 3).map((bit) =>
+        `<span style="font-size:10px; font-weight:900; color:#334155; background:#e2e8f0; border-radius:999px; padding:3px 6px">${escapeHtml(bit)}</span>`
+      ).join("")}</div>`;
+    }
+
+    function renderClosestParameterSection(analog) {
+      const rows = extractFeatureRows(analog).slice(0, 6);
+      if (!rows.length) {
         return `
-          <li style="margin-bottom:8px">
-            <div><strong>#${escapeHtml(rank)}</strong> ${escapeHtml(formatAnalogTime(time))}</div>
-            ${details ? `<div class="placeholder" style="font-size:12px">${escapeHtml(details)}</div>` : ""}
-          </li>
+          <details style="margin-top:9px">
+            <summary style="cursor:pointer; font-weight:850; color:#334155">Closest parameters</summary>
+            <div class="placeholder" style="margin-top:7px; font-size:12px">
+              Feature-level parameter differences were not included in this analog record. If script 03 exports fields like
+              <span class="code-ish">feature_differences</span>, <span class="code-ish">feature_explanations</span>, or
+              <span class="code-ish">closest_features</span>, this page will render them here.
+            </div>
+          </details>
         `;
-      }).join("");
+      }
 
-      return `<ol style="margin:0; padding-left:18px; font-size:13px; line-height:1.45">${items}</ol>`;
+      return `
+        <details style="margin-top:9px" open>
+          <summary style="cursor:pointer; font-weight:850; color:#334155">Closest parameters</summary>
+          <div class="kv" style="margin-top:7px; font-size:12px">
+            ${rows.map((row) => `
+              <div>${escapeHtml(row.name)}</div>
+              <div>${escapeHtml(row.value)}</div>
+            `).join("")}
+          </div>
+        </details>
+      `;
+    }
+
+    function extractFeatureRows(analog) {
+      const containers = [
+        analog.feature_differences,
+        analog.feature_difference,
+        analog.feature_explanations,
+        analog.feature_explanation,
+        analog.feature_contributions,
+        analog.feature_contribution,
+        analog.closest_features,
+        analog.closest_parameters,
+        analog.top_features,
+        analog.feature_rows,
+        analog.parameter_differences
+      ].filter(Boolean);
+
+      for (const container of containers) {
+        const rows = normalizeFeatureContainer(container);
+        if (rows.length) return rows;
+      }
+
+      const rows = [];
+      for (const [key, value] of Object.entries(analog || {})) {
+        if (!/^feature_|^diff_|_difference$|_absdiff$|_z_diff$/i.test(key)) continue;
+        if (value === null || typeof value === "object") continue;
+        rows.push({ name: key, value: formatFeatureValue(value) });
+      }
+      return rows;
+    }
+
+    function normalizeFeatureContainer(container) {
+      if (Array.isArray(container)) {
+        return container.map((item, idx) => {
+          if (typeof item === "string") return { name: `Feature ${idx + 1}`, value: item };
+          if (!item || typeof item !== "object") return null;
+          const name = item.feature || item.name || item.variable || item.parameter || item.field || `Feature ${idx + 1}`;
+          const pieces = [];
+          const forecast = item.forecast ?? item.forecast_value ?? item.fcst;
+          const analog = item.analog ?? item.analog_value ?? item.library_value;
+          const diff = item.difference ?? item.diff ?? item.abs_difference ?? item.absdiff ?? item.z_difference ?? item.z_diff;
+          const contribution = item.contribution ?? item.score ?? item.weighted_difference;
+          if (forecast !== undefined) pieces.push(`fcst ${formatFeatureValue(forecast)}`);
+          if (analog !== undefined) pieces.push(`analog ${formatFeatureValue(analog)}`);
+          if (diff !== undefined) pieces.push(`diff ${formatFeatureValue(diff)}`);
+          if (contribution !== undefined) pieces.push(`score ${formatFeatureValue(contribution)}`);
+          return { name, value: pieces.length ? pieces.join(" | ") : formatRaw(item) };
+        }).filter(Boolean);
+      }
+
+      if (container && typeof container === "object") {
+        return Object.entries(container).map(([name, value]) => ({ name, value: formatFeatureValue(value) }));
+      }
+
+      return [];
+    }
+
+    function formatFeatureValue(value) {
+      if (value === null || value === undefined || value === "") return "N/A";
+      const number = Number(value);
+      if (Number.isFinite(number)) {
+        const digits = Math.abs(number) >= 100 ? 1 : 3;
+        return formatNumber(number, digits);
+      }
+      if (Array.isArray(value)) return value.slice(0, 4).map(formatFeatureValue).join(", ");
+      if (typeof value === "object") {
+        const parts = [];
+        for (const [k, v] of Object.entries(value).slice(0, 4)) {
+          if (v === null || typeof v === "object") continue;
+          parts.push(`${k}: ${formatFeatureValue(v)}`);
+        }
+        return parts.length ? parts.join(" | ") : JSON.stringify(value).slice(0, 90);
+      }
+      return String(value);
+    }
+
+    function renderMatchedReportsSection(matchItem) {
+      const reports = Array.isArray(matchItem?.matched_reports) ? matchItem.matched_reports : [];
+      const note = matchItem?.note;
+      const count = Number(matchItem?.matched_report_count ?? reports.length);
+      const counts = matchItem?.hazard_counts || hazardCountsFromReports(reports);
+
+      return `
+        <details style="margin-top:9px" ${reports.length ? "open" : ""}>
+          <summary style="cursor:pointer; font-weight:850; color:#334155">Reports matched to this analog sample${Number.isFinite(count) ? ` (${count})` : ""}</summary>
+          <div style="margin-top:7px">
+            ${Object.keys(counts).length ? `<div class="placeholder" style="font-size:12px; margin-bottom:6px">${escapeHtml(formatHazardCounts(counts))}</div>` : ""}
+            ${reports.length ? reports.slice(0, 8).map(renderCompactReport).join("") : `<div class="placeholder" style="font-size:12px">${escapeHtml(note || "No reports were matched within the configured radius/time window for this analog sample.")}</div>`}
+          </div>
+        </details>
+      `;
+    }
+
+    function renderCompactReport(report) {
+      const distance = Number(report.distance_km);
+      const delta = Number(report.time_delta_minutes);
+      const meta = [
+        report.time_local || formatAnalogTime(report.time_utc),
+        Number.isFinite(distance) ? `${formatNumber(distance, 1)} km` : "",
+        Number.isFinite(delta) ? `${formatNumber(delta, 0)} min` : ""
+      ].filter(Boolean).join(" • ");
+      return `
+        <div style="border-top:1px solid var(--border); padding-top:6px; margin-top:6px">
+          <div style="font-weight:850">${escapeHtml(report.label || report.hazard || "Report")}</div>
+          <div class="placeholder" style="font-size:12px">${escapeHtml(meta)}</div>
+        </div>
+      `;
+    }
+
+    function renderReportDaySection(dayAsset, analogTime) {
+      const dateText = dayAsset?.date || localDateFromAnalogTime(analogTime) || "unknown date";
+      if (!dayAsset) {
+        return `
+          <details style="margin-top:9px">
+            <summary style="cursor:pointer; font-weight:850; color:#334155">Reports on analog day</summary>
+            <div class="placeholder" style="margin-top:7px; font-size:12px">No report-day asset was found for ${escapeHtml(dateText)}.</div>
+          </details>
+        `;
+      }
+
+      const counts = dayAsset.hazard_counts || {};
+      const links = [
+        dayAsset.png ? `<a class="plain-link" href="${escapeAttr(dayAsset.png)}" target="_blank" rel="noopener"><span>Open report-day map</span><span>PNG</span></a>` : "",
+        dayAsset.geojson ? `<a class="plain-link" href="${escapeAttr(dayAsset.geojson)}" target="_blank" rel="noopener"><span>Open report-day reports</span><span>GeoJSON</span></a>` : ""
+      ].filter(Boolean).join("");
+
+      return `
+        <details style="margin-top:9px">
+          <summary style="cursor:pointer; font-weight:850; color:#334155">Reports on analog day</summary>
+          <div style="margin-top:7px">
+            <div class="placeholder" style="font-size:12px; margin-bottom:7px">
+              ${escapeHtml(dateText)} • ${formatNumber(dayAsset.report_count, 0)} report(s)${Object.keys(counts).length ? ` • ${escapeHtml(formatHazardCounts(counts))}` : ""}
+            </div>
+            ${links ? `<div class="link-list">${links}</div>` : ""}
+          </div>
+        </details>
+      `;
+    }
+
+    function findMatchedReportItem(index, analog, product, props, rank) {
+      if (!index || typeof index !== "object") return null;
+      const directKey = matchedReportKey(product?.valid_time || props.valid_time, props.grid_i, props.grid_j, rank);
+      if (directKey && index[directKey]) return index[directKey];
+
+      const source = normalizeFetchPath(getAnalogPath(props, product));
+      const forecastValid = product?.valid_time || props.valid_time;
+      const gridI = Number(props.grid_i);
+      const gridJ = Number(props.grid_j);
+      const rankNumber = Number(rank);
+      const analogTime = String(analog.analog_valid_time || analog.sample_valid_time || analog.valid_time || analog.analog_time || analog.time || "");
+
+      for (const item of Object.values(index)) {
+        if (!item || typeof item !== "object") continue;
+        if (Number(item.forecast_grid_i) !== gridI || Number(item.forecast_grid_j) !== gridJ) continue;
+        if (Number(item.analog_rank) !== rankNumber) continue;
+        if (forecastValid && item.forecast_valid_time && String(item.forecast_valid_time) !== String(forecastValid)) continue;
+        if (source && item.source_analog_json && normalizeFetchPath(item.source_analog_json) !== source) continue;
+        if (analogTime && item.analog_valid_time && String(item.analog_valid_time) !== analogTime && String(item.analog_valid_time).replace(".000Z", "Z") !== analogTime) continue;
+        return item;
+      }
+      return null;
+    }
+
+    function matchedReportKey(validTime, gridI, gridJ, rank) {
+      const token = validToken(validTime);
+      if (!token || gridI === undefined || gridJ === undefined || rank === undefined) return "";
+      return `${token}|grid_i=${gridI}|grid_j=${gridJ}|rank=${rank}`;
+    }
+
+    function validToken(value) {
+      if (!value) return "unknown_valid";
+      const date = new Date(value);
+      if (!Number.isNaN(date.getTime())) {
+        const yyyy = date.getUTCFullYear();
+        const mm = String(date.getUTCMonth() + 1).padStart(2, "0");
+        const dd = String(date.getUTCDate()).padStart(2, "0");
+        const hh = String(date.getUTCHours()).padStart(2, "0");
+        return `${yyyy}${mm}${dd}_${hh}Z`;
+      }
+      return safeToken(value);
+    }
+
+    function safeToken(value) {
+      return String(value || "unknown")
+        .replace(/[^A-Za-z0-9_.-]+/g, "_")
+        .replace(/^_+|_+$/g, "") || "unknown";
+    }
+
+    function findReportDayAsset(dayAssets, dateText) {
+      if (!Array.isArray(dayAssets) || !dateText) return null;
+      return dayAssets.find((asset) => String(asset.date) === String(dateText)) || null;
+    }
+
+    function localDateFromAnalogTime(value) {
+      if (!value) return "";
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) {
+        const match = String(value).match(/\d{4}-\d{2}-\d{2}/);
+        return match ? match[0] : "";
+      }
+      try {
+        const parts = new Intl.DateTimeFormat("en-CA", {
+          timeZone: "America/Chicago",
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit"
+        }).formatToParts(date);
+        const year = parts.find((part) => part.type === "year")?.value;
+        const month = parts.find((part) => part.type === "month")?.value;
+        const day = parts.find((part) => part.type === "day")?.value;
+        if (year && month && day) return `${year}-${month}-${day}`;
+      } catch (error) {}
+      return date.toISOString().slice(0, 10);
+    }
+
+    function hazardCountsFromReports(reports) {
+      const counts = {};
+      for (const report of reports || []) {
+        const hazard = report?.hazard || "unknown";
+        counts[hazard] = (counts[hazard] || 0) + 1;
+      }
+      return counts;
+    }
+
+    function formatHazardCounts(counts) {
+      if (!counts || typeof counts !== "object") return "";
+      const order = ["tor", "hail", "wind", "sigtor", "sighail", "sigwind", "unknown"];
+      const labels = { tor: "tor", hail: "hail", wind: "wind", sigtor: "sig tor", sighail: "sig hail", sigwind: "sig wind", unknown: "unknown" };
+      const keys = [...order.filter((key) => counts[key]), ...Object.keys(counts).filter((key) => !order.includes(key))];
+      return keys.map((key) => `${labels[key] || key}: ${counts[key]}`).join(" • ");
     }
 
     function truthyLabel(value) {
