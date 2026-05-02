@@ -9,10 +9,8 @@ The viewer displays gridded analog probabilities for severe-weather hazards usin
 GitHub Pages URL:
 
 ```text
-https://YOUR-USERNAME.github.io/lix-analog-guidance-web/
+https://JacZerin24.github.io/lix-analog-guidance-web/
 ```
-
-Replace `YOUR-USERNAME` with the GitHub account or organization that owns this repository.
 
 ## Important Disclaimer
 
