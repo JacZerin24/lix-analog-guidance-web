@@ -1,0 +1,70 @@
+{
+  "features": [
+    {
+      "geometry": {
+        "coordinates": [
+          -90.75,
+          30.5
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "wind",
+        "label": "Wind 65 mph",
+        "local_date": "1997-01-15",
+        "magnitude": 65.0,
+        "marker_style": {
+          "category": "wind",
+          "color": "#2563eb",
+          "marker": "o",
+          "shape": "circle"
+        },
+        "rating_int": null,
+        "report_id": "wind_da4b9a7fc16dcd1f",
+        "source_file": "[Old] 1950-2023 Severe Weather Climo LIX - LIX_WIND.csv",
+        "time_local": "1997-01-15 15:59 CST",
+        "time_utc": "1997-01-15T21:59:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -89.47,
+          30.9
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "tor",
+        "label": "Tornado EF/F1",
+        "local_date": "1997-01-15",
+        "magnitude": 1.0,
+        "marker_style": {
+          "category": "tornado",
+          "color": "#dc2626",
+          "marker": "v",
+          "shape": "triangle_down"
+        },
+        "rating_int": 1,
+        "report_id": "tor_ce82ad019c9d51c1",
+        "source_file": "lix_tornadoes_all_1974_2023.csv",
+        "time_local": "1997-01-15 17:30 CST",
+        "time_utc": "1997-01-15T23:30:00Z"
+      },
+      "type": "Feature"
+    }
+  ],
+  "properties": {
+    "caveat": "This file contains reports on the analog local calendar date, not matched analog-sample reports.",
+    "date": "1997-01-15",
+    "generator": "08_build_analog_report_assets.py",
+    "hazard_counts": {
+      "tor": 1,
+      "wind": 1
+    },
+    "report_count": 2,
+    "schema_version": 1
+  },
+  "type": "FeatureCollection"
+}

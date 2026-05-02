@@ -1,0 +1,42 @@
+{
+  "features": [
+    {
+      "geometry": {
+        "coordinates": [
+          -90.4636,
+          30.43
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "wind",
+        "label": "Wind 60 mph",
+        "local_date": "2013-02-18",
+        "magnitude": 60.0,
+        "marker_style": {
+          "category": "wind",
+          "color": "#2563eb",
+          "marker": "o",
+          "shape": "circle"
+        },
+        "rating_int": null,
+        "report_id": "wind_7e803fcd8ac34e6a",
+        "source_file": "[Old] 1950-2023 Severe Weather Climo LIX - LIX_WIND.csv",
+        "time_local": "2013-02-18 01:00 CST",
+        "time_utc": "2013-02-18T07:00:00Z"
+      },
+      "type": "Feature"
+    }
+  ],
+  "properties": {
+    "caveat": "This file contains reports on the analog local calendar date, not matched analog-sample reports.",
+    "date": "2013-02-18",
+    "generator": "08_build_analog_report_assets.py",
+    "hazard_counts": {
+      "wind": 1
+    },
+    "report_count": 1,
+    "schema_version": 1
+  },
+  "type": "FeatureCollection"
+}
