@@ -1,0 +1,449 @@
+{
+  "features": [
+    {
+      "geometry": {
+        "coordinates": [
+          -89.37,
+          30.37
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "hail",
+        "label": "Hail 1.00 in",
+        "local_date": "2011-05-26",
+        "magnitude": 1.0,
+        "marker_style": {
+          "category": "hail",
+          "color": "#16a34a",
+          "marker": "^",
+          "shape": "triangle"
+        },
+        "rating_int": null,
+        "report_id": "hail_862bcf1690bece32",
+        "source_file": "1950-2024 Severe Weather Climo LIX - LIX_HAIL.csv",
+        "time_local": "2011-05-26 10:45 CDT",
+        "time_utc": "2011-05-26T15:45:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -88.57,
+          30.68
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "hail",
+        "label": "Hail 1.75 in",
+        "local_date": "2011-05-26",
+        "magnitude": 1.75,
+        "marker_style": {
+          "category": "hail",
+          "color": "#16a34a",
+          "marker": "^",
+          "shape": "triangle"
+        },
+        "rating_int": null,
+        "report_id": "hail_2aec840914ce92b2",
+        "source_file": "1950-2024 Severe Weather Climo LIX - LIX_HAIL.csv",
+        "time_local": "2011-05-26 11:40 CDT",
+        "time_utc": "2011-05-26T16:40:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -89.3,
+          30.63
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "hail",
+        "label": "Hail 1.00 in",
+        "local_date": "2011-05-26",
+        "magnitude": 1.0,
+        "marker_style": {
+          "category": "hail",
+          "color": "#16a34a",
+          "marker": "^",
+          "shape": "triangle"
+        },
+        "rating_int": null,
+        "report_id": "hail_7efd3b05422fad0e",
+        "source_file": "1950-2024 Severe Weather Climo LIX - LIX_HAIL.csv",
+        "time_local": "2011-05-26 13:05 CDT",
+        "time_utc": "2011-05-26T18:05:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -88.68,
+          30.53
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "wind",
+        "label": "Wind 55 mph",
+        "local_date": "2011-05-26",
+        "magnitude": 55.0,
+        "marker_style": {
+          "category": "wind",
+          "color": "#2563eb",
+          "marker": "o",
+          "shape": "circle"
+        },
+        "rating_int": null,
+        "report_id": "wind_0d1a64f291f8c0c2",
+        "source_file": "[Old] 1950-2023 Severe Weather Climo LIX - LIX_WIND.csv",
+        "time_local": "2011-05-26 13:53 CDT",
+        "time_utc": "2011-05-26T18:53:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -89.86,
+          30.76
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "hail",
+        "label": "Hail 1.25 in",
+        "local_date": "2011-05-26",
+        "magnitude": 1.25,
+        "marker_style": {
+          "category": "hail",
+          "color": "#16a34a",
+          "marker": "^",
+          "shape": "triangle"
+        },
+        "rating_int": null,
+        "report_id": "hail_94cabc05c7f71f0d",
+        "source_file": "1950-2024 Severe Weather Climo LIX - LIX_HAIL.csv",
+        "time_local": "2011-05-26 15:20 CDT",
+        "time_utc": "2011-05-26T20:20:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -88.55,
+          30.52
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "tor",
+        "label": "Tornado EF/F0",
+        "local_date": "2011-05-26",
+        "magnitude": 0.0,
+        "marker_style": {
+          "category": "tornado",
+          "color": "#dc2626",
+          "marker": "v",
+          "shape": "triangle_down"
+        },
+        "rating_int": 0,
+        "report_id": "tor_9953ba01c0655903",
+        "source_file": "lix_tornadoes_all_1974_2023.csv",
+        "time_local": "2011-05-26 15:23 CDT",
+        "time_utc": "2011-05-26T20:23:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -90.01,
+          30.39
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "wind",
+        "label": "Wind 52 mph",
+        "local_date": "2011-05-26",
+        "magnitude": 52.0,
+        "marker_style": {
+          "category": "wind",
+          "color": "#2563eb",
+          "marker": "o",
+          "shape": "circle"
+        },
+        "rating_int": null,
+        "report_id": "wind_109cde9e81b27441",
+        "source_file": "[Old] 1950-2023 Severe Weather Climo LIX - LIX_WIND.csv",
+        "time_local": "2011-05-26 16:30 CDT",
+        "time_utc": "2011-05-26T21:30:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -90.04,
+          30.41
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "wind",
+        "label": "Wind 52 mph",
+        "local_date": "2011-05-26",
+        "magnitude": 52.0,
+        "marker_style": {
+          "category": "wind",
+          "color": "#2563eb",
+          "marker": "o",
+          "shape": "circle"
+        },
+        "rating_int": null,
+        "report_id": "wind_f788156979852b50",
+        "source_file": "[Old] 1950-2023 Severe Weather Climo LIX - LIX_WIND.csv",
+        "time_local": "2011-05-26 16:30 CDT",
+        "time_utc": "2011-05-26T21:30:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -90.05,
+          30.62
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "tor",
+        "label": "Tornado EF/F3",
+        "local_date": "2011-05-26",
+        "magnitude": 3.0,
+        "marker_style": {
+          "category": "tornado",
+          "color": "#dc2626",
+          "marker": "v",
+          "shape": "triangle_down"
+        },
+        "rating_int": 3,
+        "report_id": "tor_4a8a648e49559c15",
+        "source_file": "lix_tornadoes_all_1974_2023.csv",
+        "time_local": "2011-05-26 16:40 CDT",
+        "time_utc": "2011-05-26T21:40:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -89.93,
+          30.32
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "hail",
+        "label": "Hail 1.00 in",
+        "local_date": "2011-05-26",
+        "magnitude": 1.0,
+        "marker_style": {
+          "category": "hail",
+          "color": "#16a34a",
+          "marker": "^",
+          "shape": "triangle"
+        },
+        "rating_int": null,
+        "report_id": "hail_d07ea750edd6d18f",
+        "source_file": "1950-2024 Severe Weather Climo LIX - LIX_HAIL.csv",
+        "time_local": "2011-05-26 16:58 CDT",
+        "time_utc": "2011-05-26T21:58:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -89.93,
+          30.32
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "hail",
+        "label": "Hail 1.75 in",
+        "local_date": "2011-05-26",
+        "magnitude": 1.75,
+        "marker_style": {
+          "category": "hail",
+          "color": "#16a34a",
+          "marker": "^",
+          "shape": "triangle"
+        },
+        "rating_int": null,
+        "report_id": "hail_5b2e96258c8ef092",
+        "source_file": "1950-2024 Severe Weather Climo LIX - LIX_HAIL.csv",
+        "time_local": "2011-05-26 17:00 CDT",
+        "time_utc": "2011-05-26T22:00:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -89.82,
+          30.35
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "hail",
+        "label": "Hail 1.25 in",
+        "local_date": "2011-05-26",
+        "magnitude": 1.25,
+        "marker_style": {
+          "category": "hail",
+          "color": "#16a34a",
+          "marker": "^",
+          "shape": "triangle"
+        },
+        "rating_int": null,
+        "report_id": "hail_7e114ff5efad2b2b",
+        "source_file": "1950-2024 Severe Weather Climo LIX - LIX_HAIL.csv",
+        "time_local": "2011-05-26 17:03 CDT",
+        "time_utc": "2011-05-26T22:03:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -89.84,
+          30.28
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "hail",
+        "label": "Hail 1.00 in",
+        "local_date": "2011-05-26",
+        "magnitude": 1.0,
+        "marker_style": {
+          "category": "hail",
+          "color": "#16a34a",
+          "marker": "^",
+          "shape": "triangle"
+        },
+        "rating_int": null,
+        "report_id": "hail_66ec27e453e0d251",
+        "source_file": "1950-2024 Severe Weather Climo LIX - LIX_HAIL.csv",
+        "time_local": "2011-05-26 17:10 CDT",
+        "time_utc": "2011-05-26T22:10:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -89.88,
+          30.12
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "hail",
+        "label": "Hail 1.00 in",
+        "local_date": "2011-05-26",
+        "magnitude": 1.0,
+        "marker_style": {
+          "category": "hail",
+          "color": "#16a34a",
+          "marker": "^",
+          "shape": "triangle"
+        },
+        "rating_int": null,
+        "report_id": "hail_362dbacd99029820",
+        "source_file": "1950-2024 Severe Weather Climo LIX - LIX_HAIL.csv",
+        "time_local": "2011-05-26 17:58 CDT",
+        "time_utc": "2011-05-26T22:58:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -90.1,
+          29.68
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "hail",
+        "label": "Hail 1.00 in",
+        "local_date": "2011-05-26",
+        "magnitude": 1.0,
+        "marker_style": {
+          "category": "hail",
+          "color": "#16a34a",
+          "marker": "^",
+          "shape": "triangle"
+        },
+        "rating_int": null,
+        "report_id": "hail_f911005ed33ca7c2",
+        "source_file": "1950-2024 Severe Weather Climo LIX - LIX_HAIL.csv",
+        "time_local": "2011-05-26 19:10 CDT",
+        "time_utc": "2011-05-27T00:10:00Z"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -90.03,
+          30.05
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hazard": "wind",
+        "label": "Wind 69 mph",
+        "local_date": "2011-05-26",
+        "magnitude": 69.0,
+        "marker_style": {
+          "category": "wind",
+          "color": "#2563eb",
+          "marker": "o",
+          "shape": "circle"
+        },
+        "rating_int": null,
+        "report_id": "wind_65a2f847898b6341",
+        "source_file": "[Old] 1950-2023 Severe Weather Climo LIX - LIX_WIND.csv",
+        "time_local": "2011-05-26 19:36 CDT",
+        "time_utc": "2011-05-27T00:36:00Z"
+      },
+      "type": "Feature"
+    }
+  ],
+  "properties": {
+    "caveat": "This file contains reports on the analog local calendar date, not matched analog-sample reports.",
+    "date": "2011-05-26",
+    "generator": "08_build_analog_report_assets.py",
+    "hazard_counts": {
+      "hail": 10,
+      "tor": 2,
+      "wind": 4
+    },
+    "report_count": 16,
+    "schema_version": 1
+  },
+  "type": "FeatureCollection"
+}

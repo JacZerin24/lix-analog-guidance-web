@@ -1,0 +1,1732 @@
+{
+  "created_utc": "2026-05-02T09:29:39Z",
+  "cycle": "2026050206",
+  "cycle_directory": "cycles/2026050206",
+  "cycle_label": "2026-05-02 06Z",
+  "cycle_time": "2026-05-02T06:00:00Z",
+  "day_count": 3,
+  "days": [
+    {
+      "date": "2026-05-02",
+      "label": "2026-05-02",
+      "product_count": 1,
+      "products": [
+        {
+          "analog_json": "cycles/2026050206/netcdf/lix_analog_probs_rrfs_2026050206_f006_valid_20260502_12Z_analogs.json",
+          "analog_json_url": "",
+          "analog_lookup_fields": [
+            "grid_i",
+            "grid_j"
+          ],
+          "analog_status": "available",
+          "bbox": [
+            -91.875,
+            27.875,
+            -87.875,
+            31.625
+          ],
+          "cycle": "2026050206",
+          "cycle_time": "2026-05-02T06:00:00Z",
+          "distance_fields": [
+            "mean_distance",
+            "min_distance",
+            "max_distance",
+            "effective_k"
+          ],
+          "distance_stats": {
+            "effective_k": {
+              "max": 40.0,
+              "mean": 40.0,
+              "min": 40.0,
+              "nonzero_count": 240
+            },
+            "max_distance": {
+              "max": 3.281,
+              "mean": 2.272,
+              "min": 1.723,
+              "nonzero_count": 240
+            },
+            "mean_distance": {
+              "max": 3.13,
+              "mean": 2.126,
+              "min": 1.618,
+              "nonzero_count": 240
+            },
+            "min_distance": {
+              "max": 2.852,
+              "mean": 1.765,
+              "min": 1.096,
+              "nonzero_count": 240
+            }
+          },
+          "feature_count": 240,
+          "forecast_hour": 6,
+          "forecast_hour_label": "f006",
+          "geojson": "cycles/2026050206/webdata/lix_analog_grid_rrfs_2026050206_f006_valid_20260502_12Z.geojson",
+          "grid_shape": [
+            15,
+            16
+          ],
+          "missing_probability_fields": [],
+          "model": "rrfs",
+          "plot_dir": "cycles/2026050206/plots/valid_20260502_12Z_f006",
+          "plots": [
+            {
+              "file": "cycles/2026050206/plots/valid_20260502_12Z_f006/lix_analog_any_rrfs_2026050206_f006_valid_20260502_12Z.png",
+              "hazard": "any",
+              "label": "Any Severe",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050206/plots/valid_20260502_12Z_f006/lix_analog_hail_rrfs_2026050206_f006_valid_20260502_12Z.png",
+              "hazard": "hail",
+              "label": "Severe Hail",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050206/plots/valid_20260502_12Z_f006/lix_analog_sighail_rrfs_2026050206_f006_valid_20260502_12Z.png",
+              "hazard": "sighail",
+              "label": "Significant Hail",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050206/plots/valid_20260502_12Z_f006/lix_analog_sigtor_rrfs_2026050206_f006_valid_20260502_12Z.png",
+              "hazard": "sigtor",
+              "label": "Significant Tornado",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050206/plots/valid_20260502_12Z_f006/lix_analog_sigwind_rrfs_2026050206_f006_valid_20260502_12Z.png",
+              "hazard": "sigwind",
+              "label": "Significant Damaging Wind",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050206/plots/valid_20260502_12Z_f006/lix_analog_tor_rrfs_2026050206_f006_valid_20260502_12Z.png",
+              "hazard": "tor",
+              "label": "Tornado",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050206/plots/valid_20260502_12Z_f006/lix_analog_wind_rrfs_2026050206_f006_valid_20260502_12Z.png",
+              "hazard": "wind",
+              "label": "Damaging Wind",
+              "url": ""
+            }
+          ],
+          "probability_fields": [
+            "prob_any",
+            "prob_tor",
+            "prob_hail",
+            "prob_wind",
+            "prob_sigtor",
+            "prob_sighail",
+            "prob_sigwind"
+          ],
+          "probability_stats": {
+            "prob_any": {
+              "max": 47.5,
+              "mean": 7.49,
+              "min": 0.0,
+              "nonzero_count": 165
+            },
+            "prob_hail": {
+              "max": 30.0,
+              "mean": 1.469,
+              "min": 0.0,
+              "nonzero_count": 68
+            },
+            "prob_sighail": {
+              "max": 7.5,
+              "mean": 0.125,
+              "min": 0.0,
+              "nonzero_count": 8
+            },
+            "prob_sigtor": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "nonzero_count": 0
+            },
+            "prob_sigwind": {
+              "max": 10.0,
+              "mean": 0.427,
+              "min": 0.0,
+              "nonzero_count": 24
+            },
+            "prob_tor": {
+              "max": 30.0,
+              "mean": 2.208,
+              "min": 0.0,
+              "nonzero_count": 76
+            },
+            "prob_wind": {
+              "max": 35.0,
+              "mean": 4.115,
+              "min": 0.0,
+              "nonzero_count": 115
+            }
+          },
+          "probability_units": "percent",
+          "source_netcdf": "cycles/2026050206/netcdf/lix_analog_probs_rrfs_2026050206_f006_valid_20260502_12Z.nc",
+          "valid_date": "2026-05-02",
+          "valid_hour_utc": 12,
+          "valid_time": "2026-05-02T12:00:00Z"
+        }
+      ]
+    },
+    {
+      "date": "2026-05-03",
+      "label": "2026-05-03",
+      "product_count": 2,
+      "products": [
+        {
+          "analog_json": "cycles/2026050206/netcdf/lix_analog_probs_rrfs_2026050206_f018_valid_20260503_00Z_analogs.json",
+          "analog_json_url": "",
+          "analog_lookup_fields": [
+            "grid_i",
+            "grid_j"
+          ],
+          "analog_status": "available",
+          "bbox": [
+            -91.875,
+            27.875,
+            -87.875,
+            31.625
+          ],
+          "cycle": "2026050206",
+          "cycle_time": "2026-05-02T06:00:00Z",
+          "distance_fields": [
+            "mean_distance",
+            "min_distance",
+            "max_distance",
+            "effective_k"
+          ],
+          "distance_stats": {
+            "effective_k": {
+              "max": 40.0,
+              "mean": 40.0,
+              "min": 40.0,
+              "nonzero_count": 240
+            },
+            "max_distance": {
+              "max": 2.943,
+              "mean": 2.615,
+              "min": 2.132,
+              "nonzero_count": 240
+            },
+            "mean_distance": {
+              "max": 2.747,
+              "mean": 2.484,
+              "min": 2.038,
+              "nonzero_count": 240
+            },
+            "min_distance": {
+              "max": 2.603,
+              "mean": 2.259,
+              "min": 1.872,
+              "nonzero_count": 240
+            }
+          },
+          "feature_count": 240,
+          "forecast_hour": 18,
+          "forecast_hour_label": "f018",
+          "geojson": "cycles/2026050206/webdata/lix_analog_grid_rrfs_2026050206_f018_valid_20260503_00Z.geojson",
+          "grid_shape": [
+            15,
+            16
+          ],
+          "missing_probability_fields": [],
+          "model": "rrfs",
+          "plot_dir": "cycles/2026050206/plots/valid_20260503_00Z_f018",
+          "plots": [
+            {
+              "file": "cycles/2026050206/plots/valid_20260503_00Z_f018/lix_analog_any_rrfs_2026050206_f018_valid_20260503_00Z.png",
+              "hazard": "any",
+              "label": "Any Severe",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050206/plots/valid_20260503_00Z_f018/lix_analog_hail_rrfs_2026050206_f018_valid_20260503_00Z.png",
+              "hazard": "hail",
+              "label": "Severe Hail",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050206/plots/valid_20260503_00Z_f018/lix_analog_sighail_rrfs_2026050206_f018_valid_20260503_00Z.png",
+              "hazard": "sighail",
+              "label": "Significant Hail",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050206/plots/valid_20260503_00Z_f018/lix_analog_sigtor_rrfs_2026050206_f018_valid_20260503_00Z.png",
+              "hazard": "sigtor",
+              "label": "Significant Tornado",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050206/plots/valid_20260503_00Z_f018/lix_analog_sigwind_rrfs_2026050206_f018_valid_20260503_00Z.png",
+              "hazard": "sigwind",
+              "label": "Significant Damaging Wind",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050206/plots/valid_20260503_00Z_f018/lix_analog_tor_rrfs_2026050206_f018_valid_20260503_00Z.png",
+              "hazard": "tor",
+              "label": "Tornado",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050206/plots/valid_20260503_00Z_f018/lix_analog_wind_rrfs_2026050206_f018_valid_20260503_00Z.png",
+              "hazard": "wind",
+              "label": "Damaging Wind",
+              "url": ""
+            }
+          ],
+          "probability_fields": [
+            "prob_any",
+            "prob_tor",
+            "prob_hail",
+            "prob_wind",
+            "prob_sigtor",
+            "prob_sighail",
+            "prob_sigwind"
+          ],
+          "probability_stats": {
+            "prob_any": {
+              "max": 22.5,
+              "mean": 3.271,
+              "min": 0.0,
+              "nonzero_count": 71
+            },
+            "prob_hail": {
+              "max": 2.5,
+              "mean": 0.01,
+              "min": 0.0,
+              "nonzero_count": 1
+            },
+            "prob_sighail": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "nonzero_count": 0
+            },
+            "prob_sigtor": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "nonzero_count": 0
+            },
+            "prob_sigwind": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "nonzero_count": 0
+            },
+            "prob_tor": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "nonzero_count": 0
+            },
+            "prob_wind": {
+              "max": 22.5,
+              "mean": 3.26,
+              "min": 0.0,
+              "nonzero_count": 70
+            }
+          },
+          "probability_units": "percent",
+          "source_netcdf": "cycles/2026050206/netcdf/lix_analog_probs_rrfs_2026050206_f018_valid_20260503_00Z.nc",
+          "valid_date": "2026-05-03",
+          "valid_hour_utc": 0,
+          "valid_time": "2026-05-03T00:00:00Z"
+        },
+        {
+          "analog_json": "cycles/2026050206/netcdf/lix_analog_probs_rrfs_2026050206_f030_valid_20260503_12Z_analogs.json",
+          "analog_json_url": "",
+          "analog_lookup_fields": [
+            "grid_i",
+            "grid_j"
+          ],
+          "analog_status": "available",
+          "bbox": [
+            -91.875,
+            27.875,
+            -87.875,
+            31.625
+          ],
+          "cycle": "2026050206",
+          "cycle_time": "2026-05-02T06:00:00Z",
+          "distance_fields": [
+            "mean_distance",
+            "min_distance",
+            "max_distance",
+            "effective_k"
+          ],
+          "distance_stats": {
+            "effective_k": {
+              "max": 40.0,
+              "mean": 40.0,
+              "min": 40.0,
+              "nonzero_count": 240
+            },
+            "max_distance": {
+              "max": 3.09,
+              "mean": 2.636,
+              "min": 2.267,
+              "nonzero_count": 240
+            },
+            "mean_distance": {
+              "max": 2.965,
+              "mean": 2.482,
+              "min": 2.084,
+              "nonzero_count": 240
+            },
+            "min_distance": {
+              "max": 2.764,
+              "mean": 2.291,
+              "min": 1.754,
+              "nonzero_count": 240
+            }
+          },
+          "feature_count": 240,
+          "forecast_hour": 30,
+          "forecast_hour_label": "f030",
+          "geojson": "cycles/2026050206/webdata/lix_analog_grid_rrfs_2026050206_f030_valid_20260503_12Z.geojson",
+          "grid_shape": [
+            15,
+            16
+          ],
+          "missing_probability_fields": [],
+          "model": "rrfs",
+          "plot_dir": "cycles/2026050206/plots/valid_20260503_12Z_f030",
+          "plots": [
+            {
+              "file": "cycles/2026050206/plots/valid_20260503_12Z_f030/lix_analog_any_rrfs_2026050206_f030_valid_20260503_12Z.png",
+              "hazard": "any",
+              "label": "Any Severe",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050206/plots/valid_20260503_12Z_f030/lix_analog_hail_rrfs_2026050206_f030_valid_20260503_12Z.png",
+              "hazard": "hail",
+              "label": "Severe Hail",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050206/plots/valid_20260503_12Z_f030/lix_analog_sighail_rrfs_2026050206_f030_valid_20260503_12Z.png",
+              "hazard": "sighail",
+              "label": "Significant Hail",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050206/plots/valid_20260503_12Z_f030/lix_analog_sigtor_rrfs_2026050206_f030_valid_20260503_12Z.png",
+              "hazard": "sigtor",
+              "label": "Significant Tornado",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050206/plots/valid_20260503_12Z_f030/lix_analog_sigwind_rrfs_2026050206_f030_valid_20260503_12Z.png",
+              "hazard": "sigwind",
+              "label": "Significant Damaging Wind",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050206/plots/valid_20260503_12Z_f030/lix_analog_tor_rrfs_2026050206_f030_valid_20260503_12Z.png",
+              "hazard": "tor",
+              "label": "Tornado",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050206/plots/valid_20260503_12Z_f030/lix_analog_wind_rrfs_2026050206_f030_valid_20260503_12Z.png",
+              "hazard": "wind",
+              "label": "Damaging Wind",
+              "url": ""
+            }
+          ],
+          "probability_fields": [
+            "prob_any",
+            "prob_tor",
+            "prob_hail",
+            "prob_wind",
+            "prob_sigtor",
+            "prob_sighail",
+            "prob_sigwind"
+          ],
+          "probability_stats": {
+            "prob_any": {
+              "max": 17.5,
+              "mean": 14.677,
+              "min": 0.0,
+              "nonzero_count": 221
+            },
+            "prob_hail": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "nonzero_count": 0
+            },
+            "prob_sighail": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "nonzero_count": 0
+            },
+            "prob_sigtor": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "nonzero_count": 0
+            },
+            "prob_sigwind": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "nonzero_count": 0
+            },
+            "prob_tor": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "nonzero_count": 0
+            },
+            "prob_wind": {
+              "max": 17.5,
+              "mean": 14.677,
+              "min": 0.0,
+              "nonzero_count": 221
+            }
+          },
+          "probability_units": "percent",
+          "source_netcdf": "cycles/2026050206/netcdf/lix_analog_probs_rrfs_2026050206_f030_valid_20260503_12Z.nc",
+          "valid_date": "2026-05-03",
+          "valid_hour_utc": 12,
+          "valid_time": "2026-05-03T12:00:00Z"
+        }
+      ]
+    },
+    {
+      "date": "2026-05-04",
+      "label": "2026-05-04",
+      "product_count": 2,
+      "products": [
+        {
+          "analog_json": "cycles/2026050206/netcdf/lix_analog_probs_rrfs_2026050206_f042_valid_20260504_00Z_analogs.json",
+          "analog_json_url": "",
+          "analog_lookup_fields": [
+            "grid_i",
+            "grid_j"
+          ],
+          "analog_status": "available",
+          "bbox": [
+            -91.875,
+            27.875,
+            -87.875,
+            31.625
+          ],
+          "cycle": "2026050206",
+          "cycle_time": "2026-05-02T06:00:00Z",
+          "distance_fields": [
+            "mean_distance",
+            "min_distance",
+            "max_distance",
+            "effective_k"
+          ],
+          "distance_stats": {
+            "effective_k": {
+              "max": 40.0,
+              "mean": 40.0,
+              "min": 40.0,
+              "nonzero_count": 240
+            },
+            "max_distance": {
+              "max": 2.927,
+              "mean": 2.346,
+              "min": 1.957,
+              "nonzero_count": 240
+            },
+            "mean_distance": {
+              "max": 2.746,
+              "mean": 2.244,
+              "min": 1.816,
+              "nonzero_count": 240
+            },
+            "min_distance": {
+              "max": 2.417,
+              "mean": 2.061,
+              "min": 1.582,
+              "nonzero_count": 240
+            }
+          },
+          "feature_count": 240,
+          "forecast_hour": 42,
+          "forecast_hour_label": "f042",
+          "geojson": "cycles/2026050206/webdata/lix_analog_grid_rrfs_2026050206_f042_valid_20260504_00Z.geojson",
+          "grid_shape": [
+            15,
+            16
+          ],
+          "missing_probability_fields": [],
+          "model": "rrfs",
+          "plot_dir": "cycles/2026050206/plots/valid_20260504_00Z_f042",
+          "plots": [
+            {
+              "file": "cycles/2026050206/plots/valid_20260504_00Z_f042/lix_analog_any_rrfs_2026050206_f042_valid_20260504_00Z.png",
+              "hazard": "any",
+              "label": "Any Severe",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050206/plots/valid_20260504_00Z_f042/lix_analog_hail_rrfs_2026050206_f042_valid_20260504_00Z.png",
+              "hazard": "hail",
+              "label": "Severe Hail",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050206/plots/valid_20260504_00Z_f042/lix_analog_sighail_rrfs_2026050206_f042_valid_20260504_00Z.png",
+              "hazard": "sighail",
+              "label": "Significant Hail",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050206/plots/valid_20260504_00Z_f042/lix_analog_sigtor_rrfs_2026050206_f042_valid_20260504_00Z.png",
+              "hazard": "sigtor",
+              "label": "Significant Tornado",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050206/plots/valid_20260504_00Z_f042/lix_analog_sigwind_rrfs_2026050206_f042_valid_20260504_00Z.png",
+              "hazard": "sigwind",
+              "label": "Significant Damaging Wind",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050206/plots/valid_20260504_00Z_f042/lix_analog_tor_rrfs_2026050206_f042_valid_20260504_00Z.png",
+              "hazard": "tor",
+              "label": "Tornado",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050206/plots/valid_20260504_00Z_f042/lix_analog_wind_rrfs_2026050206_f042_valid_20260504_00Z.png",
+              "hazard": "wind",
+              "label": "Damaging Wind",
+              "url": ""
+            }
+          ],
+          "probability_fields": [
+            "prob_any",
+            "prob_tor",
+            "prob_hail",
+            "prob_wind",
+            "prob_sigtor",
+            "prob_sighail",
+            "prob_sigwind"
+          ],
+          "probability_stats": {
+            "prob_any": {
+              "max": 17.5,
+              "mean": 3.125,
+              "min": 0.0,
+              "nonzero_count": 68
+            },
+            "prob_hail": {
+              "max": 7.5,
+              "mean": 0.042,
+              "min": 0.0,
+              "nonzero_count": 2
+            },
+            "prob_sighail": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "nonzero_count": 0
+            },
+            "prob_sigtor": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "nonzero_count": 0
+            },
+            "prob_sigwind": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "nonzero_count": 0
+            },
+            "prob_tor": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "nonzero_count": 0
+            },
+            "prob_wind": {
+              "max": 17.5,
+              "mean": 3.094,
+              "min": 0.0,
+              "nonzero_count": 68
+            }
+          },
+          "probability_units": "percent",
+          "source_netcdf": "cycles/2026050206/netcdf/lix_analog_probs_rrfs_2026050206_f042_valid_20260504_00Z.nc",
+          "valid_date": "2026-05-04",
+          "valid_hour_utc": 0,
+          "valid_time": "2026-05-04T00:00:00Z"
+        },
+        {
+          "analog_json": "cycles/2026050206/netcdf/lix_analog_probs_rrfs_2026050206_f054_valid_20260504_12Z_analogs.json",
+          "analog_json_url": "",
+          "analog_lookup_fields": [
+            "grid_i",
+            "grid_j"
+          ],
+          "analog_status": "available",
+          "bbox": [
+            -91.875,
+            27.875,
+            -87.875,
+            31.625
+          ],
+          "cycle": "2026050206",
+          "cycle_time": "2026-05-02T06:00:00Z",
+          "distance_fields": [
+            "mean_distance",
+            "min_distance",
+            "max_distance",
+            "effective_k"
+          ],
+          "distance_stats": {
+            "effective_k": {
+              "max": 40.0,
+              "mean": 40.0,
+              "min": 40.0,
+              "nonzero_count": 240
+            },
+            "max_distance": {
+              "max": 2.596,
+              "mean": 2.286,
+              "min": 1.804,
+              "nonzero_count": 240
+            },
+            "mean_distance": {
+              "max": 2.52,
+              "mean": 2.171,
+              "min": 1.737,
+              "nonzero_count": 240
+            },
+            "min_distance": {
+              "max": 2.415,
+              "mean": 1.982,
+              "min": 1.407,
+              "nonzero_count": 240
+            }
+          },
+          "feature_count": 240,
+          "forecast_hour": 54,
+          "forecast_hour_label": "f054",
+          "geojson": "cycles/2026050206/webdata/lix_analog_grid_rrfs_2026050206_f054_valid_20260504_12Z.geojson",
+          "grid_shape": [
+            15,
+            16
+          ],
+          "missing_probability_fields": [],
+          "model": "rrfs",
+          "plot_dir": "cycles/2026050206/plots/valid_20260504_12Z_f054",
+          "plots": [
+            {
+              "file": "cycles/2026050206/plots/valid_20260504_12Z_f054/lix_analog_any_rrfs_2026050206_f054_valid_20260504_12Z.png",
+              "hazard": "any",
+              "label": "Any Severe",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050206/plots/valid_20260504_12Z_f054/lix_analog_hail_rrfs_2026050206_f054_valid_20260504_12Z.png",
+              "hazard": "hail",
+              "label": "Severe Hail",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050206/plots/valid_20260504_12Z_f054/lix_analog_sighail_rrfs_2026050206_f054_valid_20260504_12Z.png",
+              "hazard": "sighail",
+              "label": "Significant Hail",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050206/plots/valid_20260504_12Z_f054/lix_analog_sigtor_rrfs_2026050206_f054_valid_20260504_12Z.png",
+              "hazard": "sigtor",
+              "label": "Significant Tornado",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050206/plots/valid_20260504_12Z_f054/lix_analog_sigwind_rrfs_2026050206_f054_valid_20260504_12Z.png",
+              "hazard": "sigwind",
+              "label": "Significant Damaging Wind",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050206/plots/valid_20260504_12Z_f054/lix_analog_tor_rrfs_2026050206_f054_valid_20260504_12Z.png",
+              "hazard": "tor",
+              "label": "Tornado",
+              "url": ""
+            },
+            {
+              "file": "cycles/2026050206/plots/valid_20260504_12Z_f054/lix_analog_wind_rrfs_2026050206_f054_valid_20260504_12Z.png",
+              "hazard": "wind",
+              "label": "Damaging Wind",
+              "url": ""
+            }
+          ],
+          "probability_fields": [
+            "prob_any",
+            "prob_tor",
+            "prob_hail",
+            "prob_wind",
+            "prob_sigtor",
+            "prob_sighail",
+            "prob_sigwind"
+          ],
+          "probability_stats": {
+            "prob_any": {
+              "max": 7.5,
+              "mean": 0.052,
+              "min": 0.0,
+              "nonzero_count": 3
+            },
+            "prob_hail": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "nonzero_count": 0
+            },
+            "prob_sighail": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "nonzero_count": 0
+            },
+            "prob_sigtor": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "nonzero_count": 0
+            },
+            "prob_sigwind": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "nonzero_count": 0
+            },
+            "prob_tor": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "nonzero_count": 0
+            },
+            "prob_wind": {
+              "max": 7.5,
+              "mean": 0.052,
+              "min": 0.0,
+              "nonzero_count": 3
+            }
+          },
+          "probability_units": "percent",
+          "source_netcdf": "cycles/2026050206/netcdf/lix_analog_probs_rrfs_2026050206_f054_valid_20260504_12Z.nc",
+          "valid_date": "2026-05-04",
+          "valid_hour_utc": 12,
+          "valid_time": "2026-05-04T12:00:00Z"
+        }
+      ]
+    }
+  ],
+  "domain": "conus",
+  "errors": [],
+  "experimental_caveat": "Experimental analog guidance. Probabilities are nearest-analog label frequencies from a historical ERA5 gridpoint library and are not calibrated official NWS probabilistic guidance. Verify locally before use.",
+  "generator": "07_export_interactive_web.py",
+  "hazards": [
+    {
+      "field": "prob_any",
+      "id": "any",
+      "label": "Any Severe",
+      "units": "percent"
+    },
+    {
+      "field": "prob_tor",
+      "id": "tor",
+      "label": "Tornado",
+      "units": "percent"
+    },
+    {
+      "field": "prob_hail",
+      "id": "hail",
+      "label": "Severe Hail",
+      "units": "percent"
+    },
+    {
+      "field": "prob_wind",
+      "id": "wind",
+      "label": "Damaging Wind",
+      "units": "percent"
+    },
+    {
+      "field": "prob_sigtor",
+      "id": "sigtor",
+      "label": "Significant Tornado",
+      "units": "percent"
+    },
+    {
+      "field": "prob_sighail",
+      "id": "sighail",
+      "label": "Significant Hail",
+      "units": "percent"
+    },
+    {
+      "field": "prob_sigwind",
+      "id": "sigwind",
+      "label": "Significant Damaging Wind",
+      "units": "percent"
+    }
+  ],
+  "model": "rrfs",
+  "product": "prslev",
+  "product_count": 5,
+  "products": [
+    {
+      "analog_json": "cycles/2026050206/netcdf/lix_analog_probs_rrfs_2026050206_f006_valid_20260502_12Z_analogs.json",
+      "analog_json_url": "",
+      "analog_lookup_fields": [
+        "grid_i",
+        "grid_j"
+      ],
+      "analog_status": "available",
+      "bbox": [
+        -91.875,
+        27.875,
+        -87.875,
+        31.625
+      ],
+      "cycle": "2026050206",
+      "cycle_time": "2026-05-02T06:00:00Z",
+      "distance_fields": [
+        "mean_distance",
+        "min_distance",
+        "max_distance",
+        "effective_k"
+      ],
+      "distance_stats": {
+        "effective_k": {
+          "max": 40.0,
+          "mean": 40.0,
+          "min": 40.0,
+          "nonzero_count": 240
+        },
+        "max_distance": {
+          "max": 3.281,
+          "mean": 2.272,
+          "min": 1.723,
+          "nonzero_count": 240
+        },
+        "mean_distance": {
+          "max": 3.13,
+          "mean": 2.126,
+          "min": 1.618,
+          "nonzero_count": 240
+        },
+        "min_distance": {
+          "max": 2.852,
+          "mean": 1.765,
+          "min": 1.096,
+          "nonzero_count": 240
+        }
+      },
+      "feature_count": 240,
+      "forecast_hour": 6,
+      "forecast_hour_label": "f006",
+      "geojson": "cycles/2026050206/webdata/lix_analog_grid_rrfs_2026050206_f006_valid_20260502_12Z.geojson",
+      "grid_shape": [
+        15,
+        16
+      ],
+      "missing_probability_fields": [],
+      "model": "rrfs",
+      "plot_dir": "cycles/2026050206/plots/valid_20260502_12Z_f006",
+      "plots": [
+        {
+          "file": "cycles/2026050206/plots/valid_20260502_12Z_f006/lix_analog_any_rrfs_2026050206_f006_valid_20260502_12Z.png",
+          "hazard": "any",
+          "label": "Any Severe",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260502_12Z_f006/lix_analog_hail_rrfs_2026050206_f006_valid_20260502_12Z.png",
+          "hazard": "hail",
+          "label": "Severe Hail",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260502_12Z_f006/lix_analog_sighail_rrfs_2026050206_f006_valid_20260502_12Z.png",
+          "hazard": "sighail",
+          "label": "Significant Hail",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260502_12Z_f006/lix_analog_sigtor_rrfs_2026050206_f006_valid_20260502_12Z.png",
+          "hazard": "sigtor",
+          "label": "Significant Tornado",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260502_12Z_f006/lix_analog_sigwind_rrfs_2026050206_f006_valid_20260502_12Z.png",
+          "hazard": "sigwind",
+          "label": "Significant Damaging Wind",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260502_12Z_f006/lix_analog_tor_rrfs_2026050206_f006_valid_20260502_12Z.png",
+          "hazard": "tor",
+          "label": "Tornado",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260502_12Z_f006/lix_analog_wind_rrfs_2026050206_f006_valid_20260502_12Z.png",
+          "hazard": "wind",
+          "label": "Damaging Wind",
+          "url": ""
+        }
+      ],
+      "probability_fields": [
+        "prob_any",
+        "prob_tor",
+        "prob_hail",
+        "prob_wind",
+        "prob_sigtor",
+        "prob_sighail",
+        "prob_sigwind"
+      ],
+      "probability_stats": {
+        "prob_any": {
+          "max": 47.5,
+          "mean": 7.49,
+          "min": 0.0,
+          "nonzero_count": 165
+        },
+        "prob_hail": {
+          "max": 30.0,
+          "mean": 1.469,
+          "min": 0.0,
+          "nonzero_count": 68
+        },
+        "prob_sighail": {
+          "max": 7.5,
+          "mean": 0.125,
+          "min": 0.0,
+          "nonzero_count": 8
+        },
+        "prob_sigtor": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0,
+          "nonzero_count": 0
+        },
+        "prob_sigwind": {
+          "max": 10.0,
+          "mean": 0.427,
+          "min": 0.0,
+          "nonzero_count": 24
+        },
+        "prob_tor": {
+          "max": 30.0,
+          "mean": 2.208,
+          "min": 0.0,
+          "nonzero_count": 76
+        },
+        "prob_wind": {
+          "max": 35.0,
+          "mean": 4.115,
+          "min": 0.0,
+          "nonzero_count": 115
+        }
+      },
+      "probability_units": "percent",
+      "source_netcdf": "cycles/2026050206/netcdf/lix_analog_probs_rrfs_2026050206_f006_valid_20260502_12Z.nc",
+      "valid_date": "2026-05-02",
+      "valid_hour_utc": 12,
+      "valid_time": "2026-05-02T12:00:00Z"
+    },
+    {
+      "analog_json": "cycles/2026050206/netcdf/lix_analog_probs_rrfs_2026050206_f018_valid_20260503_00Z_analogs.json",
+      "analog_json_url": "",
+      "analog_lookup_fields": [
+        "grid_i",
+        "grid_j"
+      ],
+      "analog_status": "available",
+      "bbox": [
+        -91.875,
+        27.875,
+        -87.875,
+        31.625
+      ],
+      "cycle": "2026050206",
+      "cycle_time": "2026-05-02T06:00:00Z",
+      "distance_fields": [
+        "mean_distance",
+        "min_distance",
+        "max_distance",
+        "effective_k"
+      ],
+      "distance_stats": {
+        "effective_k": {
+          "max": 40.0,
+          "mean": 40.0,
+          "min": 40.0,
+          "nonzero_count": 240
+        },
+        "max_distance": {
+          "max": 2.943,
+          "mean": 2.615,
+          "min": 2.132,
+          "nonzero_count": 240
+        },
+        "mean_distance": {
+          "max": 2.747,
+          "mean": 2.484,
+          "min": 2.038,
+          "nonzero_count": 240
+        },
+        "min_distance": {
+          "max": 2.603,
+          "mean": 2.259,
+          "min": 1.872,
+          "nonzero_count": 240
+        }
+      },
+      "feature_count": 240,
+      "forecast_hour": 18,
+      "forecast_hour_label": "f018",
+      "geojson": "cycles/2026050206/webdata/lix_analog_grid_rrfs_2026050206_f018_valid_20260503_00Z.geojson",
+      "grid_shape": [
+        15,
+        16
+      ],
+      "missing_probability_fields": [],
+      "model": "rrfs",
+      "plot_dir": "cycles/2026050206/plots/valid_20260503_00Z_f018",
+      "plots": [
+        {
+          "file": "cycles/2026050206/plots/valid_20260503_00Z_f018/lix_analog_any_rrfs_2026050206_f018_valid_20260503_00Z.png",
+          "hazard": "any",
+          "label": "Any Severe",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260503_00Z_f018/lix_analog_hail_rrfs_2026050206_f018_valid_20260503_00Z.png",
+          "hazard": "hail",
+          "label": "Severe Hail",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260503_00Z_f018/lix_analog_sighail_rrfs_2026050206_f018_valid_20260503_00Z.png",
+          "hazard": "sighail",
+          "label": "Significant Hail",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260503_00Z_f018/lix_analog_sigtor_rrfs_2026050206_f018_valid_20260503_00Z.png",
+          "hazard": "sigtor",
+          "label": "Significant Tornado",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260503_00Z_f018/lix_analog_sigwind_rrfs_2026050206_f018_valid_20260503_00Z.png",
+          "hazard": "sigwind",
+          "label": "Significant Damaging Wind",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260503_00Z_f018/lix_analog_tor_rrfs_2026050206_f018_valid_20260503_00Z.png",
+          "hazard": "tor",
+          "label": "Tornado",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260503_00Z_f018/lix_analog_wind_rrfs_2026050206_f018_valid_20260503_00Z.png",
+          "hazard": "wind",
+          "label": "Damaging Wind",
+          "url": ""
+        }
+      ],
+      "probability_fields": [
+        "prob_any",
+        "prob_tor",
+        "prob_hail",
+        "prob_wind",
+        "prob_sigtor",
+        "prob_sighail",
+        "prob_sigwind"
+      ],
+      "probability_stats": {
+        "prob_any": {
+          "max": 22.5,
+          "mean": 3.271,
+          "min": 0.0,
+          "nonzero_count": 71
+        },
+        "prob_hail": {
+          "max": 2.5,
+          "mean": 0.01,
+          "min": 0.0,
+          "nonzero_count": 1
+        },
+        "prob_sighail": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0,
+          "nonzero_count": 0
+        },
+        "prob_sigtor": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0,
+          "nonzero_count": 0
+        },
+        "prob_sigwind": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0,
+          "nonzero_count": 0
+        },
+        "prob_tor": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0,
+          "nonzero_count": 0
+        },
+        "prob_wind": {
+          "max": 22.5,
+          "mean": 3.26,
+          "min": 0.0,
+          "nonzero_count": 70
+        }
+      },
+      "probability_units": "percent",
+      "source_netcdf": "cycles/2026050206/netcdf/lix_analog_probs_rrfs_2026050206_f018_valid_20260503_00Z.nc",
+      "valid_date": "2026-05-03",
+      "valid_hour_utc": 0,
+      "valid_time": "2026-05-03T00:00:00Z"
+    },
+    {
+      "analog_json": "cycles/2026050206/netcdf/lix_analog_probs_rrfs_2026050206_f030_valid_20260503_12Z_analogs.json",
+      "analog_json_url": "",
+      "analog_lookup_fields": [
+        "grid_i",
+        "grid_j"
+      ],
+      "analog_status": "available",
+      "bbox": [
+        -91.875,
+        27.875,
+        -87.875,
+        31.625
+      ],
+      "cycle": "2026050206",
+      "cycle_time": "2026-05-02T06:00:00Z",
+      "distance_fields": [
+        "mean_distance",
+        "min_distance",
+        "max_distance",
+        "effective_k"
+      ],
+      "distance_stats": {
+        "effective_k": {
+          "max": 40.0,
+          "mean": 40.0,
+          "min": 40.0,
+          "nonzero_count": 240
+        },
+        "max_distance": {
+          "max": 3.09,
+          "mean": 2.636,
+          "min": 2.267,
+          "nonzero_count": 240
+        },
+        "mean_distance": {
+          "max": 2.965,
+          "mean": 2.482,
+          "min": 2.084,
+          "nonzero_count": 240
+        },
+        "min_distance": {
+          "max": 2.764,
+          "mean": 2.291,
+          "min": 1.754,
+          "nonzero_count": 240
+        }
+      },
+      "feature_count": 240,
+      "forecast_hour": 30,
+      "forecast_hour_label": "f030",
+      "geojson": "cycles/2026050206/webdata/lix_analog_grid_rrfs_2026050206_f030_valid_20260503_12Z.geojson",
+      "grid_shape": [
+        15,
+        16
+      ],
+      "missing_probability_fields": [],
+      "model": "rrfs",
+      "plot_dir": "cycles/2026050206/plots/valid_20260503_12Z_f030",
+      "plots": [
+        {
+          "file": "cycles/2026050206/plots/valid_20260503_12Z_f030/lix_analog_any_rrfs_2026050206_f030_valid_20260503_12Z.png",
+          "hazard": "any",
+          "label": "Any Severe",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260503_12Z_f030/lix_analog_hail_rrfs_2026050206_f030_valid_20260503_12Z.png",
+          "hazard": "hail",
+          "label": "Severe Hail",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260503_12Z_f030/lix_analog_sighail_rrfs_2026050206_f030_valid_20260503_12Z.png",
+          "hazard": "sighail",
+          "label": "Significant Hail",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260503_12Z_f030/lix_analog_sigtor_rrfs_2026050206_f030_valid_20260503_12Z.png",
+          "hazard": "sigtor",
+          "label": "Significant Tornado",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260503_12Z_f030/lix_analog_sigwind_rrfs_2026050206_f030_valid_20260503_12Z.png",
+          "hazard": "sigwind",
+          "label": "Significant Damaging Wind",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260503_12Z_f030/lix_analog_tor_rrfs_2026050206_f030_valid_20260503_12Z.png",
+          "hazard": "tor",
+          "label": "Tornado",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260503_12Z_f030/lix_analog_wind_rrfs_2026050206_f030_valid_20260503_12Z.png",
+          "hazard": "wind",
+          "label": "Damaging Wind",
+          "url": ""
+        }
+      ],
+      "probability_fields": [
+        "prob_any",
+        "prob_tor",
+        "prob_hail",
+        "prob_wind",
+        "prob_sigtor",
+        "prob_sighail",
+        "prob_sigwind"
+      ],
+      "probability_stats": {
+        "prob_any": {
+          "max": 17.5,
+          "mean": 14.677,
+          "min": 0.0,
+          "nonzero_count": 221
+        },
+        "prob_hail": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0,
+          "nonzero_count": 0
+        },
+        "prob_sighail": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0,
+          "nonzero_count": 0
+        },
+        "prob_sigtor": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0,
+          "nonzero_count": 0
+        },
+        "prob_sigwind": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0,
+          "nonzero_count": 0
+        },
+        "prob_tor": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0,
+          "nonzero_count": 0
+        },
+        "prob_wind": {
+          "max": 17.5,
+          "mean": 14.677,
+          "min": 0.0,
+          "nonzero_count": 221
+        }
+      },
+      "probability_units": "percent",
+      "source_netcdf": "cycles/2026050206/netcdf/lix_analog_probs_rrfs_2026050206_f030_valid_20260503_12Z.nc",
+      "valid_date": "2026-05-03",
+      "valid_hour_utc": 12,
+      "valid_time": "2026-05-03T12:00:00Z"
+    },
+    {
+      "analog_json": "cycles/2026050206/netcdf/lix_analog_probs_rrfs_2026050206_f042_valid_20260504_00Z_analogs.json",
+      "analog_json_url": "",
+      "analog_lookup_fields": [
+        "grid_i",
+        "grid_j"
+      ],
+      "analog_status": "available",
+      "bbox": [
+        -91.875,
+        27.875,
+        -87.875,
+        31.625
+      ],
+      "cycle": "2026050206",
+      "cycle_time": "2026-05-02T06:00:00Z",
+      "distance_fields": [
+        "mean_distance",
+        "min_distance",
+        "max_distance",
+        "effective_k"
+      ],
+      "distance_stats": {
+        "effective_k": {
+          "max": 40.0,
+          "mean": 40.0,
+          "min": 40.0,
+          "nonzero_count": 240
+        },
+        "max_distance": {
+          "max": 2.927,
+          "mean": 2.346,
+          "min": 1.957,
+          "nonzero_count": 240
+        },
+        "mean_distance": {
+          "max": 2.746,
+          "mean": 2.244,
+          "min": 1.816,
+          "nonzero_count": 240
+        },
+        "min_distance": {
+          "max": 2.417,
+          "mean": 2.061,
+          "min": 1.582,
+          "nonzero_count": 240
+        }
+      },
+      "feature_count": 240,
+      "forecast_hour": 42,
+      "forecast_hour_label": "f042",
+      "geojson": "cycles/2026050206/webdata/lix_analog_grid_rrfs_2026050206_f042_valid_20260504_00Z.geojson",
+      "grid_shape": [
+        15,
+        16
+      ],
+      "missing_probability_fields": [],
+      "model": "rrfs",
+      "plot_dir": "cycles/2026050206/plots/valid_20260504_00Z_f042",
+      "plots": [
+        {
+          "file": "cycles/2026050206/plots/valid_20260504_00Z_f042/lix_analog_any_rrfs_2026050206_f042_valid_20260504_00Z.png",
+          "hazard": "any",
+          "label": "Any Severe",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260504_00Z_f042/lix_analog_hail_rrfs_2026050206_f042_valid_20260504_00Z.png",
+          "hazard": "hail",
+          "label": "Severe Hail",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260504_00Z_f042/lix_analog_sighail_rrfs_2026050206_f042_valid_20260504_00Z.png",
+          "hazard": "sighail",
+          "label": "Significant Hail",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260504_00Z_f042/lix_analog_sigtor_rrfs_2026050206_f042_valid_20260504_00Z.png",
+          "hazard": "sigtor",
+          "label": "Significant Tornado",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260504_00Z_f042/lix_analog_sigwind_rrfs_2026050206_f042_valid_20260504_00Z.png",
+          "hazard": "sigwind",
+          "label": "Significant Damaging Wind",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260504_00Z_f042/lix_analog_tor_rrfs_2026050206_f042_valid_20260504_00Z.png",
+          "hazard": "tor",
+          "label": "Tornado",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260504_00Z_f042/lix_analog_wind_rrfs_2026050206_f042_valid_20260504_00Z.png",
+          "hazard": "wind",
+          "label": "Damaging Wind",
+          "url": ""
+        }
+      ],
+      "probability_fields": [
+        "prob_any",
+        "prob_tor",
+        "prob_hail",
+        "prob_wind",
+        "prob_sigtor",
+        "prob_sighail",
+        "prob_sigwind"
+      ],
+      "probability_stats": {
+        "prob_any": {
+          "max": 17.5,
+          "mean": 3.125,
+          "min": 0.0,
+          "nonzero_count": 68
+        },
+        "prob_hail": {
+          "max": 7.5,
+          "mean": 0.042,
+          "min": 0.0,
+          "nonzero_count": 2
+        },
+        "prob_sighail": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0,
+          "nonzero_count": 0
+        },
+        "prob_sigtor": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0,
+          "nonzero_count": 0
+        },
+        "prob_sigwind": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0,
+          "nonzero_count": 0
+        },
+        "prob_tor": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0,
+          "nonzero_count": 0
+        },
+        "prob_wind": {
+          "max": 17.5,
+          "mean": 3.094,
+          "min": 0.0,
+          "nonzero_count": 68
+        }
+      },
+      "probability_units": "percent",
+      "source_netcdf": "cycles/2026050206/netcdf/lix_analog_probs_rrfs_2026050206_f042_valid_20260504_00Z.nc",
+      "valid_date": "2026-05-04",
+      "valid_hour_utc": 0,
+      "valid_time": "2026-05-04T00:00:00Z"
+    },
+    {
+      "analog_json": "cycles/2026050206/netcdf/lix_analog_probs_rrfs_2026050206_f054_valid_20260504_12Z_analogs.json",
+      "analog_json_url": "",
+      "analog_lookup_fields": [
+        "grid_i",
+        "grid_j"
+      ],
+      "analog_status": "available",
+      "bbox": [
+        -91.875,
+        27.875,
+        -87.875,
+        31.625
+      ],
+      "cycle": "2026050206",
+      "cycle_time": "2026-05-02T06:00:00Z",
+      "distance_fields": [
+        "mean_distance",
+        "min_distance",
+        "max_distance",
+        "effective_k"
+      ],
+      "distance_stats": {
+        "effective_k": {
+          "max": 40.0,
+          "mean": 40.0,
+          "min": 40.0,
+          "nonzero_count": 240
+        },
+        "max_distance": {
+          "max": 2.596,
+          "mean": 2.286,
+          "min": 1.804,
+          "nonzero_count": 240
+        },
+        "mean_distance": {
+          "max": 2.52,
+          "mean": 2.171,
+          "min": 1.737,
+          "nonzero_count": 240
+        },
+        "min_distance": {
+          "max": 2.415,
+          "mean": 1.982,
+          "min": 1.407,
+          "nonzero_count": 240
+        }
+      },
+      "feature_count": 240,
+      "forecast_hour": 54,
+      "forecast_hour_label": "f054",
+      "geojson": "cycles/2026050206/webdata/lix_analog_grid_rrfs_2026050206_f054_valid_20260504_12Z.geojson",
+      "grid_shape": [
+        15,
+        16
+      ],
+      "missing_probability_fields": [],
+      "model": "rrfs",
+      "plot_dir": "cycles/2026050206/plots/valid_20260504_12Z_f054",
+      "plots": [
+        {
+          "file": "cycles/2026050206/plots/valid_20260504_12Z_f054/lix_analog_any_rrfs_2026050206_f054_valid_20260504_12Z.png",
+          "hazard": "any",
+          "label": "Any Severe",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260504_12Z_f054/lix_analog_hail_rrfs_2026050206_f054_valid_20260504_12Z.png",
+          "hazard": "hail",
+          "label": "Severe Hail",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260504_12Z_f054/lix_analog_sighail_rrfs_2026050206_f054_valid_20260504_12Z.png",
+          "hazard": "sighail",
+          "label": "Significant Hail",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260504_12Z_f054/lix_analog_sigtor_rrfs_2026050206_f054_valid_20260504_12Z.png",
+          "hazard": "sigtor",
+          "label": "Significant Tornado",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260504_12Z_f054/lix_analog_sigwind_rrfs_2026050206_f054_valid_20260504_12Z.png",
+          "hazard": "sigwind",
+          "label": "Significant Damaging Wind",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260504_12Z_f054/lix_analog_tor_rrfs_2026050206_f054_valid_20260504_12Z.png",
+          "hazard": "tor",
+          "label": "Tornado",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260504_12Z_f054/lix_analog_wind_rrfs_2026050206_f054_valid_20260504_12Z.png",
+          "hazard": "wind",
+          "label": "Damaging Wind",
+          "url": ""
+        }
+      ],
+      "probability_fields": [
+        "prob_any",
+        "prob_tor",
+        "prob_hail",
+        "prob_wind",
+        "prob_sigtor",
+        "prob_sighail",
+        "prob_sigwind"
+      ],
+      "probability_stats": {
+        "prob_any": {
+          "max": 7.5,
+          "mean": 0.052,
+          "min": 0.0,
+          "nonzero_count": 3
+        },
+        "prob_hail": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0,
+          "nonzero_count": 0
+        },
+        "prob_sighail": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0,
+          "nonzero_count": 0
+        },
+        "prob_sigtor": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0,
+          "nonzero_count": 0
+        },
+        "prob_sigwind": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0,
+          "nonzero_count": 0
+        },
+        "prob_tor": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0,
+          "nonzero_count": 0
+        },
+        "prob_wind": {
+          "max": 7.5,
+          "mean": 0.052,
+          "min": 0.0,
+          "nonzero_count": 3
+        }
+      },
+      "probability_units": "percent",
+      "source_netcdf": "cycles/2026050206/netcdf/lix_analog_probs_rrfs_2026050206_f054_valid_20260504_12Z.nc",
+      "valid_date": "2026-05-04",
+      "valid_hour_utc": 12,
+      "valid_time": "2026-05-04T12:00:00Z"
+    }
+  ],
+  "schema_version": 1,
+  "source_latest_generator": "06_run_lix_analog_cycle.py",
+  "source_latest_json": "latest.json",
+  "source_latest_summary": {
+    "entry_count": 5,
+    "netcdf_success_count": 5,
+    "plot_success_count": 5,
+    "requested_forecast_hours": [
+      0,
+      6,
+      12,
+      18,
+      24,
+      30,
+      36,
+      42,
+      48,
+      54,
+      60
+    ],
+    "status": "ok",
+    "valid_hours_filter_utc": [
+      0,
+      12
+    ]
+  },
+  "status": "ok",
+  "webdata_directory": "cycles/2026050206/webdata"
+}

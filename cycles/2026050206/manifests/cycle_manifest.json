@@ -1,0 +1,575 @@
+{
+  "analog_success_count": 5,
+  "analog_top_n": 5,
+  "created_utc": "2026-05-02T09:29:36Z",
+  "cycle": "2026050206",
+  "cycle_directory": "cycles/2026050206",
+  "cycle_directory_url": "",
+  "cycle_label": "2026-05-02 06Z",
+  "cycle_time": "2026-05-02T06:00:00Z",
+  "domain": "conus",
+  "download_summary": {
+    "failure_count": 0,
+    "results": [
+      {
+        "cycle": "2026050206",
+        "domain": "conus",
+        "downloaded": true,
+        "fhr": 6,
+        "file_size_bytes": 567277484,
+        "key": "rrfs_public/rrfs.20260502/06/rrfs.t06z.prslev.3km.f006.conus.grib2",
+        "local_path": "model_cache\\rrfs\\20260502\\06\\rrfs.t06z.prslev.3km.f006.conus.grib2",
+        "message": "Downloaded successfully.",
+        "model": "rrfs",
+        "product": "prslev",
+        "reused": false,
+        "status": "downloaded",
+        "url": "https://noaa-rrfs-pds.s3.amazonaws.com/rrfs_public/rrfs.20260502/06/rrfs.t06z.prslev.3km.f006.conus.grib2"
+      },
+      {
+        "cycle": "2026050206",
+        "domain": "conus",
+        "downloaded": true,
+        "fhr": 18,
+        "file_size_bytes": 593405725,
+        "key": "rrfs_public/rrfs.20260502/06/rrfs.t06z.prslev.3km.f018.conus.grib2",
+        "local_path": "model_cache\\rrfs\\20260502\\06\\rrfs.t06z.prslev.3km.f018.conus.grib2",
+        "message": "Downloaded successfully.",
+        "model": "rrfs",
+        "product": "prslev",
+        "reused": false,
+        "status": "downloaded",
+        "url": "https://noaa-rrfs-pds.s3.amazonaws.com/rrfs_public/rrfs.20260502/06/rrfs.t06z.prslev.3km.f018.conus.grib2"
+      },
+      {
+        "cycle": "2026050206",
+        "domain": "conus",
+        "downloaded": true,
+        "fhr": 30,
+        "file_size_bytes": 599865748,
+        "key": "rrfs_public/rrfs.20260502/06/rrfs.t06z.prslev.3km.f030.conus.grib2",
+        "local_path": "model_cache\\rrfs\\20260502\\06\\rrfs.t06z.prslev.3km.f030.conus.grib2",
+        "message": "Downloaded successfully.",
+        "model": "rrfs",
+        "product": "prslev",
+        "reused": false,
+        "status": "downloaded",
+        "url": "https://noaa-rrfs-pds.s3.amazonaws.com/rrfs_public/rrfs.20260502/06/rrfs.t06z.prslev.3km.f030.conus.grib2"
+      },
+      {
+        "cycle": "2026050206",
+        "domain": "conus",
+        "downloaded": true,
+        "fhr": 42,
+        "file_size_bytes": 619913711,
+        "key": "rrfs_public/rrfs.20260502/06/rrfs.t06z.prslev.3km.f042.conus.grib2",
+        "local_path": "model_cache\\rrfs\\20260502\\06\\rrfs.t06z.prslev.3km.f042.conus.grib2",
+        "message": "Downloaded successfully.",
+        "model": "rrfs",
+        "product": "prslev",
+        "reused": false,
+        "status": "downloaded",
+        "url": "https://noaa-rrfs-pds.s3.amazonaws.com/rrfs_public/rrfs.20260502/06/rrfs.t06z.prslev.3km.f042.conus.grib2"
+      },
+      {
+        "cycle": "2026050206",
+        "domain": "conus",
+        "downloaded": true,
+        "fhr": 54,
+        "file_size_bytes": 603285698,
+        "key": "rrfs_public/rrfs.20260502/06/rrfs.t06z.prslev.3km.f054.conus.grib2",
+        "local_path": "model_cache\\rrfs\\20260502\\06\\rrfs.t06z.prslev.3km.f054.conus.grib2",
+        "message": "Downloaded successfully.",
+        "model": "rrfs",
+        "product": "prslev",
+        "reused": false,
+        "status": "downloaded",
+        "url": "https://noaa-rrfs-pds.s3.amazonaws.com/rrfs_public/rrfs.20260502/06/rrfs.t06z.prslev.3km.f054.conus.grib2"
+      }
+    ],
+    "success_count": 5
+  },
+  "entries": [
+    {
+      "analog_json": "cycles/2026050206/netcdf/lix_analog_probs_rrfs_2026050206_f006_valid_20260502_12Z_analogs.json",
+      "analog_json_url": "",
+      "analog_status": "available",
+      "cycle": "2026050206",
+      "cycle_time": "2026-05-02T06:00:00Z",
+      "download": {
+        "cycle": "2026050206",
+        "domain": "conus",
+        "downloaded": true,
+        "fhr": 6,
+        "file_size_bytes": 567277484,
+        "key": "rrfs_public/rrfs.20260502/06/rrfs.t06z.prslev.3km.f006.conus.grib2",
+        "local_path": "model_cache\\rrfs\\20260502\\06\\rrfs.t06z.prslev.3km.f006.conus.grib2",
+        "message": "Downloaded successfully.",
+        "model": "rrfs",
+        "product": "prslev",
+        "reused": false,
+        "status": "downloaded",
+        "url": "https://noaa-rrfs-pds.s3.amazonaws.com/rrfs_public/rrfs.20260502/06/rrfs.t06z.prslev.3km.f006.conus.grib2"
+      },
+      "errors": [],
+      "forecast_file": "model_cache/rrfs/20260502/06/rrfs.t06z.prslev.3km.f006.conus.grib2",
+      "forecast_hour": 6,
+      "forecast_hour_label": "f006",
+      "messages": [
+        "Probability NetCDF and analog JSON created: \\\\lix-s-nas\\local_apps\\Users\\Zeringue\\LIXAnalog\\web_lix_analog\\cycles\\2026050206\\netcdf\\lix_analog_probs_rrfs_2026050206_f006_valid_20260502_12Z_analogs.json",
+        "Created/found 7 PNG plot(s)."
+      ],
+      "model": "rrfs",
+      "plot_dir": "cycles/2026050206/plots/valid_20260502_12Z_f006",
+      "plot_status": "created",
+      "plots": [
+        {
+          "file": "cycles/2026050206/plots/valid_20260502_12Z_f006/lix_analog_any_rrfs_2026050206_f006_valid_20260502_12Z.png",
+          "hazard": "any",
+          "label": "Any Severe",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260502_12Z_f006/lix_analog_hail_rrfs_2026050206_f006_valid_20260502_12Z.png",
+          "hazard": "hail",
+          "label": "Severe Hail",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260502_12Z_f006/lix_analog_sighail_rrfs_2026050206_f006_valid_20260502_12Z.png",
+          "hazard": "sighail",
+          "label": "Significant Hail",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260502_12Z_f006/lix_analog_sigtor_rrfs_2026050206_f006_valid_20260502_12Z.png",
+          "hazard": "sigtor",
+          "label": "Significant Tornado",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260502_12Z_f006/lix_analog_sigwind_rrfs_2026050206_f006_valid_20260502_12Z.png",
+          "hazard": "sigwind",
+          "label": "Significant Damaging Wind",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260502_12Z_f006/lix_analog_tor_rrfs_2026050206_f006_valid_20260502_12Z.png",
+          "hazard": "tor",
+          "label": "Tornado",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260502_12Z_f006/lix_analog_wind_rrfs_2026050206_f006_valid_20260502_12Z.png",
+          "hazard": "wind",
+          "label": "Damaging Wind",
+          "url": ""
+        }
+      ],
+      "probability_netcdf": "cycles/2026050206/netcdf/lix_analog_probs_rrfs_2026050206_f006_valid_20260502_12Z.nc",
+      "probability_netcdf_url": "",
+      "score_status": "created",
+      "valid_hour_utc": 12,
+      "valid_time": "2026-05-02T12:00:00Z"
+    },
+    {
+      "analog_json": "cycles/2026050206/netcdf/lix_analog_probs_rrfs_2026050206_f018_valid_20260503_00Z_analogs.json",
+      "analog_json_url": "",
+      "analog_status": "available",
+      "cycle": "2026050206",
+      "cycle_time": "2026-05-02T06:00:00Z",
+      "download": {
+        "cycle": "2026050206",
+        "domain": "conus",
+        "downloaded": true,
+        "fhr": 18,
+        "file_size_bytes": 593405725,
+        "key": "rrfs_public/rrfs.20260502/06/rrfs.t06z.prslev.3km.f018.conus.grib2",
+        "local_path": "model_cache\\rrfs\\20260502\\06\\rrfs.t06z.prslev.3km.f018.conus.grib2",
+        "message": "Downloaded successfully.",
+        "model": "rrfs",
+        "product": "prslev",
+        "reused": false,
+        "status": "downloaded",
+        "url": "https://noaa-rrfs-pds.s3.amazonaws.com/rrfs_public/rrfs.20260502/06/rrfs.t06z.prslev.3km.f018.conus.grib2"
+      },
+      "errors": [],
+      "forecast_file": "model_cache/rrfs/20260502/06/rrfs.t06z.prslev.3km.f018.conus.grib2",
+      "forecast_hour": 18,
+      "forecast_hour_label": "f018",
+      "messages": [
+        "Probability NetCDF and analog JSON created: \\\\lix-s-nas\\local_apps\\Users\\Zeringue\\LIXAnalog\\web_lix_analog\\cycles\\2026050206\\netcdf\\lix_analog_probs_rrfs_2026050206_f018_valid_20260503_00Z_analogs.json",
+        "Created/found 7 PNG plot(s)."
+      ],
+      "model": "rrfs",
+      "plot_dir": "cycles/2026050206/plots/valid_20260503_00Z_f018",
+      "plot_status": "created",
+      "plots": [
+        {
+          "file": "cycles/2026050206/plots/valid_20260503_00Z_f018/lix_analog_any_rrfs_2026050206_f018_valid_20260503_00Z.png",
+          "hazard": "any",
+          "label": "Any Severe",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260503_00Z_f018/lix_analog_hail_rrfs_2026050206_f018_valid_20260503_00Z.png",
+          "hazard": "hail",
+          "label": "Severe Hail",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260503_00Z_f018/lix_analog_sighail_rrfs_2026050206_f018_valid_20260503_00Z.png",
+          "hazard": "sighail",
+          "label": "Significant Hail",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260503_00Z_f018/lix_analog_sigtor_rrfs_2026050206_f018_valid_20260503_00Z.png",
+          "hazard": "sigtor",
+          "label": "Significant Tornado",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260503_00Z_f018/lix_analog_sigwind_rrfs_2026050206_f018_valid_20260503_00Z.png",
+          "hazard": "sigwind",
+          "label": "Significant Damaging Wind",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260503_00Z_f018/lix_analog_tor_rrfs_2026050206_f018_valid_20260503_00Z.png",
+          "hazard": "tor",
+          "label": "Tornado",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260503_00Z_f018/lix_analog_wind_rrfs_2026050206_f018_valid_20260503_00Z.png",
+          "hazard": "wind",
+          "label": "Damaging Wind",
+          "url": ""
+        }
+      ],
+      "probability_netcdf": "cycles/2026050206/netcdf/lix_analog_probs_rrfs_2026050206_f018_valid_20260503_00Z.nc",
+      "probability_netcdf_url": "",
+      "score_status": "created",
+      "valid_hour_utc": 0,
+      "valid_time": "2026-05-03T00:00:00Z"
+    },
+    {
+      "analog_json": "cycles/2026050206/netcdf/lix_analog_probs_rrfs_2026050206_f030_valid_20260503_12Z_analogs.json",
+      "analog_json_url": "",
+      "analog_status": "available",
+      "cycle": "2026050206",
+      "cycle_time": "2026-05-02T06:00:00Z",
+      "download": {
+        "cycle": "2026050206",
+        "domain": "conus",
+        "downloaded": true,
+        "fhr": 30,
+        "file_size_bytes": 599865748,
+        "key": "rrfs_public/rrfs.20260502/06/rrfs.t06z.prslev.3km.f030.conus.grib2",
+        "local_path": "model_cache\\rrfs\\20260502\\06\\rrfs.t06z.prslev.3km.f030.conus.grib2",
+        "message": "Downloaded successfully.",
+        "model": "rrfs",
+        "product": "prslev",
+        "reused": false,
+        "status": "downloaded",
+        "url": "https://noaa-rrfs-pds.s3.amazonaws.com/rrfs_public/rrfs.20260502/06/rrfs.t06z.prslev.3km.f030.conus.grib2"
+      },
+      "errors": [],
+      "forecast_file": "model_cache/rrfs/20260502/06/rrfs.t06z.prslev.3km.f030.conus.grib2",
+      "forecast_hour": 30,
+      "forecast_hour_label": "f030",
+      "messages": [
+        "Probability NetCDF and analog JSON created: \\\\lix-s-nas\\local_apps\\Users\\Zeringue\\LIXAnalog\\web_lix_analog\\cycles\\2026050206\\netcdf\\lix_analog_probs_rrfs_2026050206_f030_valid_20260503_12Z_analogs.json",
+        "Created/found 7 PNG plot(s)."
+      ],
+      "model": "rrfs",
+      "plot_dir": "cycles/2026050206/plots/valid_20260503_12Z_f030",
+      "plot_status": "created",
+      "plots": [
+        {
+          "file": "cycles/2026050206/plots/valid_20260503_12Z_f030/lix_analog_any_rrfs_2026050206_f030_valid_20260503_12Z.png",
+          "hazard": "any",
+          "label": "Any Severe",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260503_12Z_f030/lix_analog_hail_rrfs_2026050206_f030_valid_20260503_12Z.png",
+          "hazard": "hail",
+          "label": "Severe Hail",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260503_12Z_f030/lix_analog_sighail_rrfs_2026050206_f030_valid_20260503_12Z.png",
+          "hazard": "sighail",
+          "label": "Significant Hail",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260503_12Z_f030/lix_analog_sigtor_rrfs_2026050206_f030_valid_20260503_12Z.png",
+          "hazard": "sigtor",
+          "label": "Significant Tornado",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260503_12Z_f030/lix_analog_sigwind_rrfs_2026050206_f030_valid_20260503_12Z.png",
+          "hazard": "sigwind",
+          "label": "Significant Damaging Wind",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260503_12Z_f030/lix_analog_tor_rrfs_2026050206_f030_valid_20260503_12Z.png",
+          "hazard": "tor",
+          "label": "Tornado",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260503_12Z_f030/lix_analog_wind_rrfs_2026050206_f030_valid_20260503_12Z.png",
+          "hazard": "wind",
+          "label": "Damaging Wind",
+          "url": ""
+        }
+      ],
+      "probability_netcdf": "cycles/2026050206/netcdf/lix_analog_probs_rrfs_2026050206_f030_valid_20260503_12Z.nc",
+      "probability_netcdf_url": "",
+      "score_status": "created",
+      "valid_hour_utc": 12,
+      "valid_time": "2026-05-03T12:00:00Z"
+    },
+    {
+      "analog_json": "cycles/2026050206/netcdf/lix_analog_probs_rrfs_2026050206_f042_valid_20260504_00Z_analogs.json",
+      "analog_json_url": "",
+      "analog_status": "available",
+      "cycle": "2026050206",
+      "cycle_time": "2026-05-02T06:00:00Z",
+      "download": {
+        "cycle": "2026050206",
+        "domain": "conus",
+        "downloaded": true,
+        "fhr": 42,
+        "file_size_bytes": 619913711,
+        "key": "rrfs_public/rrfs.20260502/06/rrfs.t06z.prslev.3km.f042.conus.grib2",
+        "local_path": "model_cache\\rrfs\\20260502\\06\\rrfs.t06z.prslev.3km.f042.conus.grib2",
+        "message": "Downloaded successfully.",
+        "model": "rrfs",
+        "product": "prslev",
+        "reused": false,
+        "status": "downloaded",
+        "url": "https://noaa-rrfs-pds.s3.amazonaws.com/rrfs_public/rrfs.20260502/06/rrfs.t06z.prslev.3km.f042.conus.grib2"
+      },
+      "errors": [],
+      "forecast_file": "model_cache/rrfs/20260502/06/rrfs.t06z.prslev.3km.f042.conus.grib2",
+      "forecast_hour": 42,
+      "forecast_hour_label": "f042",
+      "messages": [
+        "Probability NetCDF and analog JSON created: \\\\lix-s-nas\\local_apps\\Users\\Zeringue\\LIXAnalog\\web_lix_analog\\cycles\\2026050206\\netcdf\\lix_analog_probs_rrfs_2026050206_f042_valid_20260504_00Z_analogs.json",
+        "Created/found 7 PNG plot(s)."
+      ],
+      "model": "rrfs",
+      "plot_dir": "cycles/2026050206/plots/valid_20260504_00Z_f042",
+      "plot_status": "created",
+      "plots": [
+        {
+          "file": "cycles/2026050206/plots/valid_20260504_00Z_f042/lix_analog_any_rrfs_2026050206_f042_valid_20260504_00Z.png",
+          "hazard": "any",
+          "label": "Any Severe",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260504_00Z_f042/lix_analog_hail_rrfs_2026050206_f042_valid_20260504_00Z.png",
+          "hazard": "hail",
+          "label": "Severe Hail",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260504_00Z_f042/lix_analog_sighail_rrfs_2026050206_f042_valid_20260504_00Z.png",
+          "hazard": "sighail",
+          "label": "Significant Hail",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260504_00Z_f042/lix_analog_sigtor_rrfs_2026050206_f042_valid_20260504_00Z.png",
+          "hazard": "sigtor",
+          "label": "Significant Tornado",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260504_00Z_f042/lix_analog_sigwind_rrfs_2026050206_f042_valid_20260504_00Z.png",
+          "hazard": "sigwind",
+          "label": "Significant Damaging Wind",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260504_00Z_f042/lix_analog_tor_rrfs_2026050206_f042_valid_20260504_00Z.png",
+          "hazard": "tor",
+          "label": "Tornado",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260504_00Z_f042/lix_analog_wind_rrfs_2026050206_f042_valid_20260504_00Z.png",
+          "hazard": "wind",
+          "label": "Damaging Wind",
+          "url": ""
+        }
+      ],
+      "probability_netcdf": "cycles/2026050206/netcdf/lix_analog_probs_rrfs_2026050206_f042_valid_20260504_00Z.nc",
+      "probability_netcdf_url": "",
+      "score_status": "created",
+      "valid_hour_utc": 0,
+      "valid_time": "2026-05-04T00:00:00Z"
+    },
+    {
+      "analog_json": "cycles/2026050206/netcdf/lix_analog_probs_rrfs_2026050206_f054_valid_20260504_12Z_analogs.json",
+      "analog_json_url": "",
+      "analog_status": "available",
+      "cycle": "2026050206",
+      "cycle_time": "2026-05-02T06:00:00Z",
+      "download": {
+        "cycle": "2026050206",
+        "domain": "conus",
+        "downloaded": true,
+        "fhr": 54,
+        "file_size_bytes": 603285698,
+        "key": "rrfs_public/rrfs.20260502/06/rrfs.t06z.prslev.3km.f054.conus.grib2",
+        "local_path": "model_cache\\rrfs\\20260502\\06\\rrfs.t06z.prslev.3km.f054.conus.grib2",
+        "message": "Downloaded successfully.",
+        "model": "rrfs",
+        "product": "prslev",
+        "reused": false,
+        "status": "downloaded",
+        "url": "https://noaa-rrfs-pds.s3.amazonaws.com/rrfs_public/rrfs.20260502/06/rrfs.t06z.prslev.3km.f054.conus.grib2"
+      },
+      "errors": [],
+      "forecast_file": "model_cache/rrfs/20260502/06/rrfs.t06z.prslev.3km.f054.conus.grib2",
+      "forecast_hour": 54,
+      "forecast_hour_label": "f054",
+      "messages": [
+        "Probability NetCDF and analog JSON created: \\\\lix-s-nas\\local_apps\\Users\\Zeringue\\LIXAnalog\\web_lix_analog\\cycles\\2026050206\\netcdf\\lix_analog_probs_rrfs_2026050206_f054_valid_20260504_12Z_analogs.json",
+        "Created/found 7 PNG plot(s)."
+      ],
+      "model": "rrfs",
+      "plot_dir": "cycles/2026050206/plots/valid_20260504_12Z_f054",
+      "plot_status": "created",
+      "plots": [
+        {
+          "file": "cycles/2026050206/plots/valid_20260504_12Z_f054/lix_analog_any_rrfs_2026050206_f054_valid_20260504_12Z.png",
+          "hazard": "any",
+          "label": "Any Severe",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260504_12Z_f054/lix_analog_hail_rrfs_2026050206_f054_valid_20260504_12Z.png",
+          "hazard": "hail",
+          "label": "Severe Hail",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260504_12Z_f054/lix_analog_sighail_rrfs_2026050206_f054_valid_20260504_12Z.png",
+          "hazard": "sighail",
+          "label": "Significant Hail",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260504_12Z_f054/lix_analog_sigtor_rrfs_2026050206_f054_valid_20260504_12Z.png",
+          "hazard": "sigtor",
+          "label": "Significant Tornado",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260504_12Z_f054/lix_analog_sigwind_rrfs_2026050206_f054_valid_20260504_12Z.png",
+          "hazard": "sigwind",
+          "label": "Significant Damaging Wind",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260504_12Z_f054/lix_analog_tor_rrfs_2026050206_f054_valid_20260504_12Z.png",
+          "hazard": "tor",
+          "label": "Tornado",
+          "url": ""
+        },
+        {
+          "file": "cycles/2026050206/plots/valid_20260504_12Z_f054/lix_analog_wind_rrfs_2026050206_f054_valid_20260504_12Z.png",
+          "hazard": "wind",
+          "label": "Damaging Wind",
+          "url": ""
+        }
+      ],
+      "probability_netcdf": "cycles/2026050206/netcdf/lix_analog_probs_rrfs_2026050206_f054_valid_20260504_12Z.nc",
+      "probability_netcdf_url": "",
+      "score_status": "created",
+      "valid_hour_utc": 12,
+      "valid_time": "2026-05-04T12:00:00Z"
+    }
+  ],
+  "entry_count": 5,
+  "errors": [],
+  "experimental_caveat": "Experimental analog guidance. Probabilities are nearest-analog label frequencies from a historical ERA5 gridpoint library and are not calibrated official NWS probabilistic guidance. Verify locally before use.",
+  "generator": "06_run_lix_analog_cycle.py",
+  "hazards": [
+    {
+      "id": "any",
+      "label": "Any Severe"
+    },
+    {
+      "id": "tor",
+      "label": "Tornado"
+    },
+    {
+      "id": "hail",
+      "label": "Severe Hail"
+    },
+    {
+      "id": "wind",
+      "label": "Damaging Wind"
+    },
+    {
+      "id": "sigtor",
+      "label": "Significant Tornado"
+    },
+    {
+      "id": "sighail",
+      "label": "Significant Hail"
+    },
+    {
+      "id": "sigwind",
+      "label": "Significant Damaging Wind"
+    }
+  ],
+  "latest_cycle_hours_utc": [
+    0,
+    6,
+    12,
+    18
+  ],
+  "log_file": "logs/06_run_lix_analog_cycle_20260502_091139Z.log",
+  "maximum_forecast_hour": 60,
+  "model": "rrfs",
+  "netcdf_success_count": 5,
+  "plot_success_count": 5,
+  "product": "prslev",
+  "requested_cycle": "latest",
+  "requested_forecast_hours": [
+    0,
+    6,
+    12,
+    18,
+    24,
+    30,
+    36,
+    42,
+    48,
+    54,
+    60
+  ],
+  "save_analogs": 1,
+  "schema_version": 1,
+  "status": "ok",
+  "valid_hours_filter_utc": [
+    0,
+    12
+  ],
+  "web_export_message": "Interactive web export completed. web_latest_json=web_latest.json; web_manifest=cycles/2026050206/webdata/web_manifest.json.",
+  "web_export_status": "ok",
+  "web_latest_json": "web_latest.json",
+  "web_manifest": "cycles/2026050206/webdata/web_manifest.json"
+}
