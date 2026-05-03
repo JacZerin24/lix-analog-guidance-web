@@ -1696,7 +1696,137 @@
       `;
     }
 
-    function extractFeatureRows(analog) {
+        function extractFeatureRows(analog) {
+      const rows = [];
+
+      function featureName(item, fallback = "Feature") {
+        if (!item || typeof item !== "object") return fallback;
+
+        const feature = item.feature || item.name || item.parameter || item.field;
+        const variable = item.variable;
+        const level = item.level_hpa ?? item.level ?? item.pressure_level;
+
+        if (feature) return String(feature);
+        if (variable && level !== null && level !== undefined && level !== "") return `${variable} ${level} hPa`;
+        if (variable) return String(variable);
+
+        return fallback;
+      }
+
+      function featureValue(item) {
+        if (!item || typeof item !== "object") return formatFeatureValue(item);
+
+        const pieces = [];
+
+        const forecastRaw =
+          item.forecast_raw_value ??
+          item.mean_forecast_raw_value ??
+          item.forecast_value ??
+          item.forecast ??
+          item.fcst;
+
+        const analogRaw =
+          item.analog_raw_estimated_value ??
+          item.mean_analog_raw_estimated_value ??
+          item.analog_value ??
+          item.library_value ??
+          item.analog;
+
+        const absStdDiff =
+          item.absolute_standardized_difference ??
+          item.median_abs_standardized_difference ??
+          item.abs_difference ??
+          item.absdiff;
+
+        const stdDiff =
+          item.standardized_difference ??
+          item.z_difference ??
+          item.z_diff ??
+          item.diff;
+
+        const contribution =
+          item.percent_of_total_squared_distance ??
+          item.mean_squared_distance_contribution ??
+          item.squared_distance_contribution ??
+          item.contribution ??
+          item.score;
+
+        if (forecastRaw !== undefined && forecastRaw !== null) {
+          pieces.push(`fcst ${formatFeatureValue(forecastRaw)}`);
+        }
+
+        if (analogRaw !== undefined && analogRaw !== null) {
+          pieces.push(`analog ${formatFeatureValue(analogRaw)}`);
+        }
+
+        if (absStdDiff !== undefined && absStdDiff !== null) {
+          pieces.push(`|Δz| ${formatFeatureValue(absStdDiff)}`);
+        } else if (stdDiff !== undefined && stdDiff !== null) {
+          pieces.push(`z diff ${formatFeatureValue(stdDiff)}`);
+        }
+
+        if (contribution !== undefined && contribution !== null) {
+          const n = Number(contribution);
+          if (Number.isFinite(n) && item.percent_of_total_squared_distance !== undefined) {
+            pieces.push(`${formatNumber(n, 1)}% dist`);
+          } else {
+            pieces.push(`score ${formatFeatureValue(contribution)}`);
+          }
+        }
+
+        return pieces.length ? pieces.join(" | ") : formatRaw(item);
+      }
+
+      function addFeatureItems(items) {
+        if (!Array.isArray(items)) return;
+
+        for (const item of items) {
+          if (!item || typeof item !== "object") continue;
+
+          rows.push({
+            name: featureName(item, `Feature ${rows.length + 1}`),
+            value: featureValue(item)
+          });
+        }
+      }
+
+      /*
+       * Script 03 writes the useful per-analog feature details here:
+       * analog.feature_explain.top_similar_features
+       * analog.feature_explain.top_different_features
+       */
+      const explain =
+        analog?.feature_explain ||
+        analog?.feature_explanation ||
+        analog?.feature_explanations;
+
+      addFeatureItems(explain?.top_similar_features);
+      if (rows.length) return rows;
+
+      /*
+       * If top similar features are unavailable, fall back to the biggest
+       * standardized differences. This is less "closest", but still useful.
+       */
+      addFeatureItems(explain?.top_different_features);
+      if (rows.length) return rows;
+
+      /*
+       * Some records may carry a gridpoint-level summary instead.
+       */
+      const summary =
+        analog?.feature_match_summary ||
+        analog?.grid_feature_summary ||
+        analog?.feature_summary;
+
+      addFeatureItems(summary?.top_similar_features);
+      if (rows.length) return rows;
+
+      addFeatureItems(summary?.top_different_features);
+      if (rows.length) return rows;
+
+      /*
+       * Older/future schema fallbacks.
+       */
       const containers = [
         analog.feature_differences,
         analog.feature_difference,
@@ -1712,16 +1842,19 @@
       ].filter(Boolean);
 
       for (const container of containers) {
-        const rows = normalizeFeatureContainer(container);
-        if (rows.length) return rows;
+        const normalized = normalizeFeatureContainer(container);
+        if (normalized.length) return normalized;
       }
 
-      const rows = [];
+      /*
+       * Last-resort fallback for flat fields like feature_x_diff.
+       */
       for (const [key, value] of Object.entries(analog || {})) {
         if (!/^feature_|^diff_|_difference$|_absdiff$|_z_diff$/i.test(key)) continue;
         if (value === null || typeof value === "object") continue;
         rows.push({ name: key, value: formatFeatureValue(value) });
       }
+
       return rows;
     }
 
