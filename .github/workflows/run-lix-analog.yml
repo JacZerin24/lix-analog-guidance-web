@@ -1,0 +1,136 @@
+name: Run LIX Analog Guidance
+
+on:
+  workflow_dispatch:
+    inputs:
+      cycle:
+        description: "RRFS cycle to run: latest or YYYYMMDDHH"
+        required: false
+        default: "latest"
+      fhr_end:
+        description: "Last forecast hour"
+        required: false
+        default: "60"
+  schedule:
+    # About 5.5 hours after 00/06/12/18 UTC cycles. This gives RRFS time to finish.
+    - cron: "30 5,11,17,23 * * *"
+
+concurrency:
+  group: lix-analog-guidance
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+environment:
+  name: github-pages
+  url: ${{ steps.deployment.outputs.page_url }}
+
+jobs:
+  run-guidance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install Linux dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libeccodes-dev \
+            libeccodes-tools \
+            libproj-dev \
+            proj-bin \
+            proj-data \
+            libgeos-dev
+
+      - name: Download LIX analog runner/data bundle
+        run: |
+          curl -L \
+            -o lix_github_actions_full_bundle.zip \
+            "https://github.com/JacZerin24/lix-analog-guidance-web/releases/download/data-v1/lix_github_actions_full_bundle.zip"
+          unzip -q lix_github_actions_full_bundle.zip -d runner
+          echo "Bundle contents:"
+          find runner -maxdepth 3 -type f | sort | head -200
+
+      - name: Install Python requirements
+        working-directory: runner
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run LIX analog cycle
+        working-directory: runner
+        env:
+          CYCLE: ${{ github.event.inputs.cycle || 'latest' }}
+          FHR_END: ${{ github.event.inputs.fhr_end || '60' }}
+        run: |
+          python scripts/06_run_lix_analog_cycle.py \
+            --library data/lix_gridpoint_analog_library.npz \
+            --model rrfs \
+            --cycle "$CYCLE" \
+            --fhr-start 0 \
+            --fhr-end "$FHR_END" \
+            --fhr-step 6 \
+            --latest-require-all 1 \
+            --download-dir model_cache \
+            --output-root site \
+            --county-shapefile data/shapefiles/counties/c_16ap26.shp \
+            --cwa-shapefile data/shapefiles/cwa/w_16ap26.shp \
+            --missing-policy mean \
+            --save-analogs 1 \
+            --analog-top-n 5 \
+            --run-web-export 1 \
+            --verbose 1 \
+            --child-verbose 1
+
+      - name: Build analog report assets
+        working-directory: runner
+        run: |
+          python scripts/08_build_analog_report_assets.py \
+            --web-root site \
+            --reports-tornado data/reports/lix_tornadoes_all_1974_2023.csv \
+            --reports-hail data/reports/lix_hail.csv \
+            --reports-wind data/reports/lix_wind.csv \
+            --county-shapefile data/shapefiles/counties/c_16ap26.shp \
+            --cwa-shapefile data/shapefiles/cwa/w_16ap26.shp \
+            --force 1 \
+            --verbose 1
+
+      - name: Add webpage and quick diagnostics
+        working-directory: runner
+        run: |
+          cp web/index.html site/index.html
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path('site/web_latest.json')
+          d = json.loads(p.read_text())
+          print('Published cycle:', d.get('cycle'), d.get('cycle_label'), d.get('created_utc'))
+          print('Products:', d.get('product_count'))
+          print('Report assets:', d.get('analog_report_assets_available'))
+          PY
+          find site -type f | wc -l
+          du -sh site
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: runner/site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
