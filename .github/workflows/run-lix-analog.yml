@@ -105,6 +105,112 @@ jobs:
             --force 1 \
             --verbose 1
 
+      - name: Attach analog JSON paths to web manifest
+        working-directory: runner
+        run: |
+          python - <<'PY'
+          import json
+          import re
+          from pathlib import Path
+          from datetime import datetime, timezone
+
+          root = Path("site")
+          latest_path = root / "web_latest.json"
+
+          if not latest_path.exists():
+              raise FileNotFoundError(f"Missing {latest_path}")
+
+          data = json.loads(latest_path.read_text(encoding="utf-8"))
+
+          analog_files = sorted(root.glob("cycles/*/netcdf/*_analogs.json"))
+          print(f"Found {len(analog_files)} analog JSON files")
+
+          def rel(path):
+              return path.relative_to(root).as_posix()
+
+          def valid_token(value):
+              if not value:
+                  return ""
+              s = str(value)
+              try:
+                  dt = datetime.fromisoformat(s.replace("Z", "+00:00")).astimezone(timezone.utc)
+                  return dt.strftime("%Y%m%d_%HZ")
+              except Exception:
+                  m = re.search(r"(\d{8}_\d{2}Z)", s)
+                  return m.group(1) if m else ""
+
+          analog_by_key = {}
+          for path in analog_files:
+              name = path.name
+              fhr_match = re.search(r"_f(\d{3})_", name)
+              valid_match = re.search(r"_valid_(\d{8}_\d{2}Z)_analogs\.json$", name)
+              cycle_match = re.search(r"_(\d{10})_f\d{3}_", name)
+
+              if not fhr_match or not valid_match:
+                  continue
+
+              fhr = int(fhr_match.group(1))
+              vtok = valid_match.group(1)
+              cycle = cycle_match.group(1) if cycle_match else ""
+
+              analog_by_key[(cycle, fhr, vtok)] = rel(path)
+              analog_by_key[("", fhr, vtok)] = rel(path)
+
+          def attach_to_product(product):
+              if not isinstance(product, dict):
+                  return product
+
+              if product.get("analog_json"):
+                  return product
+
+              cycle = str(product.get("cycle") or data.get("cycle") or "")
+              fhr = product.get("forecast_hour")
+              vtok = valid_token(product.get("valid_time"))
+
+              try:
+                  fhr_int = int(fhr)
+              except Exception:
+                  fhr_int = None
+
+              candidate = None
+              if fhr_int is not None and vtok:
+                  candidate = (
+                      analog_by_key.get((cycle, fhr_int, vtok)) or
+                      analog_by_key.get(("", fhr_int, vtok))
+                  )
+
+              if candidate:
+                  product["analog_json"] = candidate
+                  product["analog_json_url"] = ""
+                  product["analog_lookup_fields"] = ["grid_i", "grid_j"]
+                  product["analog_status"] = "available"
+              else:
+                  product["analog_status"] = product.get("analog_status") or "missing"
+
+              return product
+
+          if isinstance(data.get("products"), list):
+              data["products"] = [attach_to_product(p) for p in data["products"]]
+
+          if isinstance(data.get("entries"), list):
+              data["entries"] = [attach_to_product(p) for p in data["entries"]]
+
+          if isinstance(data.get("days"), list):
+              for day in data["days"]:
+                  if isinstance(day, dict) and isinstance(day.get("products"), list):
+                      day["products"] = [attach_to_product(p) for p in day["products"]]
+
+          latest_path.write_text(json.dumps(data, indent=2, sort_keys=True), encoding="utf-8")
+          print("Attached analog_json paths to web_latest.json")
+
+          count = 0
+          for day in data.get("days", []):
+              for product in day.get("products", []):
+                  if product.get("analog_json"):
+                      count += 1
+          print(f"Products with analog_json: {count}")
+          PY
+
       - name: Add webpage and quick diagnostics
         working-directory: runner
         run: |
@@ -112,11 +218,28 @@ jobs:
           python - <<'PY'
           import json
           from pathlib import Path
+
           p = Path('site/web_latest.json')
           d = json.loads(p.read_text())
+
           print('Published cycle:', d.get('cycle'), d.get('cycle_label'), d.get('created_utc'))
           print('Products:', d.get('product_count'))
           print('Report assets:', d.get('analog_report_assets_available'))
+
+          analog_count = 0
+          missing_count = 0
+          for day in d.get('days', []):
+              for product in day.get('products', []):
+                  if product.get('analog_json'):
+                      analog_count += 1
+                  else:
+                      missing_count += 1
+
+          print('Products with analog_json:', analog_count)
+          print('Products missing analog_json:', missing_count)
+
+          if analog_count == 0:
+              raise SystemExit('No products have analog_json paths. Top analogs would not load.')
           PY
           find site -type f | wc -l
           du -sh site
