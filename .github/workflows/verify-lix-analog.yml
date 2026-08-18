@@ -1,0 +1,84 @@
+name: Verify LIX Analog Guidance
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/verify-lix-analog.yml"
+
+permissions:
+  actions: write
+  contents: write
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Trigger a short main-workflow verification run
+        id: trigger
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh workflow run run-lix-analog.yml \
+            --ref main \
+            -f cycle=2026081812 \
+            -f fhr_end=6
+
+          run_id=""
+          for i in $(seq 1 30); do
+            run_id=$(gh run list \
+              --workflow run-lix-analog.yml \
+              --event workflow_dispatch \
+              --commit "$GITHUB_SHA" \
+              --limit 1 \
+              --json databaseId \
+              --jq '.[0].databaseId // empty')
+            if [ -n "$run_id" ]; then
+              break
+            fi
+            sleep 2
+          done
+
+          if [ -z "$run_id" ]; then
+            echo "Could not resolve dispatched workflow run ID" >&2
+            exit 1
+          fi
+
+          echo "run_id=$run_id" >> "$GITHUB_OUTPUT"
+          echo "Dispatched run ID: $run_id"
+
+          # Preserve the run result for the reporting step below.
+          gh run watch "$run_id" --exit-status || true
+
+      - name: Record verification result
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_ID: ${{ steps.trigger.outputs.run_id }}
+        run: |
+          set -euo pipefail
+
+          if [ -n "${RUN_ID:-}" ]; then
+            gh run view "$RUN_ID" \
+              --json databaseId,status,conclusion,createdAt,updatedAt,url,headSha,event,workflowName \
+              > .github/lix-analog-verify.json
+          else
+            cat > .github/lix-analog-verify.json <<EOF
+          {"status":"diagnostic-trigger-failed","conclusion":"failure","headSha":"$GITHUB_SHA"}
+          EOF
+          fi
+
+          cat .github/lix-analog-verify.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .github/lix-analog-verify.json
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m "Record analog guidance verification result"
+          git push origin HEAD:main
