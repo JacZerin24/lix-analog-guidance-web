@@ -62,6 +62,73 @@ jobs:
           echo "Bundle contents:"
           find runner -maxdepth 3 -type f | sort | head -200
 
+      - name: Update RRFS data source for operational feed
+        working-directory: runner
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          # NOAA stopped updating the prototype noaa-rrfs-pds/rrfs_public
+          # feed when the RRFS v1 pre-implementation parallel began in
+          # August 2026. The replacement NODD bucket uses the operational
+          # rrfs/v1.0 directory structure and remains the target after
+          # operational implementation.
+          replacements = (
+              ("noaa-rrfs-pds", "noaa-rrfs-ops-pds"),
+              ("rrfs_public/", "rrfs/v1.0/"),
+              ("rrfs_public", "rrfs/v1.0"),
+          )
+
+          text_suffixes = {
+              ".py", ".json", ".yaml", ".yml", ".toml", ".ini", ".cfg", ".txt"
+          }
+          changed = []
+          match_count = 0
+
+          for path in Path(".").rglob("*"):
+              if not path.is_file() or path.suffix.lower() not in text_suffixes:
+                  continue
+              try:
+                  original = path.read_text(encoding="utf-8")
+              except (UnicodeDecodeError, OSError):
+                  continue
+
+              updated = original
+              local_matches = 0
+              for old, new in replacements:
+                  local_matches += updated.count(old)
+                  updated = updated.replace(old, new)
+
+              if updated != original:
+                  path.write_text(updated, encoding="utf-8")
+                  changed.append(path.as_posix())
+                  match_count += local_matches
+
+          print(f"Updated {match_count} RRFS feed reference(s) in {len(changed)} file(s).")
+          for path in changed:
+              print(f"  patched: {path}")
+
+          if not changed:
+              raise SystemExit(
+                  "Could not find the old RRFS prototype bucket/prefix in the runner bundle. "
+                  "The bundle layout may have changed and needs inspection."
+              )
+
+          stale = []
+          for path in Path(".").rglob("*"):
+              if not path.is_file() or path.suffix.lower() not in text_suffixes:
+                  continue
+              try:
+                  text = path.read_text(encoding="utf-8")
+              except (UnicodeDecodeError, OSError):
+                  continue
+              if "noaa-rrfs-pds" in text or "rrfs_public" in text:
+                  stale.append(path.as_posix())
+
+          if stale:
+              raise SystemExit(f"Stale RRFS prototype references remain: {stale}")
+          PY
+
       - name: Install Python requirements
         working-directory: runner
         run: |
