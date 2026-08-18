@@ -7,42 +7,122 @@ on:
       - ".github/workflows/verify-lix-analog.yml"
 
 permissions:
+  actions: write
   contents: write
 
 jobs:
-  diagnose:
+  verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 300
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Inspect RRFS downloader and candidate S3 paths
+      - name: Correct operational RRFS S3 mapping
+        id: fix
         run: |
           set -euo pipefail
-          curl -L -o lix_bundle.zip \
-            "https://github.com/JacZerin24/lix-analog-guidance-web/releases/download/data-v1/lix_github_actions_full_bundle.zip"
-          unzip -q lix_bundle.zip -d runner
+          python - <<'PY'
+          from pathlib import Path
 
-          {
-            echo "=== Relevant original downloader source ==="
-            grep -nEi 'rrfs_public|noaa-rrfs|bucket|s3|key|url|prefix' runner/scripts/05_download_rrfs_refs.py || true
-            echo
-            echo "=== Candidate object HEAD checks ==="
-            for url in \
-              "https://noaa-rrfs-ops-pds.s3.amazonaws.com/rrfs/v1.0/rrfs.20260818/12/rrfs.t12z.prslev.3km.f000.conus.grib2" \
-              "https://noaa-rrfs-ops-pds.s3.amazonaws.com/rrfs.20260818/12/rrfs.t12z.prslev.3km.f000.conus.grib2" \
-              "https://noaa-rrfs-pds.s3.amazonaws.com/rrfs/v1.0/rrfs.20260818/12/rrfs.t12z.prslev.3km.f000.conus.grib2" \
-              "https://noaa-rrfs-pds.s3.amazonaws.com/rrfs_public/rrfs.20260818/12/rrfs.t12z.prslev.3km.f000.conus.grib2"
-            do
-              code=$(curl -L -sS -o /dev/null -w '%{http_code}' --max-time 20 -I "$url" || true)
-              echo "$code $url"
-            done
-          } > .github/rrfs-debug.txt
+          p = Path('.github/workflows/run-lix-analog.yml')
+          text = p.read_text(encoding='utf-8')
 
-          cat .github/rrfs-debug.txt
+          old_bucket = '("noaa-rrfs-pds", "noaa-rrfs-ops-pds"),'
+          old_prefix = '("rrfs_public/", "rrfs/v1.0/"),'
+          old_prefix2 = '("rrfs_public", "rrfs/v1.0"),'
+          if old_bucket not in text or old_prefix not in text or old_prefix2 not in text:
+              raise SystemExit('Expected prior RRFS migration patch was not found; refusing blind edit.')
+
+          text = text.replace(
+              '# August 2026. The replacement NODD bucket uses the operational\n'
+              '          # rrfs/v1.0 directory structure and remains the target after\n'
+              '          # operational implementation.',
+              '# August 2026. The replacement NODD bucket stores deterministic RRFS\n'
+              '          # files directly under rrfs.YYYYMMDD/HH/ (no rrfs/v1.0 prefix).'
+          )
+          text = text.replace(old_prefix, '("rrfs_public/", ""),')
+          text = text.replace('              ' + old_prefix2 + '\n', '')
+          text = text.replace(
+              'if "noaa-rrfs-pds" in text or "rrfs_public" in text:',
+              'if "noaa-rrfs-pds" in text or "rrfs/v1.0" in text:'
+          )
+          text = text.replace(
+              'Stale RRFS prototype references remain:',
+              'Stale/incorrect RRFS feed references remain:'
+          )
+
+          p.write_text(text, encoding='utf-8')
+          PY
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add .github/rrfs-debug.txt
-          git commit -m "Record RRFS S3 path diagnostics"
+          git add .github/workflows/run-lix-analog.yml
+          git commit -m "Fix operational RRFS S3 key prefix"
+          git push origin HEAD:main
+          echo "fix_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Run full analog guidance verification
+        id: trigger
+        env:
+          GH_TOKEN: ${{ github.token }}
+          FIX_SHA: ${{ steps.fix.outputs.fix_sha }}
+        run: |
+          set -euo pipefail
+          gh workflow run run-lix-analog.yml \
+            --ref main \
+            -f cycle=2026081812 \
+            -f fhr_end=60
+
+          run_id=""
+          for i in $(seq 1 60); do
+            run_id=$(gh run list \
+              --workflow run-lix-analog.yml \
+              --event workflow_dispatch \
+              --commit "$FIX_SHA" \
+              --limit 1 \
+              --json databaseId \
+              --jq '.[0].databaseId // empty')
+            if [ -n "$run_id" ]; then
+              break
+            fi
+            sleep 2
+          done
+
+          if [ -z "$run_id" ]; then
+            echo "Could not resolve dispatched workflow run ID" >&2
+            exit 1
+          fi
+
+          echo "run_id=$run_id" >> "$GITHUB_OUTPUT"
+          echo "Dispatched production verification run ID: $run_id"
+          gh run watch "$run_id" --exit-status || true
+
+      - name: Record verification result
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_ID: ${{ steps.trigger.outputs.run_id }}
+          FIX_SHA: ${{ steps.fix.outputs.fix_sha }}
+        run: |
+          set -euo pipefail
+          git pull --rebase origin main
+
+          if [ -n "${RUN_ID:-}" ]; then
+            gh run view "$RUN_ID" \
+              --json databaseId,status,conclusion,createdAt,updatedAt,url,headSha,event,workflowName \
+              > .github/lix-analog-verify.json
+          else
+            printf '{"status":"verification-trigger-failed","conclusion":"failure","headSha":"%s"}\n' "${FIX_SHA:-$GITHUB_SHA}" \
+              > .github/lix-analog-verify.json
+          fi
+
+          cat .github/lix-analog-verify.json
+          git add .github/lix-analog-verify.json
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m "Record analog guidance verification result"
           git push origin HEAD:main
