@@ -34,8 +34,9 @@ jobs:
             run_id=$(gh run list \
               --workflow run-lix-analog.yml \
               --event workflow_dispatch \
+              --commit "$GITHUB_SHA" \
               --limit 1 \
-              --json databaseId,headSha,createdAt \
+              --json databaseId \
               --jq '.[0].databaseId // empty')
             if [ -n "$run_id" ]; then
               break
@@ -44,7 +45,7 @@ jobs:
           done
 
           if [ -z "$run_id" ]; then
-            echo "Could not resolve dispatched workflow run ID" >&2
+            echo "Could not resolve dispatched workflow run ID for $GITHUB_SHA" >&2
             exit 1
           fi
 
@@ -75,5 +76,5 @@ jobs:
           if git diff --cached --quiet; then
             exit 0
           fi
-          git commit -m "Record full analog guidance verification result"
+          git commit -m "Record exact analog guidance verification result"
           git push origin HEAD:main
