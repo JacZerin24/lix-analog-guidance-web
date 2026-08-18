@@ -20,7 +20,7 @@ jobs:
       - name: Record exact production run status
         env:
           GH_TOKEN: ${{ github.token }}
-          TARGET_SHA: 48b5c73535649085d468cf8500d8be80d16b211d
+          TARGET_SHA: e993876c71ef60880171b242bef708714c600cf6
         run: |
           set -euo pipefail
           run_id=$(gh run list \
@@ -46,5 +46,5 @@ jobs:
           if git diff --cached --quiet; then
             exit 0
           fi
-          git commit -m "Probe exact analog verification run status"
+          git commit -m "Probe preceding full analog run status"
           git push origin HEAD:main
