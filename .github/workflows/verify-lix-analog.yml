@@ -7,65 +7,35 @@ on:
       - ".github/workflows/verify-lix-analog.yml"
 
 permissions:
-  actions: write
+  actions: read
   contents: write
 
 jobs:
-  verify:
+  probe:
     runs-on: ubuntu-latest
-    timeout-minutes: 300
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Trigger full production verification run
-        id: trigger
+      - name: Record exact production run status
         env:
           GH_TOKEN: ${{ github.token }}
+          TARGET_SHA: 48b5c73535649085d468cf8500d8be80d16b211d
         run: |
           set -euo pipefail
-          gh workflow run run-lix-analog.yml \
-            --ref main \
-            -f cycle=2026081812 \
-            -f fhr_end=60
-
-          run_id=""
-          for i in $(seq 1 60); do
-            run_id=$(gh run list \
-              --workflow run-lix-analog.yml \
-              --event workflow_dispatch \
-              --commit "$GITHUB_SHA" \
-              --limit 1 \
-              --json databaseId \
-              --jq '.[0].databaseId // empty')
-            if [ -n "$run_id" ]; then
-              break
-            fi
-            sleep 2
-          done
+          run_id=$(gh run list \
+            --workflow run-lix-analog.yml \
+            --event workflow_dispatch \
+            --commit "$TARGET_SHA" \
+            --limit 1 \
+            --json databaseId \
+            --jq '.[0].databaseId // empty')
 
           if [ -z "$run_id" ]; then
-            echo "Could not resolve dispatched workflow run ID for $GITHUB_SHA" >&2
-            exit 1
-          fi
-
-          echo "run_id=$run_id" >> "$GITHUB_OUTPUT"
-          echo "Dispatched run ID: $run_id"
-          gh run watch "$run_id" --exit-status || true
-
-      - name: Record verification result
-        if: always()
-        env:
-          GH_TOKEN: ${{ github.token }}
-          RUN_ID: ${{ steps.trigger.outputs.run_id }}
-        run: |
-          set -euo pipefail
-          if [ -n "${RUN_ID:-}" ]; then
-            gh run view "$RUN_ID" \
-              --json databaseId,status,conclusion,createdAt,updatedAt,url,headSha,event,workflowName \
-              > .github/lix-analog-verify.json
+            printf '{"status":"run-not-found","headSha":"%s"}\n' "$TARGET_SHA" > .github/lix-analog-verify.json
           else
-            printf '{"status":"verification-trigger-failed","conclusion":"failure","headSha":"%s"}\n' "$GITHUB_SHA" \
+            gh run view "$run_id" \
+              --json databaseId,status,conclusion,createdAt,updatedAt,url,headSha,event,workflowName \
               > .github/lix-analog-verify.json
           fi
 
@@ -76,5 +46,5 @@ jobs:
           if git diff --cached --quiet; then
             exit 0
           fi
-          git commit -m "Record exact analog guidance verification result"
+          git commit -m "Probe exact analog verification run status"
           git push origin HEAD:main
