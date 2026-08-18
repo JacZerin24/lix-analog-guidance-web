@@ -70,13 +70,11 @@ jobs:
 
           # NOAA stopped updating the prototype noaa-rrfs-pds/rrfs_public
           # feed when the RRFS v1 pre-implementation parallel began in
-          # August 2026. The replacement NODD bucket uses the operational
-          # rrfs/v1.0 directory structure and remains the target after
-          # operational implementation.
+          # August 2026. The replacement NODD bucket stores deterministic RRFS
+          # files directly under rrfs.YYYYMMDD/HH/ (no rrfs/v1.0 prefix).
           replacements = (
               ("noaa-rrfs-pds", "noaa-rrfs-ops-pds"),
-              ("rrfs_public/", "rrfs/v1.0/"),
-              ("rrfs_public", "rrfs/v1.0"),
+              ("rrfs_public/", ""),
           )
 
           text_suffixes = {
@@ -122,11 +120,11 @@ jobs:
                   text = path.read_text(encoding="utf-8")
               except (UnicodeDecodeError, OSError):
                   continue
-              if "noaa-rrfs-pds" in text or "rrfs_public" in text:
+              if "noaa-rrfs-pds" in text or "rrfs/v1.0" in text:
                   stale.append(path.as_posix())
 
           if stale:
-              raise SystemExit(f"Stale RRFS prototype references remain: {stale}")
+              raise SystemExit(f"Stale/incorrect RRFS feed references remain: {stale}")
           PY
 
       - name: Install Python requirements
