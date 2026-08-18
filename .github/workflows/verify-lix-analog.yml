@@ -1,5 +1,7 @@
 name: Verify LIX Analog Guidance
 
+# This workflow is intentionally push-triggered so changes to this verifier
+# can launch a real workflow_dispatch run of the production analog workflow.
 on:
   push:
     branches: [main]
@@ -52,7 +54,6 @@ jobs:
           echo "run_id=$run_id" >> "$GITHUB_OUTPUT"
           echo "Dispatched run ID: $run_id"
 
-          # Preserve the run result for the reporting step below.
           gh run watch "$run_id" --exit-status || true
 
       - name: Record verification result
