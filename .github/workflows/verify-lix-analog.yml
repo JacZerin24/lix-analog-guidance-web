@@ -17,58 +17,11 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      - name: Correct operational RRFS S3 mapping
-        id: fix
-        run: |
-          set -euo pipefail
-          python - <<'PY'
-          from pathlib import Path
-
-          p = Path('.github/workflows/run-lix-analog.yml')
-          text = p.read_text(encoding='utf-8')
-
-          old_bucket = '("noaa-rrfs-pds", "noaa-rrfs-ops-pds"),'
-          old_prefix = '("rrfs_public/", "rrfs/v1.0/"),'
-          old_prefix2 = '("rrfs_public", "rrfs/v1.0"),'
-          if old_bucket not in text or old_prefix not in text or old_prefix2 not in text:
-              raise SystemExit('Expected prior RRFS migration patch was not found; refusing blind edit.')
-
-          text = text.replace(
-              '# August 2026. The replacement NODD bucket uses the operational\n'
-              '          # rrfs/v1.0 directory structure and remains the target after\n'
-              '          # operational implementation.',
-              '# August 2026. The replacement NODD bucket stores deterministic RRFS\n'
-              '          # files directly under rrfs.YYYYMMDD/HH/ (no rrfs/v1.0 prefix).'
-          )
-          text = text.replace(old_prefix, '("rrfs_public/", ""),')
-          text = text.replace('              ' + old_prefix2 + '\n', '')
-          text = text.replace(
-              'if "noaa-rrfs-pds" in text or "rrfs_public" in text:',
-              'if "noaa-rrfs-pds" in text or "rrfs/v1.0" in text:'
-          )
-          text = text.replace(
-              'Stale RRFS prototype references remain:',
-              'Stale/incorrect RRFS feed references remain:'
-          )
-
-          p.write_text(text, encoding='utf-8')
-          PY
-
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add .github/workflows/run-lix-analog.yml
-          git commit -m "Fix operational RRFS S3 key prefix"
-          git push origin HEAD:main
-          echo "fix_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
-
-      - name: Run full analog guidance verification
+      - name: Trigger full production verification run
         id: trigger
         env:
           GH_TOKEN: ${{ github.token }}
-          FIX_SHA: ${{ steps.fix.outputs.fix_sha }}
         run: |
           set -euo pipefail
           gh workflow run run-lix-analog.yml \
@@ -81,9 +34,8 @@ jobs:
             run_id=$(gh run list \
               --workflow run-lix-analog.yml \
               --event workflow_dispatch \
-              --commit "$FIX_SHA" \
               --limit 1 \
-              --json databaseId \
+              --json databaseId,headSha,createdAt \
               --jq '.[0].databaseId // empty')
             if [ -n "$run_id" ]; then
               break
@@ -97,7 +49,7 @@ jobs:
           fi
 
           echo "run_id=$run_id" >> "$GITHUB_OUTPUT"
-          echo "Dispatched production verification run ID: $run_id"
+          echo "Dispatched run ID: $run_id"
           gh run watch "$run_id" --exit-status || true
 
       - name: Record verification result
@@ -105,24 +57,23 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           RUN_ID: ${{ steps.trigger.outputs.run_id }}
-          FIX_SHA: ${{ steps.fix.outputs.fix_sha }}
         run: |
           set -euo pipefail
-          git pull --rebase origin main
-
           if [ -n "${RUN_ID:-}" ]; then
             gh run view "$RUN_ID" \
               --json databaseId,status,conclusion,createdAt,updatedAt,url,headSha,event,workflowName \
               > .github/lix-analog-verify.json
           else
-            printf '{"status":"verification-trigger-failed","conclusion":"failure","headSha":"%s"}\n' "${FIX_SHA:-$GITHUB_SHA}" \
+            printf '{"status":"verification-trigger-failed","conclusion":"failure","headSha":"%s"}\n' "$GITHUB_SHA" \
               > .github/lix-analog-verify.json
           fi
 
           cat .github/lix-analog-verify.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add .github/lix-analog-verify.json
           if git diff --cached --quiet; then
             exit 0
           fi
-          git commit -m "Record analog guidance verification result"
+          git commit -m "Record full analog guidance verification result"
           git push origin HEAD:main
